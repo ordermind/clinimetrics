@@ -1,0 +1,11 @@
+--- apache2.conf	2022-09-01 12:40:44.821543969 +0000
++++ apache2.conf	2022-09-01 12:33:31.378864774 +0000
+@@ -169,7 +169,7 @@
+
+ <Directory /application/>
+ 	Options Indexes FollowSymLinks
+-	AllowOverride None
++	AllowOverride All
+ 	Require all granted
+ </Directory>
+
