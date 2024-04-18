@@ -11,7 +11,11 @@ export default new Test({
     <table class="table table-borderless maxwidth-400">
         <tr>
             <td><label for="general.age" class="form-label">Leeftijd:</label></td>
-            <td><input type="text" name="general.age" id="general.age" class="form-control" /></td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <input type="number" name="general.age" id="general.age" class="form-control" min="0" /><span class="ps-2">jaar</span>
+                </div>
+            </td>
         </tr>
         <tr>
             <td><label>Geslacht:</label></td>
@@ -27,12 +31,20 @@ export default new Test({
             </td>
         </tr>
         <tr>
-            <td><label for="general.height" class="form-label">Lengte:</label></td>
-            <td><input type="text" name="general.height" id="general.height" class="form-control" /></td>
+            <td><label for="general.height_cm" class="form-label">Lengte:</label></td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <input type="number" name="general.height_cm" id="general.height_cm" class="form-control" min="0" /><span class="ps-2">cm</span>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td><label for="general.weight" class="form-label">Gewicht:</label></td>
-            <td><input type="text" name="general.weight" id="general.weight" class="form-control" /></td>
+            <td><label for="general.weight_kg" class="form-label">Gewicht:</label></td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <input type="text" name="general.weight_kg" id="general.weight_kg" class="form-control" min="0" /><span class="ps-2">kg</span>
+                </div>
+            </td>
         </tr>
     </table>
 </div>

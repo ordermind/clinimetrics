@@ -44,15 +44,24 @@ export default class TestPage extends AbstractPage {
 
     #setDefaultValues() {
         const state = observableState.getObject();
-        const scopedState = {general: state.general ?? {}, "6mwt": state["6mwt"] ?? {}}
+        const testId = this.#test.id;
+        const scopedState = {general: state.general ?? {}, [testId]: state[testId] ?? {}}
         const scopedStateDot = convertObjectToDotNotation(scopedState);
         for(const key in scopedStateDot) {
-            const element = document.querySelector(`[name="${key}"]`);
-            if(!element) {
-                continue;
-            }
+            for(const element of document.querySelectorAll(`[name="${key}"]`)) {
+                this.#setDefaultValueForElement(element, scopedStateDot[key]);
+            };
+        }
+    }
 
-            element.value = scopedStateDot[key];
+    #setDefaultValueForElement(element, value) {
+        if(["text", "number"].includes(element.type)) {
+            element.value = value;
+            return;
+        }
+
+        if(element.type === "radio" && element.value === value) {
+            element.checked = true;
         }
     }
 
