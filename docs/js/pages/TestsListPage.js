@@ -1,13 +1,34 @@
-import Page from "../data-types/Page.js";
-import { renderPage } from "../renderer.js";
+import AbstractListPage from "./AbstractListPage.js";
 
-export default class TestsListPage extends Page {
-    #arrTests;
-
+export default class TestsListPage extends AbstractListPage {
     constructor({arrTests}) {
-        super({slug: "tests", title: "Tests"});
+        super({slug: "tests", title: "Tests", items: arrTests});
+    }
 
-        this.#arrTests = arrTests;
+    getFilters() {
+        return [
+            {
+                type: "textInput",
+                name: "fullName",
+                label: "Naam test",
+                event: "keyup",
+                minCharacters: 3,
+            }
+        ];
+    }
+
+    createHeaderRow() {
+        return `
+
+        `.trim();
+    }
+
+    createDataRow(test) {
+        return `
+<tr>
+    <td>[Link type="Test" targetId="${test.id}" label="${test.fullName}"]</td>
+</tr>
+        `.trim();
     }
 
     mount() {
@@ -15,14 +36,14 @@ export default class TestsListPage extends Page {
     }
 
     render() {
-        renderPage({});
+        super.render();
     }
 
     postRender() {
-
+        super.postRender();
     }
 
     unmount() {
-
+        super.unmount();
     }
 }

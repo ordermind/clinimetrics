@@ -1,3 +1,7 @@
 import { router } from "./router.js";
 
-router.resolve();
+if(router.getCurrentLocation().url === "") {
+    router.navigate("/tests");
+} else {
+    router.resolve();
+}

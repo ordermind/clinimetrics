@@ -1,7 +1,7 @@
-import Page from "../data-types/Page.js";
+import AbstractPage from "./AbstractPage.js";
 import { renderPage } from "../renderer.js";
 
-export default class TestPage extends Page {
+export default class TestPage extends AbstractPage {
     #test;
 
     constructor({test}) {

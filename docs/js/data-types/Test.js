@@ -1,18 +1,16 @@
-import Page from "./Page.js";
-
-export default class Test extends Page {
+export default class Test {
+    #id;
     #shortName;
     #longName;
 
     constructor({id, shortName, longName}) {
-        super({slug: id, title: longName});
-
+        this.#id = id;
         this.#shortName = shortName;
         this.#longName = longName;
     }
 
     get id() {
-        return this.slug;
+        return this.#id;
     }
 
     get shortName() {
@@ -21,6 +19,10 @@ export default class Test extends Page {
 
     get longName() {
         return this.#longName;
+    }
+
+    get fullName() {
+        return `${this.#longName} (${this.#shortName})`;
     }
 
     getFields() {

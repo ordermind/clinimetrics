@@ -8,7 +8,7 @@ export const routes = {
     // The home route has multiple paths to accommodate both local dev environment and Github Pages hosting.
     home: new Route(
         {
-            paths: ["/", "/clinimetrics/", "/tests/"],
+            paths: ["/tests/", "/", "/clinimetrics/"],
             createPage: () => {
                 return new TestsListPage({arrTests});
             }
@@ -18,7 +18,7 @@ export const routes = {
         {
             paths: ["/tests/:id"],
             createPage: ({ data }) => {
-                return new TestPage(objTests[data.id]);
+                return new TestPage({test: objTests[data.id]});
             }
         }
     ),
