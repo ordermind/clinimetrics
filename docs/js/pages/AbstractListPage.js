@@ -1,4 +1,4 @@
-import { renderPage, replaceLinks } from "../renderer.js";
+import { renderPage, replaceInternalLinks } from "../renderer.js";
 import { debounce, deepEqual, massageStringForFlexibleComparison, removeChildren } from "../utils.js";
 import { addLinkEventListeners, cleanUpLinkEventListeners, router } from "../router.js";
 import AbstractPage from "./AbstractPage.js";
@@ -169,7 +169,7 @@ export default class AbstractListPage extends AbstractPage {
         `.trim();
 
         const template = document.createElement("template");
-        template.innerHTML = replaceLinks(content);
+        template.innerHTML = replaceInternalLinks(content);
 
         const listWrapper = this.#pageWrapper.querySelector(".list-wrapper");
 

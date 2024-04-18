@@ -1,5 +1,5 @@
 import { marked } from "../vendor/marked/js/marked.esm.min.js";
-import { replaceLinks } from "./renderer.js";
+import { replaceInternalLinks } from "./renderer.js";
 
 /**
  * Markdown parser based on the marked library by Christopher Jeffrey.
@@ -7,7 +7,7 @@ import { replaceLinks } from "./renderer.js";
 
 // Replace links before parsing markdown
 function preprocess(markdown) {
-    return replaceLinks(markdown);
+    return replaceInternalLinks(markdown);
 }
 
 // Override marked renderer

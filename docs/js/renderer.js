@@ -14,7 +14,7 @@ function createPathFromInternalLink(link) {
     throw new Error(`The link type "${link.type}" is not supported.`);
 }
 
-export function replaceLinks(html) {
+export function replaceInternalLinks(html) {
     return html.replaceAll(/\[Link[\s]+(type|targetId|label)="([^"]+)"[\s]+(type|targetId|label)="([^"]+)"[\s]+(type|targetId|label)="([^"]+)"[^\]]*\]/g, (_, group1Attribute, group1Value, group2Attribute, group2Value, group3Attribute, group3Value) => {
         const internalLink = new InternalLink({
             [group1Attribute]: group1Value,
@@ -30,6 +30,10 @@ export function replaceLinks(html) {
 
         return `<em>${internalLink.label}</em>`;
     });
+}
+
+export function replaceExternalLinks(html) {
+    return html.replaceAll('<a ', '<a target="_blank" ');
 }
 
 function getHeader(headerBlocks) {
@@ -52,7 +56,7 @@ function getMain(mainContent) {
     return mainBlocks.flatMap(mainBlock => {
         if (typeof mainBlock === 'string' || mainBlock instanceof String) {
             const template = document.createElement("template");
-            template.innerHTML = replaceLinks(mainBlock);
+            template.innerHTML = replaceInternalLinks(replaceExternalLinks(mainBlock));
 
             const children = template.content.children;
 
