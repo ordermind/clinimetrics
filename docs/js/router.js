@@ -4,12 +4,16 @@ import { routes } from "./routes.js";
 
 export const router = new Navigo("/", { hash: true });
 
+let currentPage = null;
+
 router.hooks({
-    after(match) {
+    after() {
         addNewTabClickEventListeners();
     },
-    leave(done, match) {
+    leave(done) {
         removeNewTabClickEventListeners();
+        currentPage.unmount();
+        currentPage = null;
 
         done();
     },
@@ -21,8 +25,16 @@ for(const [routeName, route] of Object.entries(routes)) {
         router.on({
             [path]: {
                 as: multiplePathRouteName,
-                uses: route.responseHandler,
-                hooks: {leave: route.onLeaveHandler},
+                uses: () => {
+                    currentPage.mount();
+                    currentPage.render();
+                    currentPage.postRender();
+                },
+                hooks: {before: (done, match) => {
+                    currentPage = route.createPage(match);
+
+                    done();
+                }},
             },
         });
     }

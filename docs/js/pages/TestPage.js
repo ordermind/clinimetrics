@@ -1,4 +1,5 @@
 import Page from "../data-types/Page.js";
+import { renderPage } from "../renderer.js";
 
 export default class TestPage extends Page {
     #test;
@@ -10,13 +11,15 @@ export default class TestPage extends Page {
     }
 
     mount() {
-        for(const field of test.getFields()) {
-
-        }
+        super.mount();
     }
 
-    getRenderData() {
-        return {};
+    render() {
+        renderPage({});
+    }
+
+    postRender() {
+
     }
 
     unmount() {

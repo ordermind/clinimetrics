@@ -1,23 +1,17 @@
 export default class Route {
     #paths;
-    #responseHandler;
-    #onLeaveHandler;
+    #createPage;
 
-    constructor({paths, responseHandler, onLeaveHandler}) {
+    constructor({paths, createPage}) {
         this.#paths = paths;
-        this.#responseHandler = responseHandler.bind(this);
-        this.#onLeaveHandler = onLeaveHandler.bind(this);
+        this.#createPage = createPage;
     }
 
     get paths() {
         return this.#paths;
     }
 
-    get responseHandler() {
-        return this.#responseHandler;
-    }
-
-    get onLeaveHandler() {
-        return this.#onLeaveHandler;
+    get createPage() {
+        return this.#createPage;
     }
 }

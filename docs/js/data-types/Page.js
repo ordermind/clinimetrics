@@ -16,10 +16,14 @@ export default class Page {
     }
 
     mount() {
+        window.scrollTo(0, 0);
+    }
+
+    render() {
 
     }
 
-    getRenderData() {
+    postRender() {
 
     }
 

@@ -1,4 +1,5 @@
 import Page from "../data-types/Page.js";
+import { renderPage } from "../renderer.js";
 
 export default class TestsListPage extends Page {
     #arrTests;
@@ -10,11 +11,15 @@ export default class TestsListPage extends Page {
     }
 
     mount() {
-
+        super.mount();
     }
 
-    getRenderData() {
-        return {};
+    render() {
+        renderPage({});
+    }
+
+    postRender() {
+
     }
 
     unmount() {
