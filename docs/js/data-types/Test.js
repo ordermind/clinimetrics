@@ -2,11 +2,13 @@ export default class Test {
     #id;
     #shortName;
     #longName;
+    #getformContentHTML;
 
-    constructor({id, shortName, longName}) {
+    constructor({id, shortName, longName, getformContentHTML}) {
         this.#id = id;
         this.#shortName = shortName;
         this.#longName = longName;
+        this.#getformContentHTML = getformContentHTML;
     }
 
     get id() {
@@ -25,7 +27,7 @@ export default class Test {
         return `${this.#longName} (${this.#shortName})`;
     }
 
-    getFields() {
-        throw new Error("Please implement this method in the subclass");
+    getContent() {
+        return `<form class="test-form">${this.#getformContentHTML()}</form>`;
     }
 }

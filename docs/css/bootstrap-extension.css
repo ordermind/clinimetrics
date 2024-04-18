@@ -9,3 +9,7 @@
 .mt-n4 {
     margin-top: -1.5rem !important;
 }
+
+.maxwidth-400 {
+    max-width: 25rem;
+}

@@ -80,6 +80,8 @@ body .hideable-cover {
     max-width: 100%;
 }
 
+/** Table **/
+
 .table tr td {
     background-color: transparent;
 }
@@ -97,6 +99,12 @@ body .hideable-cover {
 .table .table {
     margin-top: -0.5rem;
     margin-bottom: 0;
+}
+
+/** Forms **/
+form .form-check,
+form .form-check * {
+    cursor: pointer;
 }
 
 /** List page **/
@@ -124,14 +132,4 @@ body .hideable-cover {
     position: absolute;
     right: 1rem;
     top: calc(50% - 6px);
-}
-
-/** Muscle page **/
-.page-muscle {
-    max-width: 92rem;
-}
-
-.page-muscle table.joint-functions tr th,
-.page-muscle table.joint-functions tr td {
-    min-width: 10rem;
 }

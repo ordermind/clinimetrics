@@ -124,3 +124,20 @@ export function massageStringForFlexibleComparison(string) {
         .toLowerCase()
         .replaceAll(/(^(m(\.|_)|mm(\.|_)|art(\.|_)|artt(\.|_)))|\s|&nbsp;|\.|,|_+/g, "");
 }
+
+export function convertObjectToDotNotation(obj) {
+    var res = {};
+    (function recurse(obj, current) {
+    for(var key in obj) {
+        var value = obj[key];
+        var newKey = (current ? current + "." + key : key);  // joined key with dot
+        if(value && typeof value === "object") {
+        recurse(value, newKey);  // it's a nested object, so do it again
+        } else {
+        res[newKey] = value;  // it's not an object, so set the property
+        }
+    }
+    })(obj);
+
+    return res;
+}
