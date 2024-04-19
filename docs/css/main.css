@@ -136,6 +136,13 @@ form .form-check * {
 
 /** Test page **/
 
+.page-test form table tr td {
+    vertical-align: middle;
+}
+.page-test form table tr td label {
+    margin: 0;
+}
+
 .page-test input.ci-absolute {
     border-width: 2px;
     border-color: red;

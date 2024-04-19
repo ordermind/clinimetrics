@@ -62,7 +62,7 @@ export default new Test({
 
         <div class="personal-info">
             <h2 class="display-2 fs-4">Persoonlijke gegevens</h2>
-            <table class="table table-borderless maxwidth-400">
+            <table class="table table-borderless maxwidth-480">
                 <tr>
                     <td><label for="general.name" class="form-label">Naam:</label></td>
                     <td>
@@ -112,7 +112,7 @@ export default new Test({
         </div>
         <div class="pre-measurements">
             <h2 class="display-2 fs-4">Voormetingen</h2>
-            <table class="table table-borderless maxwidth-400">
+            <table class="table table-borderless maxwidth-480">
                 <tr>
                     <td><label for="general.date" class="form-label">Datum:</label></td>
                     <td>
@@ -141,7 +141,7 @@ export default new Test({
                     <td><label for="general.in_rest.blood_pressure_systolic" class="form-label">Bloeddruk:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="general.in_rest.blood_pressure_systolic" id="general.in_rest.blood_pressure_systolic" class="form-control" min="0" /><span class="ps-2 pe-2">/</span><input type="number" name="general.in_rest.blood_pressure_diastolic" id="general.in_rest.blood_pressure_diastolic" class="form-control" min="0" />
+                            <input type="number" name="general.in_rest.blood_pressure_systolic" id="general.in_rest.blood_pressure_systolic" class="form-control" min="0" /><span class="ps-2 pe-2">/</span><input type="number" name="general.in_rest.blood_pressure_diastolic" id="general.in_rest.blood_pressure_diastolic" class="form-control" min="0" /><span class="ps-2">mmHg</span>
                         </div>
                     </td>
                 </tr>
@@ -165,7 +165,7 @@ export default new Test({
         </div>
     </div>
 
-    <div class="col description">
+    <div class="col | description">
         <h2 class="display-2 fs-4">Contra-indicaties</h2>
 
         <h3 class="display-3 fs-5">Absolute contra-indicaties</h3>
@@ -221,7 +221,7 @@ op)</li>
     <div class="col">
         <div class="post-measurements">
             <h2 class="display-2 fs-4">Nametingen</h2>
-            <table class="table table-borderless maxwidth-400">
+            <table class="table table-borderless maxwidth-480">
                 <tr>
                     <td><label for="six_mwt.parcour" class="form-label">Parcoursafstand:</label></td>
                     <td>
@@ -284,7 +284,7 @@ op)</li>
 
         <div id="six_mwt-results-wrapper" class="d-none">
             <h2 class="display-2 fs-4">Uitslag</h2>
-            <table class="table table-borderless maxwidth-400">
+            <table class="table table-borderless maxwidth-480">
                 <tr>
                     <td>Gemiddelde loopsnelheid:</td>
                     <td><span id="six_mwt-average-speed-ms"></span><span class="ps-2">m/s&nbsp;=&nbsp;</span><span id="six_mwt-average-speed-kmh"></span><span class="ps-2">km/h</span></td>
