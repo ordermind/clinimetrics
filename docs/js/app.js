@@ -1,6 +1,6 @@
 import { router } from "./router.js";
 
-if(router.getCurrentLocation().url === "") {
+if(["", "clinimetrics"].includes(router.getCurrentLocation().url)) {
     router.navigate("/tests");
 } else {
     router.resolve();
