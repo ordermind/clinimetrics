@@ -18,7 +18,7 @@ export default class AbstractPage {
     }
 
     mount() {
-        document.title = `Clinimetrie | ${this.#title}`;
+        document.title = `Klinimetrie | ${this.#title}`;
         window.scrollTo(0, 0);
     }
 

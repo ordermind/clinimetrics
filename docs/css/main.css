@@ -133,3 +133,17 @@ form .form-check * {
     right: 1rem;
     top: calc(50% - 6px);
 }
+
+/** Test page **/
+
+.page-test input.ci-absolute {
+    border-width: 2px;
+    border-color: red;
+}
+.page-test input.ci-relative {
+    border-width: 2px;
+    border-color: orange;
+}
+.page-test input.ci-clean {
+    border-color: green;
+}

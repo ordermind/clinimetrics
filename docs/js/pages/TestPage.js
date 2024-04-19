@@ -12,6 +12,16 @@ export default class TestPage extends AbstractPage {
         this.#test = test;
     }
 
+    #getPageTitle() {
+        let title = this.#test.fullName;
+
+        if(this.#test.externalSourceUrl) {
+            title += `&nbsp;<a href="${this.#test.externalSourceUrl}">🔗</a>`;
+        }
+
+        return title;
+    }
+
     #onFormElementChange(e) {
         const element = e.target;
 
@@ -60,6 +70,11 @@ export default class TestPage extends AbstractPage {
             return;
         }
 
+        if(element.tagName === "SELECT") {
+            element.value = value;
+            return;
+        }
+
         if(element.type === "radio" && element.value === value) {
             element.checked = true;
         }
@@ -72,7 +87,7 @@ export default class TestPage extends AbstractPage {
     render() {
         const content = `
 <div class="page page-test">
-    <h1 class="display-1 fs-1">${this.#test.fullName}</h1>
+    <h1 class="display-1 fs-1">${this.#getPageTitle()}</h1>
     ${this.#test.getContent()}
 </div>
         `.trim();
@@ -91,9 +106,14 @@ export default class TestPage extends AbstractPage {
         this.#setDefaultValues();
 
         document.querySelector(".test-form").addEventListener("change", this.#onFormElementChange);
+
+        observableState.addSubscriber(this.#test.id, this.#test.onStateChange);
+        this.#test.onStateChange(observableState.getObject());
     }
 
     unmount() {
         document.querySelector(".test-form").removeEventListener("change", this.#onFormElementChange);
+
+        observableState.removeSubscriber(this.#test.id);
     }
 }
