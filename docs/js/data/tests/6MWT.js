@@ -198,7 +198,7 @@ export default new Test({
         <p>Meet lengte en gewicht af. Laat de patient vervolgens minimaal 10 minuten in een stoel zitten en neem de overige voormetingen af. Hierbij kun je ook de test uitleggen.</p>
 
         <h2 class="display-2 fs-4">Uitleg aan de patiënt</h2>
-        <p><em>Bij deze test moet u proberen een zo groot mogelijke afstand af te leggen in zes minuten. U moet daarbij heen en weer tussen de pionnen lopen. U mag alleen wandelen, niet joggen of rennen. Ik zal achter u meelopen, en af en toe zal ik naast u komen om de zuurstofsaturatiemeter te bekijken. Zes minuten is een lange tijd om te lopen, dat vraagt dus een inspanning. Misschien raakt u buiten adem of raakt u uitgeput. U mag langzamer gaan lopen of stoppen en rusten indien dit nodig is. U mag ook even tegen de muur leunen, maar U moet weer gaan lopen zo snel als dit weer mogelijk is. Als U een pauze neemt blijft de timer aan.</em></p>
+        <p><em>Bij deze test moet u proberen een zo groot mogelijke afstand af te leggen in zes minuten. U moet daarbij heen en weer tussen de pionnen lopen. U mag alleen wandelen, niet joggen of rennen. Ik zal achter u meelopen, en af en toe zal ik naast u komen om de saturatiemeter te bekijken. Zes minuten is een lange tijd om te lopen, dat vraagt dus een inspanning. Misschien raakt u buiten adem of raakt u uitgeput. U mag langzamer gaan lopen of stoppen en rusten indien dit nodig is. U mag ook even tegen de muur leunen, maar U moet weer gaan lopen zo snel als dit weer mogelijk is. Als U een pauze neemt blijft de timer aan.</em></p>
         <p><em>Ik ga het nu laten zien. Kijk goed hoe ik om de pion heen loop.</em></p>
 
         <h2 class="display-2 fs-4">Acties tijdens de test</h2>
