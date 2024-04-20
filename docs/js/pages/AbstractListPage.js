@@ -187,7 +187,7 @@ export default class AbstractListPage extends AbstractPage {
         this.#pageWrapper.classList.add("page", "page-list");
 
         const filterWrapper = document.createElement("div");
-        filterWrapper.classList.add("filter-wrapper");
+        filterWrapper.classList.add("form-control-wrapper", "mt-0", "mb-0", "|", "filter-wrapper");
 
         const listWrapper = document.createElement("div");
         listWrapper.classList.add("list-wrapper");
