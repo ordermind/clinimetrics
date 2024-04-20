@@ -85,6 +85,21 @@ body .hideable-cover {
     }
 }
 
+#header .filter-wrapper,
+#header .filter-wrapper .search-wrapper {
+    display: block;
+}
+#header .filter-wrapper {
+    width: 100%;
+}
+@media (min-width: 576px) {
+    #header .filter-wrapper,
+    #header .filter-wrapper .search-wrapper {
+        display: inline-block;
+        width: auto;
+    }
+}
+
 #header .search-wrapper .search-results {
     position: absolute;
     background: #fff;
