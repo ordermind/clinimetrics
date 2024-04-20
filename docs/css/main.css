@@ -75,6 +75,16 @@ body .hideable-cover {
     z-index: 1;
 }
 
+#header {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+@media (min-width: 1200px) {
+    #header {
+        margin-top: 0.5rem;
+    }
+}
+
 #header .search-wrapper .search-results {
     position: absolute;
     background: #fff;
