@@ -124,6 +124,9 @@ form .form-check * {
     cursor: pointer;
 }
 
+input[type="text"]::-webkit-input-placeholder { color:#aaa; }
+input[type="text"]::-moz-placeholder { color:#aaa; }
+
 /** List page **/
 .form-control-wrapper {
     position: relative;
