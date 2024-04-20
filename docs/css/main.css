@@ -75,10 +75,17 @@ body .hideable-cover {
     z-index: 1;
 }
 
-.nav-buttons-wrapper {
-    width: 25rem;
-    max-width: 100%;
+#header .search-wrapper .search-results {
+    position: absolute;
+    background: #fff;
 }
+#header .search-wrapper .search-results a {
+    display: inline-block;
+}
+#header .search-wrapper .search-results a:hover {
+    background: #cbe7ff;
+}
+
 
 /** Table **/
 
@@ -108,7 +115,7 @@ form .form-check * {
 }
 
 /** List page **/
-.page-list form[name="filters"] .form-control-wrapper {
+.form-control-wrapper {
     position: relative;
     display: inline-block;
     margin: 0.5rem;
@@ -124,11 +131,11 @@ form .form-check * {
     }
 }
 
-.page-list form[name="filters"] .search-wrapper input[type="text"] {
+.search-wrapper input[type="text"] {
     padding-right: 2rem;
 }
 
-.page-list form[name="filters"] .search-wrapper .ico {
+.search-wrapper .ico {
     position: absolute;
     right: 1rem;
     top: calc(50% - 6px);

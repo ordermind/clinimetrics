@@ -41,7 +41,7 @@ function getHeader(headerBlocks) {
     wrapper.classList.add("navbar", "navbar-expand-lg", "bg-body-tertiary");
 
     const container = document.createElement("div");
-    container.classList.add("container-fluid");
+    container.classList.add("container-fluid", "justify-content-start");
     headerBlocks = Array.isArray(headerBlocks) ? headerBlocks : [headerBlocks];
     container.append(...headerBlocks);
 
@@ -71,8 +71,11 @@ function getMain(mainContent) {
 export function renderPage(content) {
     const headerElement = document.getElementById("header");
     removeChildren(headerElement);
-    if(content.hasOwnProperty("header")) {
+    if(content.hasOwnProperty("header") && content.header.length > 0) {
+        headerElement.classList.remove("d-none");
         headerElement.appendChild(getHeader(content.header));
+    } else {
+        headerElement.classList.add("d-none");
     }
 
     const mainElement = document.getElementById("main");

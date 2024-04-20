@@ -2,14 +2,21 @@ import AbstractPage from "./AbstractPage.js";
 import { renderPage } from "../renderer.js";
 import observableState from "../state.js";
 import { convertObjectToDotNotation } from "../utils.js";
+import HomeLinkBlock from "../blocks/HomeLinkBlock.js";
+import SearchBarBlock from "../blocks/SearchBarBlock.js";
+import { arrTests } from "../data/tests.js";
 
 export default class TestPage extends AbstractPage {
     #test;
+    #homeLinkBlock;
+    #searchBarBlock;
 
     constructor({test}) {
         super({slug: test.id, title: test.longName});
 
         this.#test = test;
+        this.#homeLinkBlock = new HomeLinkBlock();
+        this.#searchBarBlock = new SearchBarBlock({items: arrTests.filter(item => item.id !== test.id)});
     }
 
     #getPageTitle() {
@@ -94,10 +101,11 @@ export default class TestPage extends AbstractPage {
 
         renderPage({
             header: [
-
+                this.#homeLinkBlock.getElement(),
+                this.#searchBarBlock.getElement(),
             ],
             main: [
-                content
+                content,
             ],
         });
     }
@@ -115,5 +123,7 @@ export default class TestPage extends AbstractPage {
         document.querySelector(".test-form").removeEventListener("change", this.#onFormElementChange);
 
         observableState.removeSubscriber(this.#test.id);
+        this.#homeLinkBlock.cleanUp();
+        this.#searchBarBlock.cleanUp();
     }
 }

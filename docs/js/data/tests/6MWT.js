@@ -92,6 +92,19 @@ export default new Test({
                         </div>
                     </td>
                 </tr>
+            </table>
+        </div>
+        <div class="pre-measurements">
+            <h2 class="display-2 fs-4">Voormetingen</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="general.date" class="form-label">Datum:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="text" name="general.date" id="general.date" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
                 <tr>
                     <td><label for="general.height_cm" class="form-label">Lengte:</label></td>
                     <td>
@@ -105,19 +118,6 @@ export default new Test({
                     <td>
                         <div class="d-flex align-items-center">
                             <input type="number" name="general.weight_kg" id="general.weight_kg" class="form-control" min="0" /><span class="ps-2">kg</span>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="pre-measurements">
-            <h2 class="display-2 fs-4">Voormetingen</h2>
-            <table class="table table-borderless maxwidth-480">
-                <tr>
-                    <td><label for="general.date" class="form-label">Datum:</label></td>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <input type="text" name="general.date" id="general.date" class="form-control" />
                         </div>
                     </td>
                 </tr>
