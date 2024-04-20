@@ -89,7 +89,7 @@ export default class AbstractListPage extends AbstractPage {
             formElement.appendChild(filterElement);
         }
 
-        const filterWrapper = this.#pageWrapper.querySelector(".filter-wrapper");
+        const filterWrapper = document.querySelector(".filter-wrapper");
 
         removeChildren(filterWrapper);
 
@@ -188,7 +188,6 @@ export default class AbstractListPage extends AbstractPage {
 
         const filterWrapper = document.createElement("div");
         filterWrapper.classList.add("filter-wrapper");
-        this.#pageWrapper.appendChild(filterWrapper);
 
         const listWrapper = document.createElement("div");
         listWrapper.classList.add("list-wrapper");
@@ -203,7 +202,7 @@ export default class AbstractListPage extends AbstractPage {
 
         renderPage({
             header: [
-
+                filterWrapper,
             ],
             main: [
                 this.#pageWrapper,
