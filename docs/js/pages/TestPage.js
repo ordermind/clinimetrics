@@ -1,6 +1,6 @@
 import AbstractPage from "./AbstractPage.js";
 import { renderPage } from "../renderer.js";
-import observableState from "../state.js";
+import observableState, { defaultValue } from "../state.js";
 import { convertObjectToDotNotation } from "../utils.js";
 import HomeLinkBlock from "../blocks/HomeLinkBlock.js";
 import SearchBarBlock from "../blocks/SearchBarBlock.js";
@@ -17,6 +17,9 @@ export default class TestPage extends AbstractPage {
         this.#test = test;
         this.#homeLinkBlock = new HomeLinkBlock();
         this.#searchBarBlock = new SearchBarBlock({items: arrTests.filter(item => item.id !== test.id)});
+
+        this.onClickClearForm = this.onClickClearForm.bind(this);
+        this.onStateChange = this.onStateChange.bind(this);
     }
 
     #getPageTitle() {
@@ -59,15 +62,30 @@ export default class TestPage extends AbstractPage {
         state[firstKey] = newState[firstKey]; //Trigger reactivity
     }
 
+    onClickClearForm() {
+        const state = observableState.getObject();
+        const testId = this.#test.id;
+
+        if(defaultValue.hasOwnProperty("general")) {
+            state.general = defaultValue.general;
+        }
+        if(defaultValue.hasOwnProperty(testId)) {
+            state[testId] = defaultValue[testId];
+        }
+    }
+
+    onStateChange() {
+        this.#setDefaultValues();
+    }
+
     #setDefaultValues() {
         const state = observableState.getObject();
         const testId = this.#test.id;
         const scopedState = {general: state.general ?? {}, [testId]: state[testId] ?? {}}
         const scopedStateDot = convertObjectToDotNotation(scopedState);
-        for(const key in scopedStateDot) {
-            for(const element of document.querySelectorAll(`[name="${key}"]`)) {
-                this.#setDefaultValueForElement(element, scopedStateDot[key]);
-            };
+        for(const element of document.querySelectorAll(`.test-form [name]`)) {
+            const key = element.name;
+            this.#setDefaultValueForElement(element, scopedStateDot[key] ?? null);
         }
     }
 
@@ -84,6 +102,8 @@ export default class TestPage extends AbstractPage {
 
         if(element.type === "radio" && element.value === value) {
             element.checked = true;
+        } else {
+            element.checked = false;
         }
     }
 
@@ -94,7 +114,10 @@ export default class TestPage extends AbstractPage {
     render() {
         const content = `
 <div class="page page-test">
-    <h1 class="display-1 fs-1">${this.#getPageTitle()}</h1>
+    <div class="d-flex justify-content-between align-items-start">
+        <h1 class="display-1 fs-1">${this.#getPageTitle()}</h1>
+        <button type="button" class="btn btn-secondary | btn-clear-form">Gegevens wissen</button>
+    </div>
     ${this.#test.getContent()}
 </div>
         `.trim();
@@ -114,14 +137,18 @@ export default class TestPage extends AbstractPage {
         this.#setDefaultValues();
 
         document.querySelector(".test-form").addEventListener("change", this.#onFormElementChange);
+        document.querySelector(".btn-clear-form")?.addEventListener("click", this.onClickClearForm);
 
+        observableState.addSubscriber("set-form-values", this.onStateChange);
         observableState.addSubscriber(this.#test.id, this.#test.onStateChange);
         this.#test.onStateChange(observableState.getObject());
     }
 
     unmount() {
         document.querySelector(".test-form").removeEventListener("change", this.#onFormElementChange);
+        document.querySelector(".btn-clear-form")?.removeEventListener("click", this.onClickClearForm);
 
+        observableState.removeSubscriber("set-form-values");
         observableState.removeSubscriber(this.#test.id);
         this.#homeLinkBlock.cleanUp();
         this.#searchBarBlock.cleanUp();

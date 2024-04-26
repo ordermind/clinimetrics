@@ -2,7 +2,7 @@ import {LocalStoragePersistedObservableObject} from "./observable-object.js";
 
 const today = new Date();
 
-const defaultValue = {
+export const defaultValue = {
     general: {
         date: new String(today.getDate()).padStart(2, '0') + "-" + new String(today.getMonth() + 1).padStart(2, '0') + "-" + today.getFullYear()
     },
