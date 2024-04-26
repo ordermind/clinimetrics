@@ -141,3 +141,7 @@ export function convertObjectToDotNotation(obj) {
 
     return res;
 }
+
+export function cloneObject(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}

@@ -189,3 +189,28 @@ input[type="text"]::-moz-placeholder { color:#aaa; }
 .page-test input.ci-clean {
     border-color: green;
 }
+.page-test .title-wrapper button {
+    position: relative;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    overflow: hidden;
+}
+.page-test .title-wrapper button:after {
+    content: "";
+    background: #90EE90;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s;
+}
+
+.page-test .title-wrapper button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s;
+}

@@ -1,4 +1,5 @@
 import {LocalStoragePersistedObservableObject} from "./observable-object.js";
+import { cloneObject } from "./utils.js";
 
 const today = new Date();
 
@@ -11,6 +12,6 @@ export const defaultValue = {
     },
 }
 
-const observableState = new LocalStoragePersistedObservableObject({localStorageId: "clinimetrics-state", defaultValue});
+const observableState = new LocalStoragePersistedObservableObject({localStorageId: "clinimetrics-state", defaultValue: cloneObject(defaultValue)});
 
 export default observableState;

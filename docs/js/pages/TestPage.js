@@ -1,7 +1,7 @@
 import AbstractPage from "./AbstractPage.js";
 import { renderPage } from "../renderer.js";
 import observableState, { defaultValue } from "../state.js";
-import { convertObjectToDotNotation } from "../utils.js";
+import { cloneObject, convertObjectToDotNotation } from "../utils.js";
 import HomeLinkBlock from "../blocks/HomeLinkBlock.js";
 import SearchBarBlock from "../blocks/SearchBarBlock.js";
 import { arrTests } from "../data/tests.js";
@@ -19,6 +19,7 @@ export default class TestPage extends AbstractPage {
         this.#searchBarBlock = new SearchBarBlock({items: arrTests.filter(item => item.id !== test.id)});
 
         this.onClickClearForm = this.onClickClearForm.bind(this);
+        this.onClickClearAll = this.onClickClearAll.bind(this);
         this.onStateChange = this.onStateChange.bind(this);
     }
 
@@ -58,7 +59,7 @@ export default class TestPage extends AbstractPage {
         const state = observableState.getObject();
         const keys = element.name.split(".");
         const firstKey = keys[0];
-        const newState = setStateValueRecursive(JSON.parse(JSON.stringify(state)), keys);
+        const newState = setStateValueRecursive(cloneObject(state), keys);
         state[firstKey] = newState[firstKey]; //Trigger reactivity
     }
 
@@ -67,10 +68,18 @@ export default class TestPage extends AbstractPage {
         const testId = this.#test.id;
 
         if(defaultValue.hasOwnProperty("general")) {
-            state.general = defaultValue.general;
+            state.general = cloneObject(defaultValue.general);
         }
         if(defaultValue.hasOwnProperty(testId)) {
-            state[testId] = defaultValue[testId];
+            state[testId] = cloneObject(defaultValue[testId]);
+        }
+    }
+
+    onClickClearAll() {
+        const state = observableState.getObject();
+
+        for(const key in state) {
+            state[key] = cloneObject(defaultValue[key]) ?? {};
         }
     }
 
@@ -114,9 +123,12 @@ export default class TestPage extends AbstractPage {
     render() {
         const content = `
 <div class="page page-test">
-    <div class="d-flex justify-content-between align-items-start">
-        <h1 class="display-1 fs-1">${this.#getPageTitle()}</h1>
-        <button type="button" class="btn btn-secondary | btn-clear-form">Gegevens wissen</button>
+    <div class="d-flex justify-content-between align-items-start flex-wrap | title-wrapper">
+        <h1 class="display-1 fs-1 mb-3">${this.#getPageTitle()}</h1>
+        <div class="d-flex mb-3">
+            <button type="button" class="btn btn-secondary | btn-clear-form">Deze test wissen</button>
+            <button type="button" class="btn btn-danger ms-2 | btn-clear-all">Alle tests wissen</button>
+        </div>
     </div>
     ${this.#test.getContent()}
 </div>
@@ -138,6 +150,7 @@ export default class TestPage extends AbstractPage {
 
         document.querySelector(".test-form").addEventListener("change", this.#onFormElementChange);
         document.querySelector(".btn-clear-form")?.addEventListener("click", this.onClickClearForm);
+        document.querySelector(".btn-clear-all")?.addEventListener("click", this.onClickClearAll);
 
         observableState.addSubscriber("set-form-values", this.onStateChange);
         observableState.addSubscriber(this.#test.id, this.#test.onStateChange);
@@ -147,6 +160,7 @@ export default class TestPage extends AbstractPage {
     unmount() {
         document.querySelector(".test-form").removeEventListener("change", this.#onFormElementChange);
         document.querySelector(".btn-clear-form")?.removeEventListener("click", this.onClickClearForm);
+        document.querySelector(".btn-clear-all")?.removeEventListener("click", this.onClickClearAll);
 
         observableState.removeSubscriber("set-form-values");
         observableState.removeSubscriber(this.#test.id);
