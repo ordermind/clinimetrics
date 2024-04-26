@@ -34,6 +34,39 @@ export function renderHtmlList(list, {fallbackToSingleString = false, classes = 
     return output;
 }
 
+export function renderNotesTooltip(notes) {
+    if(!notes.length) {
+        return "";
+    }
+
+    let notesTooltip = "";
+
+    const hasMultipleNotes = notes.length > 1;
+    const notesTag = hasMultipleNotes ? "ul" : "span";
+    notesTooltip = `
+<div class="tooltip-wrapper">
+    <i class="tooltip-trigger">ⓘ</i>
+    <div class="tooltip-content">
+        <div class="tooltip-content-bg"></div>
+        <${notesTag} class="tooltip-content-inner">
+`.trim();
+    if(hasMultipleNotes) {
+        for(const note of notes) {
+            notesTooltip += `<li>${note}</li>`;
+        }
+    } else {
+        notesTooltip += notes[0];
+    }
+
+    notesTooltip += `
+        </${notesTag}>
+    </div>
+</div>
+    `;
+
+    return " " + notesTooltip;
+}
+
 export function removeChildren(element) {
     while (element.firstChild) {
         element.removeChild(element.lastChild);
