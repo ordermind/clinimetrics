@@ -109,7 +109,8 @@ body .hideable-cover {
     display: inline-block;
     width: 100%;
 }
-#header .search-wrapper .search-results a:hover {
+#header .search-wrapper .search-results a:hover,
+#header .search-wrapper .search-results a:focus {
     background: #cbe7ff;
 }
 
