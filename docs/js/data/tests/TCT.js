@@ -93,7 +93,7 @@ export default new Test({
             </table>
         </div>
 
-        <div class="mb-3 | pre-measurements">
+        <div class="mb-3 maxwidth-480 | pre-measurements">
             <h2 class="display-2 fs-4">Vooraf bekende deelscores</h2>
             <input type="text" name="tct.pre.partial_scores" id="tct.pre.partial_scores" placeholder="XX-XX-XX-XX" class="form-control" />
         </div>
