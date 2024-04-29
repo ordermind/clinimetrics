@@ -803,7 +803,7 @@ function checkForLeaveHook(context, done) {
       }
 
       var runHook = false;
-      var newLocationVSOldMatch = context.instance.matchLocation(oldMatch.route.path, context.currentLocationPath, false);
+      var newLocationVSOldMatch = oldMatch.url === context.currentLocationPath;
 
       if (oldMatch.route.path !== "*") {
         runHook = !newLocationVSOldMatch;
