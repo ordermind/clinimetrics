@@ -102,10 +102,12 @@ body .hideable-cover {
 
 #header .search-wrapper .search-results {
     position: absolute;
+    width: 100%;
     background: #fff;
 }
 #header .search-wrapper .search-results a {
     display: inline-block;
+    width: 100%;
 }
 #header .search-wrapper .search-results a:hover {
     background: #cbe7ff;
