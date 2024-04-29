@@ -69,9 +69,15 @@ export default class TestPage extends AbstractPage {
 
         if(defaultValue.hasOwnProperty("general")) {
             state.general = cloneObject(defaultValue.general);
+        } else {
+            state.general = {};
         }
+
+
         if(defaultValue.hasOwnProperty(testId)) {
             state[testId] = cloneObject(defaultValue[testId]);
+        } else {
+            state[testId] = {};
         }
     }
 
@@ -79,7 +85,11 @@ export default class TestPage extends AbstractPage {
         const state = observableState.getObject();
 
         for(const key in state) {
-            state[key] = cloneObject(defaultValue[key] ?? {});
+            if(defaultValue.hasOwnProperty(key)) {
+                state[key] = cloneObject(defaultValue[key]);
+            } else {
+                state[key] = {};
+            }
         }
     }
 
