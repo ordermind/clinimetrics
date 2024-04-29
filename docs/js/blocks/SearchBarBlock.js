@@ -10,6 +10,7 @@ export default class SearchBarBlock {
 
         this.onUpdateFilters = debounce(this.onUpdateFilters.bind(this));
         this.onDocumentClick = this.onDocumentClick.bind(this);
+        this.onSearchKeyDown = this.onSearchKeyDown.bind(this);
     }
 
     #createSearchBarElement() {
@@ -34,6 +35,7 @@ export default class SearchBarBlock {
         wrapper.appendChild(searchResultsWrapper);
 
         document.body.addEventListener("click", this.onDocumentClick);
+        wrapper.addEventListener("keydown", this.onSearchKeyDown);
 
         return wrapper;
     }
@@ -94,6 +96,64 @@ export default class SearchBarBlock {
         addLinkEventListeners();
     }
 
+    onSearchKeyDown(e) {
+        const wrapper = document.querySelector([`.search-wrapper`]);
+        const searchResultsWrapper = wrapper.querySelector('.search-results');
+        const inputElement = wrapper.querySelector([`input[name="fullName"]`]);
+
+        function getNextSelection(currentSelection, firstResult) {
+            if(!currentSelection || currentSelection.tagName === "INPUT") {
+                return firstResult;
+            }
+
+            const nextSibling = currentSelection.closest("tr").nextSibling;
+            if(!nextSibling) {
+                return inputElement;
+            }
+
+            return nextSibling.querySelector("td a");
+        }
+
+        function getPreviousSelection(currentSelection, lastResult) {
+            if(!currentSelection || currentSelection.tagName === "INPUT") {
+                return lastResult;
+            }
+
+            const previousSibling = currentSelection.closest("tr").previousSibling;
+            if(!previousSibling) {
+                return inputElement;
+            }
+
+            return previousSibling.querySelector("td a");
+        }
+
+        if(!searchResultsWrapper.hasChildNodes()) {
+            return;
+        }
+
+        const currentSelection = searchResultsWrapper.querySelector("table > tr td a:focus");
+        const firstResult = searchResultsWrapper.querySelector("table > tr:first-child td a");
+        const lastResult = searchResultsWrapper.querySelector("table > tr:last-child td a");
+
+        if(e.code === 'ArrowDown') {
+            e.preventDefault(); // prevent moving the cursor
+
+            const newSelection = getNextSelection(currentSelection, firstResult);
+            newSelection.focus();
+
+            return;
+        }
+
+        if(e.code === 'ArrowUp') {
+            e.preventDefault(); // prevent moving the cursor
+
+            const newSelection = getPreviousSelection(currentSelection, lastResult);
+            newSelection.focus();
+
+            return;
+        }
+    }
+
     onUpdateFilters() {
         this.#renderSearchResults();
     }
@@ -112,9 +172,11 @@ export default class SearchBarBlock {
     }
 
     cleanUp() {
-        const inputElement = document.querySelector([`.search-wrapper input[name="fullName"]`]);
+        const wrapper = document.querySelector([`.search-wrapper`]);
+        const inputElement = wrapper.querySelector([`input[name="fullName"]`]);
 
         document.body.removeEventListener("click", this.onDocumentClick);
+        wrapper.removeEventListener("keydown", this.onSearchKeyDown);
         inputElement.removeEventListener("keyup", this.onUpdateFilters);
 
     }
