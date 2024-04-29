@@ -48,8 +48,8 @@ export default new Test({
     getformContentHTML: () => {
         return `
 <div class="mb-3">De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden en geeft op basis daarvan een inschatting van het <strong>valrisico</strong> van de patiënt.</div>
-<div class="row row-cols-1 row-cols-lg-2">
-    <div class="col">
+<div class="row row-cols-1 row-cols-lg-2 justify-content-between">
+    <div class="col maxwidth-800">
         <div class="description">
             <h2 class="display-2 fs-4">Benodigdheden</h2>
             <ul>
