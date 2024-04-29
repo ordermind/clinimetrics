@@ -79,7 +79,7 @@ export default class TestPage extends AbstractPage {
         const state = observableState.getObject();
 
         for(const key in state) {
-            state[key] = cloneObject(defaultValue[key]) ?? {};
+            state[key] = cloneObject(defaultValue[key] ?? {});
         }
     }
 
