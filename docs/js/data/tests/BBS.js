@@ -40,14 +40,19 @@ function getScoreInterpretation(totalScore) {
     return "Onafhankelijke en zekere uitvoering zonder fysieke en verbale hulp";
 }
 
+const description = `
+De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden en geeft op basis daarvan een inschatting van het <strong>valrisico</strong> van de patiënt.
+`.trim();
+
 export default new Test({
     id: "bbs",
     shortName: "BBS",
     longName: "Berg Balance Scale",
+    description,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/berg-balance-scale/",
     getformContentHTML: () => {
         return `
-<div class="mb-3">De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden en geeft op basis daarvan een inschatting van het <strong>valrisico</strong> van de patiënt.</div>
+<div class="mb-3">${description}</div>
 <div class="row row-cols-1 row-cols-lg-2 justify-content-between">
     <div class="col maxwidth-800">
         <div class="description">

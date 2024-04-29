@@ -41,14 +41,19 @@ function calculatePredictedDistance({sex, age, height_cm, weight_kg, parcour, di
 
 const functionalCapacityDescription = "<strong>Functionele capaciteit</strong> is het vermogen van een persoon om dagelijkse activiteiten uit te voeren zonder belemmering of ongemak als gevolg van fysieke beperkingen of aandoeningen. Het omvat de verschillende aspecten van het functioneren van het lichaam, zoals kracht, flexibiliteit, balans, uithoudingsvermogen en coördinatie.";
 
+const description = `
+De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</strong>${renderNotesTooltip([functionalCapacityDescription])} te meten.
+`.trim();
+
 export default new Test({
     id: "six_mwt",
     shortName: "6MWT",
     longName: "6 minuten wandeltest",
+    description,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/6-minute-walk-test-zes-minuten-wandeltest/",
     getformContentHTML: () => {
         return `
-<div class="mb-3">De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</strong>${renderNotesTooltip([functionalCapacityDescription])} te meten.</div>
+<div class="mb-3">${description}</div>
 <div class="row">
     <div class="col">
         <div class="description">

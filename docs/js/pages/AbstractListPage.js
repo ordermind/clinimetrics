@@ -129,7 +129,7 @@ export default class AbstractListPage extends AbstractPage {
                 }
 
                 return part;
-            }).join("");
+            }).join("|");
         }
 
         if (!(typeof itemValue === 'string' || itemValue instanceof String)) {

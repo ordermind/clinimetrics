@@ -1,6 +1,7 @@
 export const arrTests = await Promise.all([
     "6MWT.js",
     "BBS.js",
+    "TCT.js",
 ].map(filename => import("./tests/" + filename).then(module => module.default)))
 .then(tests => tests.sort((a, b) => a.longName.localeCompare(b.longName)));
 

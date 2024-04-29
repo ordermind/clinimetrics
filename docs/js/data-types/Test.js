@@ -2,15 +2,21 @@ export default class Test {
     #id;
     #shortName;
     #longName;
+    #description;
     #externalSourceUrl;
+    #tags;
+
     #getformContentHTML;
     #onStateChange;
 
-    constructor({id, shortName = "", longName, externalSourceUrl = "", getformContentHTML, onStateChange = null}) {
+    constructor({id, shortName = "", longName, description = "", externalSourceUrl = "", tags = [], getformContentHTML, onStateChange = null}) {
         this.#id = id;
         this.#shortName = shortName;
         this.#longName = longName;
+        this.#description = description;
         this.#externalSourceUrl = externalSourceUrl;
+        this.#tags = tags;
+
         this.#getformContentHTML = getformContentHTML;
         this.#onStateChange = onStateChange;
 
@@ -38,8 +44,16 @@ export default class Test {
         return `${this.#longName} (${this.#shortName})`;
     }
 
+    get description() {
+        return this.#description;
+    }
+
     get externalSourceUrl() {
         return this.#externalSourceUrl;
+    }
+
+    get tags() {
+        return this.#tags;
     }
 
     getContent() {
