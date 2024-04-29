@@ -25,7 +25,7 @@ export class ObservableObject {
 
                 if(oldTargetJSON !== newTargetJSON) {
                     for(const subscriber of subscribers) {
-                        subscriber.handler(target);
+                        subscriber.handler(JSON.parse(newTargetJSON));
                     }
                 }
 

@@ -1,4 +1,44 @@
 import Test from "../../data-types/Test.js";
+import observableState from "../../state.js";
+
+function isEverythingFilledIn() {
+    const state = observableState.getObject();
+
+    for(let i = 1; i <= 14; i++) {
+        if(
+            !state?.bbs.hasOwnProperty(`assignment_${i}`)
+            || !state?.bbs[`assignment_${i}`].length) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function calculateTotalScore() {
+    const state = observableState.getObject();
+
+    return Object.values(state?.bbs ?? {})
+        .reduce(
+            (previousValue, currentValue) => previousValue += parseInt(currentValue), 
+        0);
+}
+
+function getScoreInterpretation(totalScore) {
+    if(totalScore < 36) {
+        return "De score is lager dan 36 => bijna 100% kans op een val de komende 6 maanden";
+    }
+
+    if(totalScore < 43) {
+        return "De score is lager dan 43 => aanzienlijk valrisico bij zelfstandig lopen";
+    }
+
+    if(totalScore < 45) {
+        return "De score is lager dan 45 => uitvoering volledig afhankelijk van hulpmiddelen en/of supervisie";
+    }
+
+    return "Onafhankelijke en zekere uitvoering zonder fysieke en verbale hulp";
+}
 
 export default new Test({
     id: "bbs",
@@ -7,7 +47,7 @@ export default new Test({
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/berg-balance-scale/",
     getformContentHTML: () => {
         return `
-<div class="mb-3">De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden.</div>
+<div class="mb-3">De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden en geeft op basis daarvan een inschatting van het <strong>valrisico</strong> van de patiënt.</div>
 <div class="row row-cols-1 row-cols-lg-2">
     <div class="col">
         <div class="description">
@@ -310,11 +350,47 @@ export default new Test({
                     </div>
                 </td>
             </tr>
+        </table>
+
+        <div id="bbs-results-wrapper" class="d-none">
+            <h2 class="display-2 fs-4">Uitslag</h2>
+            <table class="table table-borderless">
+                <tr>
+                    <td>Totale score:</td>
+                    <td><span id="bbs-total-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Interpretatie:</td>
+                    <td><span id="bbs-interpretation"></span>
+                </tr>
+            </table>
+            <p><em>N.B. Er is nog geen consensus over de interpretatie van de score vanwege de complexiteit van het inschatten van het valrisico.</em></p>
         </div>
     </div>
 </div>
         `.trim();
     },
-    onStateChange: (state) => {
+    onStateChange: (newState) => {
+        // If the patient can stand independently, the sit test does not need to be executed.
+        const sitTestScoreElement = document.getElementById("bbs.assignment_4");
+        if(newState?.bbs?.assignment_2 === "4") {
+            newState.bbs.assignment_4 = "4";
+
+            const state = observableState.getObject();
+            state.bbs = newState.bbs;
+            sitTestScoreElement.disabled = true;
+        } else {
+            sitTestScoreElement.disabled = false;
+        }
+
+        if(isEverythingFilledIn()) {
+            const totalScore = calculateTotalScore();
+            document.getElementById("bbs-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>`;
+            document.getElementById("bbs-interpretation").innerHTML = getScoreInterpretation(totalScore);
+
+            document.getElementById("bbs-results-wrapper").classList.remove("d-none");
+        } else {
+            document.getElementById("bbs-results-wrapper").classList.add("d-none");
+        }
     }
 });

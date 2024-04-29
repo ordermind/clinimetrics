@@ -164,7 +164,7 @@ export default class TestPage extends AbstractPage {
 
         observableState.addSubscriber("set-form-values", this.onStateChange);
         observableState.addSubscriber(this.#test.id, this.#test.onStateChange);
-        this.#test.onStateChange(observableState.getObject());
+        this.#test.onStateChange(cloneObject(observableState.getObject()));
     }
 
     unmount() {

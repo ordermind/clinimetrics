@@ -46,11 +46,11 @@ export default class Test {
         return `<form class="test-form">${this.#getformContentHTML()}</form>`;
     }
 
-    onStateChange(state) {
+    onStateChange(newState) {
         if(!this.#onStateChange) {
             return;
         }
 
-        this.#onStateChange(state);
+        this.#onStateChange(newState);
     }
 }

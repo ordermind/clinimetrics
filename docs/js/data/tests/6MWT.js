@@ -319,10 +319,10 @@ op)</li>
 </div>
         `.trim();
     },
-    onStateChange: (state) => {
+    onStateChange: (newState) => {
         // Alert contra indications
-        if(isFilled(state?.general?.in_rest?.heart_rate)) {
-            if(parseInt(state.general.in_rest.heart_rate) > 120) {
+        if(isFilled(newState?.general?.in_rest?.heart_rate)) {
+            if(parseInt(newState.general.in_rest.heart_rate) > 120) {
                 setContraIndication(document.getElementById("general.in_rest.heart_rate"), "relative");
             } else {
                 setContraIndication(document.getElementById("general.in_rest.heart_rate"), "clean");
@@ -331,8 +331,8 @@ op)</li>
             setContraIndication(document.getElementById("general.in_rest.heart_rate"));
         }
 
-        if(isFilled(state?.general?.in_rest?.oxygen_saturation)) {
-            if(parseInt(state.general.in_rest.oxygen_saturation) < 90) {
+        if(isFilled(newState?.general?.in_rest?.oxygen_saturation)) {
+            if(parseInt(newState.general.in_rest.oxygen_saturation) < 90) {
                 setContraIndication(document.getElementById("general.in_rest.oxygen_saturation"), "absolute");
             } else {
                 setContraIndication(document.getElementById("general.in_rest.oxygen_saturation"), "clean");
@@ -341,8 +341,8 @@ op)</li>
             setContraIndication(document.getElementById("general.in_rest.oxygen_saturation"));
         }
 
-        if(isFilled(state?.general?.in_rest?.blood_pressure_systolic)) {
-            if(parseInt(state.general.in_rest.blood_pressure_systolic) > 180) {
+        if(isFilled(newState?.general?.in_rest?.blood_pressure_systolic)) {
+            if(parseInt(newState.general.in_rest.blood_pressure_systolic) > 180) {
                 setContraIndication(document.getElementById("general.in_rest.blood_pressure_systolic"), "relative");
             } else {
                 setContraIndication(document.getElementById("general.in_rest.blood_pressure_systolic"), "clean");
@@ -351,8 +351,8 @@ op)</li>
             setContraIndication(document.getElementById("general.in_rest.blood_pressure_systolic"));
         }
 
-        if(isFilled(state?.general?.in_rest?.blood_pressure_diastolic)) {
-            if(parseInt(state.general.in_rest.blood_pressure_diastolic) > 100) {
+        if(isFilled(newState?.general?.in_rest?.blood_pressure_diastolic)) {
+            if(parseInt(newState.general.in_rest.blood_pressure_diastolic) > 100) {
                 setContraIndication(document.getElementById("general.in_rest.blood_pressure_diastolic"), "relative");
             } else {
                 setContraIndication(document.getElementById("general.in_rest.blood_pressure_diastolic"), "clean");
@@ -361,8 +361,8 @@ op)</li>
             setContraIndication(document.getElementById("general.in_rest.blood_pressure_diastolic"));
         }
 
-        if(isFilled(state?.six_mwt?.oxygen_saturation)) {
-            if(parseInt(state.six_mwt.oxygen_saturation) < 85) {
+        if(isFilled(newState?.six_mwt?.oxygen_saturation)) {
+            if(parseInt(newState.six_mwt.oxygen_saturation) < 85) {
                 setContraIndication(document.getElementById("six_mwt.oxygen_saturation"), "absolute");
             } else {
                 setContraIndication(document.getElementById("six_mwt.oxygen_saturation"), "clean");
@@ -373,14 +373,14 @@ op)</li>
 
         // Display results
         if(
-            isFilled(state?.general?.sex)
-            && isFilled(state?.general?.age)
-            && isFilled(state?.general?.height_cm)
-            && isFilled(state?.general?.weight_kg)
-            && isFilled(state?.six_mwt?.parcour)
-            && isFilled(state?.six_mwt?.distance)
+            isFilled(newState?.general?.sex)
+            && isFilled(newState?.general?.age)
+            && isFilled(newState?.general?.height_cm)
+            && isFilled(newState?.general?.weight_kg)
+            && isFilled(newState?.six_mwt?.parcour)
+            && isFilled(newState?.six_mwt?.distance)
         ) {
-            const distance = parseInt(state.six_mwt.distance);
+            const distance = parseInt(newState.six_mwt.distance);
 
             const averageSpeedMS = distance / 360;
             const averageSpeedKMH = averageSpeedMS * 3.6;
@@ -388,12 +388,12 @@ op)</li>
             document.getElementById("six_mwt-average-speed-kmh").innerText = formatNumber(averageSpeedKMH);
 
             const predictedDistance = calculatePredictedDistance({
-                sex: state.general.sex,
-                age: state.general.age,
-                height_cm: state.general.height_cm,
-                weight_kg: state.general.weight_kg,
-                parcour: state.six_mwt.parcour,
-                distance: state.six_mwt.distance,
+                sex: newState.general.sex,
+                age: newState.general.age,
+                height_cm: newState.general.height_cm,
+                weight_kg: newState.general.weight_kg,
+                parcour: newState.six_mwt.parcour,
+                distance: newState.six_mwt.distance,
             });
             document.getElementById("six_mwt-predicted").innerText = formatNumber(predictedDistance, 0);
 

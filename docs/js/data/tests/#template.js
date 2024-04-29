@@ -7,6 +7,6 @@ export default new Test({
     externalSourceUrl: "",
     getformContentHTML: () => {
     },
-    onStateChange: (state) => {
+    onStateChange: (newState) => {
     }
 });
