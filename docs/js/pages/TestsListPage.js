@@ -16,8 +16,8 @@ export default class TestsListPage extends AbstractListPage {
             },
             {
                 type: "textInput",
-                name: "tags",
-                label: "Tags",
+                name: "description",
+                label: "Omschrijving",
                 event: "keyup",
                 minCharacters: 3,
             }

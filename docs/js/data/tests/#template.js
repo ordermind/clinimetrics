@@ -8,7 +8,6 @@ export default new Test({
 
     `.trim(),
     externalSourceUrl: "",
-    tags: [],
     getformContentHTML: () => {
         return `
 

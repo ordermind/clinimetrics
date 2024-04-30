@@ -64,7 +64,6 @@ export default new Test({
     longName: "Trunk Control Test",
     description,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/trunk-control-test/",
-    tags: ["cva", "cna"],
     getformContentHTML: () => {
         return `
 <div class="mb-3">${description}</div>
