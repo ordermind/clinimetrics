@@ -336,6 +336,7 @@ export default new Test({
             sitTestScoreElements.forEach(element => element.disabled = false);
         }
 
+        // Calculate and show total score
         if(isEverythingFilledIn()) {
             const totalScore = calculateTotalScore();
             document.getElementById("bbs-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>`;

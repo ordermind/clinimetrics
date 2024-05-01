@@ -1,6 +1,55 @@
 import Test from "../../data-types/Test.js";
+import observableState from "../../state.js";
 
 const description = `De Trunk Impairment Scale test evalueert het <strong>statisch en dynamisch evenwicht van het zitten</strong>. Doelgroep: patiënten met hersenaandoening, cerebral palsy, MS, Parkinson en CVA.`.trim();
+
+function enableTestItem(elements) {
+    elements[0].closest(".test-item").classList.remove("disabled");
+    elements.forEach(element => element.disabled = false);
+}
+
+function disableTestItem(elements) {
+    elements[0].closest(".test-item").classList.add("disabled");
+    elements.forEach(element => element.disabled = true);
+}
+
+function applyInterFieldEffects(newState) {
+    const state = observableState.getObject();
+
+    // First enable all assignments
+    for(let i = 1; i <= 17; i++) {
+        enableTestItem(document.testForm[`tis.assignment_${i}`]);
+    }
+
+    // If the S.1 scores 0, score 0 and disable all other assignments
+    if(newState?.tis?.assignment_1 === "0") {
+        for(let i = 2; i <= 17; i++) {
+            newState.tis[`assignment_${i}`] = "0";
+            disableTestItem(document.testForm[`tis.assignment_${i}`]);
+        }
+    }
+
+    // Logic for specific assignments that should be scored 0 and disabled if another assignment is scored 0
+    const disablingLogicMapping = {
+        4: 5,
+        5: 6,
+        7: 8,
+        8: 9,
+        10: 11,
+        12: 13,
+        14: 15,
+        16: 17,
+    }
+
+    for(const sourceAssignmentKey in disablingLogicMapping) {
+        if(newState?.tis[`assignment_${sourceAssignmentKey}`] === "0") {
+            newState.tis[`assignment_${disablingLogicMapping[sourceAssignmentKey]}`] = "0";
+            disableTestItem(document.testForm[`tis.assignment_${disablingLogicMapping[sourceAssignmentKey]}`]);
+        }
+    }
+
+    state.tis = newState.tis;
+}
 
 export default new Test({
     id: "tis",
@@ -48,10 +97,10 @@ export default new Test({
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten</h2>
 
-        <h3 class="display-3 fs-5">Statische zitbalans</h3>
         <table class="table table-borderless">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
+                    <h3 class="display-3 fs-5">Statische zitbalans</h3>
                     <h4 class="display-4 fs-6">S.1</h4>
                     <div class="mb-1"><strong>Instructie</strong>: De patiënt probeert in de uitgangspositie 10 seconden te zitten zonder steun van de armen.</div>
                     <div class="mb-1">(Als de score hiervoor 0 wordt, sla je de rest van de test over en wordt de totale score ook 0.)</div>
@@ -107,12 +156,9 @@ export default new Test({
                     </div>
                 </td>
             </tr>
-        </table>
-
-        <h3 class="display-3 fs-5">Dynamische zitbalans</h3>
-        <table class="table table-borderless">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
+                    <h3 class="display-3 fs-5">Dynamische zitbalans</h3>
                     <h4 class="display-4 fs-6">D.1</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd de behandelbank met de <strong>paretische elleboog</strong> aan te tikken (door het verkorten van de paretische zijde en verlengen van de niet-paretische zijde) en daarna terug te keren naar de uitgangspositie.</div>
                     <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.2 en D.3 over en ga je door met D.4)</div>
@@ -309,12 +355,9 @@ zien</label>
                     </div>
                 </td>
             </tr>
-        </table>
-
-        <h3 class="display-3 fs-5">Coördinatie</h3>
-        <table class="table table-borderless">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
+                    <h3 class="display-3 fs-5">Coördinatie</h3>
                     <h4 class="display-4 fs-6">C.1</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd de romp 6 keer te roteren (elke schouder/bovendeel romp beweegt 3 keer voorwaarts), waarbij <strong>eerst de paretische schouder</strong> naar voren wordt gebracht. Het hoofd moet gefixeerd blijven in de uitgangshouding.</div>
                     <div class="mb-1">(Als de score hiervoor 0 wordt, sla je C.2 over en ga je door met C.3)</div>
@@ -393,5 +436,6 @@ zien</label>
         `.trim();
     },
     onStateChange: (newState) => {
+        applyInterFieldEffects(newState);
     }
 });
