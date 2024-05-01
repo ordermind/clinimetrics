@@ -105,6 +105,9 @@ body .hideable-cover {
     width: 100%;
     background: #fff;
 }
+#header .search-wrapper .search-results > table {
+    margin-bottom: 0;
+}
 #header .search-wrapper .search-results a {
     display: inline-block;
     width: 100%;
