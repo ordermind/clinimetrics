@@ -1,5 +1,43 @@
 import Test from "../../data-types/Test.js";
+import observableState from "../../state.js";
 import { formatNumber } from "./utils.js";
+
+function applyInterFieldEffects(newState) {
+    // Set and disable arm fields if the results are already known
+    if(newState?.mi?.pre?.partial_scores?.arm?.length) {
+        const splitScores = newState.mi.pre.partial_scores.arm.split('-');
+
+        for(let i = 1; i <= 3; i++) {
+            newState.mi[`assignment_${i}`] = (splitScores.hasOwnProperty(i - 1) && splitScores[i-1].length) ? parseInt(splitScores[i-1]).toString() : "0";
+            document.testForm[`mi.assignment_${i}`][0].closest(".test-item").classList.add("disabled");
+            document.testForm[`mi.assignment_${i}`].forEach(element => element.disabled = true);
+        }
+    } else {
+        for(let i = 1; i <= 3; i++) {
+            document.testForm[`mi.assignment_${i}`][0].closest(".test-item").classList.remove("disabled");
+            document.testForm[`mi.assignment_${i}`].forEach(element => element.disabled = false);
+        }
+    }
+
+    // Set and disable leg fields if the results are already known
+    if(newState?.mi?.pre?.partial_scores?.leg?.length) {
+        const splitScores = newState.mi.pre.partial_scores.leg.split('-');
+
+        for(let i = 4; i <= 6; i++) {
+            newState.mi[`assignment_${i}`] = (splitScores.hasOwnProperty(i - 4) && splitScores[i-4].length) ? parseInt(splitScores[i-4]).toString() : "0";
+            document.testForm[`mi.assignment_${i}`][0].closest(".test-item").classList.add("disabled");
+            document.testForm[`mi.assignment_${i}`].forEach(element => element.disabled = true);
+        }
+    } else {
+        for(let i = 4; i <= 6; i++) {
+            document.testForm[`mi.assignment_${i}`][0].closest(".test-item").classList.remove("disabled");
+            document.testForm[`mi.assignment_${i}`].forEach(element => element.disabled = false);
+        }
+    }
+
+    const state = observableState.getObject();
+    state.mi = newState.mi;
+}
 
 function isArmDataFilledIn(newState) {
     for(let i = 1; i <= 3; i++) {
@@ -128,6 +166,10 @@ stand). De opdrachten worden <strong>twee keer</strong> uitgevoerd: eerst bij de
 <div id="assignments-wrapper" class="row row-cols-1 row-cols-lg-2 justify-content-between">
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten arm</h2>
+        <div class="mb-3 maxwidth-480 | pre-measurements">
+            <h3 class="display-3 fs-5">Vooraf bekende deelscores</h3>
+            <input type="text" name="mi.pre.partial_scores.arm" id="mi.pre.partial_scores.arm" placeholder="XX-XX-XX" class="form-control" />
+        </div>
 
         <table id="assignments-wrapper" class="table table-borderless">
             <tr data-item-type="radio" class="test-item">
@@ -233,6 +275,10 @@ stand). De opdrachten worden <strong>twee keer</strong> uitgevoerd: eerst bij de
 
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten been</h2>
+        <div class="mb-3 maxwidth-480 | pre-measurements">
+            <h3 class="display-3 fs-5">Vooraf bekende deelscores</h3>
+            <input type="text" name="mi.pre.partial_scores.leg" id="mi.pre.partial_scores.leg" placeholder="XX-XX-XX" class="form-control" />
+        </div>
 
         <table id="assignments-wrapper" class="table table-borderless">
             <tr data-item-type="radio" class="test-item">
@@ -356,6 +402,8 @@ stand). De opdrachten worden <strong>twee keer</strong> uitgevoerd: eerst bij de
         `.trim();
     },
     onStateChange: (newState) => {
+        applyInterFieldEffects(newState);
+
         if(isArmDataFilledIn(newState)) {
             calculateAndDisplayArmScore(newState);
         } else {
