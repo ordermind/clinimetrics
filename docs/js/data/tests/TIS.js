@@ -51,6 +51,39 @@ function applyInterFieldEffects(newState) {
     state.tis = newState.tis;
 }
 
+function isEverythingFilledIn(newState) {
+    for(let i = 1; i <= 17; i++) {
+        if(
+            !newState?.tis?.hasOwnProperty(`assignment_${i}`)
+            || !newState?.tis[`assignment_${i}`].length) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function calculateAndDisplayTotalScore(newState) {
+    const staticSitScore = [1,2,3].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis[`assignment_${assignmentNumber}`]), 0);
+
+    const dynamicSitScore = [4,5,6,7,8,9,10,11,12,13].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis[`assignment_${assignmentNumber}`]), 0);
+
+    const coordinationScore = [14,15,16,17].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis[`assignment_${assignmentNumber}`]), 0);
+
+    const totalScore = staticSitScore + dynamicSitScore + coordinationScore;
+
+    document.getElementById("tis-static-sit-score").innerHTML = `${staticSitScore}&nbsp;/&nbsp;7`;
+    document.getElementById("tis-dynamic-sit-score").innerHTML = `${dynamicSitScore}&nbsp;/&nbsp;10`;
+    document.getElementById("tis-coordination-score").innerHTML = `${coordinationScore}&nbsp;/&nbsp;6`;
+    document.getElementById("tis-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>&nbsp;/&nbsp;23`;
+
+    document.getElementById("tis-results-wrapper").classList.remove("d-none");
+}
+
+function hideTotalScore() {
+    document.getElementById("tis-results-wrapper").classList.add("d-none");
+}
+
 export default new Test({
     id: "tis",
     shortName: "TIS",
@@ -431,11 +464,47 @@ zien</label>
                 </td>
             </tr>
         </table>
+
+        <div id="tis-results-wrapper" class="d-none">
+            <h2 class="display-2 fs-4">Uitslag</h2>
+            <table class="table table-borderless">
+                <tr>
+                    <td>Statische zitbalans score:</td>
+                    <td><span id="tis-static-sit-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Dynamische zitbalans score:</td>
+                    <td><span id="tis-dynamic-sit-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Coördinatie score:</td>
+                    <td><span id="tis-coordination-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Totale score:</td>
+                    <td><span id="tis-total-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Interpretatie:</td>
+                    <td><ul id="tis-interpretation">
+                        <li>Mediane TIS score bij patiënten <strong>2 maanden</strong> na CVA: 14</li>
+                        <li>Mediane TIS score bij <strong>niet-lopende</strong> patiënten <strong>4 maanden</strong> na CVA: 8</li>
+                        <li>Mediane TIS score bij <strong>lopende</strong> patiënten <strong>4 maanden</strong> na CVA: 14</li>
+                    </ul>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
         `.trim();
     },
     onStateChange: (newState) => {
         applyInterFieldEffects(newState);
+
+        if(isEverythingFilledIn(newState)) {
+            calculateAndDisplayTotalScore(newState);
+        } else {
+            hideTotalScore();
+        }
     }
 });
