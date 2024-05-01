@@ -121,9 +121,20 @@ export default new Test({
         <div class="description">
             <h2 class="display-2 fs-4">Instructies</h2>
 
-            <p><strong>Uitgangspositie</strong>: De patiënt zit op de rand van een behandelbank zonder arm- en rugondersteuning. De bovenbenen maken volledig contact met de behandelbank. De voeten worden op heupbreedte en plat op de grond geplaatst. De kniehoek is 90 graden. De armen rusten op de benen. Indien een verhoogde tonus in de paretische arm aanwezig is, wordt de positie van deze arm als uitgangshouding genoteerd. Hoofd en romp zijn in middenpositie.</p>
+            <p><strong>Uitgangspositie</strong> bij elke opdracht:</p>
+            <ul>
+                <li>De patiënt zit op de rand van een behandelbank zonder arm- en rugondersteuning</li>
+                <li>De bovenbenen maken volledig contact met de behandelbank</li>
+                <li>De voeten worden op heupbreedte en plat op de grond geplaatst</li>
+                <li>De kniehoek is 90 graden</li>
+                <li>De armen rusten op de benen</li>
+                <li>Indien een verhoogde tonus in de paretische arm aanwezig is, wordt de positie van deze arm als uitgangshouding genoteerd</li>
+                <li>Hoofd en romp zijn in middenpositie</li>
+            </ul>
 
-            <p>Elk test-item mag <strong>3 keer</strong> afgenomen worden. De patiënt mag tussen de pogingen door gecorrigeerd worden. De <strong>hoogste score</strong> wordt genoteerd. De test-items worden verbaal aan de patiënt uitgelegd en kunnen, indien nodig, worden voorgedaan door de testafnemer. Oefening van een test-item voorafgaand aan de test wordt echter niet toegestaan.</p>
+            <p>Elk test-item mag <strong>3 keer</strong> afgenomen worden. De patiënt mag tussen de pogingen door gecorrigeerd worden. De <strong>hoogste score</strong> wordt genoteerd.</p>
+
+            <p>De test-items worden verbaal aan de patiënt uitgelegd en kunnen, indien nodig, worden voorgedaan door de testafnemer. Oefening van een test-item voorafgaand aan de test wordt echter niet toegestaan.</p>
         </div>
     </div>
 
@@ -168,7 +179,9 @@ export default new Test({
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">S.3</h4>
-                    <div class="mb-1"><strong>Instructie</strong>: Herhaal S.1, maar <strong>de patiënt</strong> legt zelf het niet-paretische been over het paretische been</div>
+                    <div class="mb-1"><strong>Materiaal</strong>: een blokkussen</div>
+                    <div class="mb-1"><strong>Instructie</strong>: Herhaal S.1, maar <strong>de patiënt</strong> legt zelf het niet-paretische been over het paretische been.</div>
+                    <div class="mb-1">Zet een blokkussen 10 cm achter de patiënt.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
