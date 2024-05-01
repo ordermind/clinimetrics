@@ -39,10 +39,9 @@ function isEverythingFilledIn(newState) {
 }
 
 function calculateTotalScore(newState) {
-    return Object.values(newState?.bbs ?? {})
-        .reduce(
-            (previousValue, currentValue) => previousValue += parseInt(currentValue),
-        0);
+    const assignmentNumbers = Array.from({length: 14}, (_, i) => i + 1);
+
+    return assignmentNumbers.reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.bbs[`assignment_${assignmentNumber}`]), 0);
 }
 
 function getScoreInterpretation(totalScore) {
@@ -67,11 +66,11 @@ function calculateAndDisplayTotalScore(newState) {
     document.getElementById("bbs-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>&nbsp;/&nbsp;56`;
     document.getElementById("bbs-interpretation").innerHTML = getScoreInterpretation(totalScore);
 
-    document.getElementById("bbs-results-wrapper").classList.remove("d-none");
+    document.getElementById("results-wrapper").classList.remove("d-none");
 }
 
 function hideTotalScore() {
-    document.getElementById("bbs-results-wrapper").classList.add("d-none");
+    document.getElementById("results-wrapper").classList.add("d-none");
 }
 
 const description = `
@@ -341,7 +340,7 @@ export default new Test({
             </tr>
         </table>
 
-        <div id="bbs-results-wrapper" class="d-none">
+        <div id="results-wrapper" class="d-none">
             <h2 class="display-2 fs-4">Uitslag</h2>
             <table class="table table-borderless">
                 <tr>

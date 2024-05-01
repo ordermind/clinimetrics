@@ -90,11 +90,11 @@ function calculateAndDisplayTotalScore(newState) {
     document.getElementById("tis-coordination-score").innerHTML = `${coordinationScore}&nbsp;/&nbsp;6`;
     document.getElementById("tis-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>&nbsp;/&nbsp;23`;
 
-    document.getElementById("tis-results-wrapper").classList.remove("d-none");
+    document.getElementById("results-wrapper").classList.remove("d-none");
 }
 
 function hideTotalScore() {
-    document.getElementById("tis-results-wrapper").classList.add("d-none");
+    document.getElementById("results-wrapper").classList.add("d-none");
 }
 
 export default new Test({
@@ -145,7 +145,7 @@ export default new Test({
                 <li>Hoofd en romp zijn in middenpositie</li>
             </ul>
 
-            <p>Elk test-item mag <strong>3 keer</strong> afgenomen worden. De patiënt mag tussen de pogingen door gecorrigeerd worden. De <strong>hoogste score</strong> wordt genoteerd.</p>
+            <p>Elk test-item mag <strong>maximaal 3 keer</strong> afgenomen worden. De patiënt mag tussen de pogingen door gecorrigeerd worden. De <strong>hoogste score</strong> wordt genoteerd.</p>
 
             <p>De test-items worden verbaal aan de patiënt uitgelegd en kunnen, indien nodig, worden voorgedaan door de testafnemer. Oefening van een test-item voorafgaand aan de test wordt echter niet toegestaan.</p>
         </div>
@@ -495,7 +495,7 @@ zien</label>
             </tr>
         </table>
 
-        <div id="tis-results-wrapper" class="d-none">
+        <div id="results-wrapper" class="d-none">
             <h2 class="display-2 fs-4">Uitslag</h2>
             <table class="table table-borderless">
                 <tr>

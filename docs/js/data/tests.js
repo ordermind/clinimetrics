@@ -1,6 +1,7 @@
 export const arrTests = await Promise.all([
     "6MWT.js",
     "BBS.js",
+    "MI.js",
     "TCT.js",
     "TIS.js",
 ].map(filename => import("./tests/" + filename).then(module => module.default)))

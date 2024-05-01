@@ -1,12 +1,14 @@
 import Test from "../../data-types/Test.js";
 
+const description = `
+
+`.trim();
+
 export default new Test({
     id: "",
     shortName: "",
     longName: "",
-    description: `
-
-    `.trim(),
+    description,
     externalSourceUrl: "",
     getformContentHTML: () => {
         return `
