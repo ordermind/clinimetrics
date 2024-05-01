@@ -48,7 +48,7 @@ export default class SearchBarBlock {
             return [];
         }
 
-        if(filterValue.length < 3) {
+        if(filterValue.length < 2) {
             return [];
         }
 

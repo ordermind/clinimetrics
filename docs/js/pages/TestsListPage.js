@@ -12,14 +12,14 @@ export default class TestsListPage extends AbstractListPage {
                 name: "fullName",
                 label: "Naam test",
                 event: "keyup",
-                minCharacters: 3,
+                minCharacters: 2,
             },
             {
                 type: "textInput",
                 name: "description",
                 label: "Omschrijving",
                 event: "keyup",
-                minCharacters: 3,
+                minCharacters: 2,
             }
         ];
     }

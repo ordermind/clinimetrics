@@ -58,7 +58,7 @@ export default class AbstractListPage extends AbstractPage {
         spyglassElement.classList.add("ico", "ico-mglass");
 
         const wrapper = document.createElement("div");
-        wrapper.classList.add("form-control-wrapper", "search-wrapper");
+        wrapper.classList.add("form-control-wrapper", "search-wrapper", `search-wrapper-${filter.name}`);
 
         wrapper.appendChild(inputElement);
         wrapper.appendChild(spyglassElement);
