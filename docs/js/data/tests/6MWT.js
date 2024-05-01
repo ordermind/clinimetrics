@@ -42,7 +42,7 @@ function calculatePredictedDistance({sex, age, height_cm, weight_kg, parcour, di
 const functionalCapacityDescription = "<strong>Functionele capaciteit</strong> is het vermogen van een persoon om dagelijkse activiteiten uit te voeren zonder belemmering of ongemak als gevolg van fysieke beperkingen of aandoeningen. Het omvat de verschillende aspecten van het functioneren van het lichaam, zoals kracht, flexibiliteit, balans, uithoudingsvermogen en coördinatie.";
 
 const description = `
-De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</strong>${renderNotesTooltip([functionalCapacityDescription])} te meten.
+De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</strong>${renderNotesTooltip([functionalCapacityDescription])} te meten. Doelgroep: volwassen en kinderen in het algemeen maar specifiek onderzocht bij respiratoire aandoeningen, cardiovasculaire aandoeningen, geriatrische patiënten, neurologische aandoeningen, totale heup en knie prothese (THP / TKP) en fibromyalgie.
 `.trim();
 
 export default new Test({

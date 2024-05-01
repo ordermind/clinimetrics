@@ -10,6 +10,10 @@
     margin-top: -1.5rem !important;
 }
 
+.minwidth-256 {
+    min-width: 16rem;
+}
+
 .maxwidth-480 {
     max-width: 30rem;
 }

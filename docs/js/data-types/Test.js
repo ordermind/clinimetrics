@@ -51,7 +51,7 @@ export default class Test {
     }
 
     getContent() {
-        return `<form class="test-form">${this.#getformContentHTML()}</form>`;
+        return `<form name="testForm" class="test-form">${this.#getformContentHTML()}</form>`;
     }
 
     onStateChange(newState) {

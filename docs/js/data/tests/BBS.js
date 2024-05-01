@@ -6,7 +6,7 @@ function isEverythingFilledIn() {
 
     for(let i = 1; i <= 14; i++) {
         if(
-            !state?.bbs.hasOwnProperty(`assignment_${i}`)
+            !state?.bbs?.hasOwnProperty(`assignment_${i}`)
             || !state?.bbs[`assignment_${i}`].length) {
             return false;
         }
@@ -20,7 +20,7 @@ function calculateTotalScore() {
 
     return Object.values(state?.bbs ?? {})
         .reduce(
-            (previousValue, currentValue) => previousValue += parseInt(currentValue), 
+            (previousValue, currentValue) => previousValue += parseInt(currentValue),
         0);
 }
 
@@ -41,7 +41,7 @@ function getScoreInterpretation(totalScore) {
 }
 
 const description = `
-De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden en geeft op basis daarvan een inschatting van het <strong>valrisico</strong> van de patiënt.
+De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transfervaardigheden en geeft op basis daarvan een inschatting van het <strong>valrisico</strong> van de patiënt. Doelgroep: CVA-patiënten en patiënten met evenwichtsstoornissen.
 `.trim();
 
 export default new Test({

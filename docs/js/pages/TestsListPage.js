@@ -36,7 +36,7 @@ export default class TestsListPage extends AbstractListPage {
     createDataRow(test) {
         return `
 <tr>
-    <td>[Link type="Test" targetId="${test.id}" label="${test.fullName}"]</td>
+    <td class="minwidth-256">[Link type="Test" targetId="${test.id}" label="${test.fullName}"]</td>
     <td class="d-none d-lg-table-cell">${test.description}</td>
 </tr>
         `.trim();
