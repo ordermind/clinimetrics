@@ -100,6 +100,7 @@ export default new Test({
             <p>Alle items worden uitgevoerd <strong>zonder loophulpmiddelen</strong>, maar <strong>met schoeisel</strong>. Een orthese of een sling is wel toegestaan.</p>
         </div>
     </div>
+
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten</h2>
 
