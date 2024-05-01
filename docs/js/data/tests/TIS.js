@@ -151,7 +151,7 @@ export default new Test({
                     <h3 class="display-3 fs-5">Statische zitbalans</h3>
                     <h4 class="display-4 fs-6">S.1</h4>
                     <div class="mb-1"><strong>Instructie</strong>: De patiënt probeert in de uitgangspositie 10 seconden te zitten zonder steun van de armen.</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je de rest van de test over en wordt de totale score ook 0.)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je de rest van de test over en wordt de totale score ook 0.)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -211,7 +211,7 @@ export default new Test({
                     <h3 class="display-3 fs-5">Dynamische zitbalans</h3>
                     <h4 class="display-4 fs-6">D.1</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd de behandelbank met de <strong>paretische elleboog</strong> aan te tikken (door het verkorten van de paretische zijde en verlengen van de niet-paretische zijde) en daarna terug te keren naar de uitgangspositie.</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.2 en D.3 over en ga je door met D.4)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je D.2 en D.3 over en ga je door met D.4)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -228,7 +228,7 @@ export default new Test({
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">D.2</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Herhaal D.1</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.3 over en ga je door met D.4)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je D.3 over en ga je door met D.4)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -272,7 +272,7 @@ zien</label>
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">D.4</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd de behandelbank met de <strong>niet-paretische</strong> elleboog aan te tikken (door het verkorten van de niet-paretische zijde en verlengen van de paretische zijde) en daarna terug te keren naar de uitgangspositie</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.5 en D.6 over en ga je door met D.7)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je D.5 en D.6 over en ga je door met D.7)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -289,7 +289,7 @@ zien</label>
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">D.5</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Herhaal D.4</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.6 over en ga je door met D.7)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je D.6 over en ga je door met D.7)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -331,7 +331,7 @@ zien</label>
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">D.7</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd het bekken op te tillen aan de <strong>paretische</strong> zijde (door verkorting van de paretische zijde en verlenging van de niet-paretische zijde) en daarna terug te keren naar de uitgangspositie.</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.8 over en ga je door met D.9)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je D.8 over en ga je door met D.9)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -370,7 +370,7 @@ zien</label>
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">D.9</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd het bekken op te tillen aan de <strong>niet-paretische</strong> zijde (door verkorting van de niet-paretische zijde en verlenging van de paretische zijde) en daarna terug te keren naar de uitgangspositie.</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je D.10 over en ga je door met de volgende sectie)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je D.10 over en ga je door met de volgende sectie)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -410,7 +410,7 @@ zien</label>
                     <h3 class="display-3 fs-5">Coördinatie</h3>
                     <h4 class="display-4 fs-6">C.1</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd de romp 6 keer te roteren (elke schouder/bovendeel romp beweegt 3 keer voorwaarts), waarbij <strong>eerst de paretische schouder</strong> naar voren wordt gebracht. Het hoofd moet gefixeerd blijven in de uitgangshouding.</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je C.2 over en ga je door met C.3)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je C.2 over en ga je door met C.3)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
@@ -447,7 +447,7 @@ zien</label>
                 <td class="pb-4">
                     <h4 class="display-4 fs-6">C.3</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Patiënt wordt geïnstrueerd bekken/lage rug 6 keer te roteren (elke knie beweegt 3 keer voorwaarts), waarbij <strong>eerst de paretische knie</strong> naar voren wordt gebracht. Het bovenste deel van de romp moet gefixeerd blijven in de uitgangshouding.</div>
-                    <div class="mb-1">(Als de score hiervoor 0 wordt, sla je C.4 over)</div>
+                    <div class="mb-1">(Als de score hierbij 0 wordt, sla je C.4 over)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check">
