@@ -13,6 +13,15 @@ function disableTestItem(elements) {
     elements.forEach(element => element.disabled = true);
 }
 
+function applyShowAllAssignmentsCheckbox(newState) {
+    const assignmentsWrapper = document.getElementById("assignments-wrapper");
+    if(newState?.tis?.show_all_assignments) {
+        assignmentsWrapper.classList.add("show-all");
+    } else {
+        assignmentsWrapper.classList.remove("show-all");
+    }
+}
+
 function applyInterFieldEffects(newState) {
     const state = observableState.getObject();
 
@@ -144,8 +153,12 @@ export default new Test({
 
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten</h2>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="tis.show_all_assignments" id="tis.show_all_assignments">
+            <label class="form-check-label" for="tis.show_all_assignments">Alle opdrachten tonen</label>
+        </div>
 
-        <table class="table table-borderless">
+        <table id="assignments-wrapper" class="table table-borderless">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">Statische zitbalans</h3>
@@ -516,6 +529,7 @@ zien</label>
         `.trim();
     },
     onStateChange: (newState) => {
+        applyShowAllAssignmentsCheckbox(newState);
         applyInterFieldEffects(newState);
 
         if(isEverythingFilledIn(newState)) {

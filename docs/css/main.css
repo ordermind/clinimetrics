@@ -218,24 +218,24 @@ input[type="text"]::-moz-placeholder { color:#aaa; }
     transition: 0s;
 }
 
-.page-test .test-item.display-if-previous-filled:not(:first-of-type) {
+.page-test #assignments-wrapper:not(.show-all) .test-item.display-if-previous-filled:not(:first-of-type) {
     display: none;
 }
-.page-test .test-item.filled+.test-item.display-if-previous-filled {
+.page-test #assignments-wrapper .test-item.filled+.test-item.display-if-previous-filled {
     display: revert;
 }
 
-.page-test .test-item[data-item-type="radio"] .form-check {
+.page-test #assignments-wrapper .test-item[data-item-type="radio"] .form-check {
     padding: 0;
 }
-.page-test .test-item[data-item-type="radio"]:not(.disabled) .form-check:hover,
-.page-test .test-item[data-item-type="radio"] .form-check.selected {
+.page-test #assignments-wrapper .test-item[data-item-type="radio"]:not(.disabled) .form-check:hover,
+.page-test #assignments-wrapper .test-item[data-item-type="radio"] .form-check.selected {
     box-shadow: 0 0 3pt 2pt cornflowerblue;
 }
-.page-test .test-item[data-item-type="radio"] input {
+.page-test #assignments-wrapper .test-item[data-item-type="radio"] input {
     display: none;
 }
-.page-test .test-item[data-item-type="radio"] label {
+.page-test #assignments-wrapper .test-item[data-item-type="radio"] label {
     width: 100%;
     height: 100%;
     padding: 0.5rem;

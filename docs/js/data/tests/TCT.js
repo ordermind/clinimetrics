@@ -11,7 +11,7 @@ function isEverythingFilledIn() {
 
     for(let i = 1; i <= 4; i++) {
         if(
-            !state?.tct.hasOwnProperty(`assignment_${i}`)
+            !state?.tct?.hasOwnProperty(`assignment_${i}`)
             || !state?.tct[`assignment_${i}`].length) {
             return false;
         }
@@ -115,7 +115,7 @@ export default new Test({
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten</h2>
 
-        <table class="table table-borderless">
+        <table id="assignments-wrapper" class="table table-borderless show-all">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">2. Van rugligging naar niet-paretische zij</h3>

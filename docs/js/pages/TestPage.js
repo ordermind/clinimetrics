@@ -35,15 +35,17 @@ export default class TestPage extends AbstractPage {
 
     #onFormElementChange(e) {
         const element = e.target;
+        const isCheckBox = element.type === "checkbox";
+
+        const elementValue = isCheckBox ? element.checked : element.value;
 
         if(!element.name) {
             return;
         }
 
-
         const setStateValueRecursive = (state, keys) => {
             if(keys.length === 1) {
-                state[keys[0]] = element.value;
+                state[keys[0]] = elementValue;
                 return state;
             }
 
@@ -157,6 +159,17 @@ export default class TestPage extends AbstractPage {
 
         if(element.type === "radio") {
             if(element.value === value) {
+                element.checked = true;
+                this.#setOrRemoveTestItemFilledClass(element, true);
+            } else {
+                element.checked = false;
+            }
+
+            return;
+        }
+
+        if(element.type === "checkbox") {
+            if(value) {
                 element.checked = true;
                 this.#setOrRemoveTestItemFilledClass(element, true);
             } else {

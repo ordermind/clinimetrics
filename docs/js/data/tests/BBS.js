@@ -1,13 +1,36 @@
 import Test from "../../data-types/Test.js";
 import observableState from "../../state.js";
 
-function isEverythingFilledIn() {
-    const state = observableState.getObject();
+function applyShowAllAssignmentsCheckbox(newState) {
+    const assignmentsWrapper = document.getElementById("assignments-wrapper");
+    if(newState?.bbs?.show_all_assignments) {
+        assignmentsWrapper.classList.add("show-all");
+    } else {
+        assignmentsWrapper.classList.remove("show-all");
+    }
+}
 
+function applyInterFieldEffects(newState) {
+    // If the patient can stand independently, the sit test does not need to be executed.
+    const sitTestScoreElements = document.testForm["bbs.assignment_3"];
+    if(newState?.bbs?.assignment_2 === "4") {
+        newState.bbs.assignment_3 = "4";
+
+        const state = observableState.getObject();
+        state.bbs = newState.bbs;
+        sitTestScoreElements[0].closest(".test-item").classList.add("disabled");
+        sitTestScoreElements.forEach(element => element.disabled = true);
+    } else {
+        sitTestScoreElements[0].closest(".test-item").classList.remove("disabled");
+        sitTestScoreElements.forEach(element => element.disabled = false);
+    }
+}
+
+function isEverythingFilledIn(newState) {
     for(let i = 1; i <= 14; i++) {
         if(
-            !state?.bbs?.hasOwnProperty(`assignment_${i}`)
-            || !state?.bbs[`assignment_${i}`].length) {
+            !newState?.bbs?.hasOwnProperty(`assignment_${i}`)
+            || !newState?.bbs[`assignment_${i}`].length) {
             return false;
         }
     }
@@ -15,10 +38,8 @@ function isEverythingFilledIn() {
     return true;
 }
 
-function calculateTotalScore() {
-    const state = observableState.getObject();
-
-    return Object.values(state?.bbs ?? {})
+function calculateTotalScore(newState) {
+    return Object.values(newState?.bbs ?? {})
         .reduce(
             (previousValue, currentValue) => previousValue += parseInt(currentValue),
         0);
@@ -38,6 +59,19 @@ function getScoreInterpretation(totalScore) {
     }
 
     return "Onafhankelijke en zekere uitvoering zonder fysieke en verbale hulp";
+}
+
+function calculateAndDisplayTotalScore(newState) {
+    const totalScore = calculateTotalScore(newState);
+
+    document.getElementById("bbs-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>&nbsp;/&nbsp;56`;
+    document.getElementById("bbs-interpretation").innerHTML = getScoreInterpretation(totalScore);
+
+    document.getElementById("bbs-results-wrapper").classList.remove("d-none");
+}
+
+function hideTotalScore() {
+    document.getElementById("bbs-results-wrapper").classList.add("d-none");
 }
 
 const description = `
@@ -103,8 +137,12 @@ export default new Test({
 
     <div class="col">
         <h2 class="display-2 fs-4">Opdrachten</h2>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="bbs.show_all_assignments" id="bbs.show_all_assignments">
+            <label class="form-check-label" for="bbs.show_all_assignments">Alle opdrachten tonen</label>
+        </div>
 
-        <table class="table table-borderless">
+        <table id="assignments-wrapper" class="table table-borderless">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">1. Van zit naar stand</h3>
@@ -123,6 +161,7 @@ export default new Test({
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">2. Zelfstandig staan</h3>
                     <div class="mb-1"><strong>Instructie</strong>: <em>Kunt u 2 minuten blijven staan zonder u vast te houden?</em></div>
+                    <div class="mb-1">(Als de score hierbij 4 wordt, sla je opdracht 3 over en ga je door met opdracht 4)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="bbs.assignment_2" id="bbs.assignment_2-0" value="0" /><label class="form-check-label" for="bbs.assignment_2-0">0 - De patiënt is niet in staat om 30 seconden zonder ondersteuning te blijven staan</label></div>
@@ -137,7 +176,6 @@ export default new Test({
                     <h3 class="display-3 fs-5">3. Zelfstandig zitten</h3>
                     <div class="mb-1"><strong>Materiaal</strong>: kruk/stoel/(behandel)bank en zo nodig een voetenbankje</div>
                     <div class="mb-1"><strong>Instructie</strong>: <em>Kunt u 2 minuten blijven zitten met de armen over elkaar, zonder aan de rugsteun te leunen? </em></div>
-                    <div class="mb-1">(Als opdracht 2 de score 4 heeft gekregen, sla je deze opdracht over en wordt deze automatisch ook op een 4 gescored)</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
                     <div class="form-check"><input class="form-check-input" type="radio" name="bbs.assignment_3" id="bbs.assignment_3-0" value="0" /><label class="form-check-label" for="bbs.assignment_3-0">0 - De patiënt is niet in staat om zonder steun 10 seconden te blijven zitten</label></div>
@@ -322,29 +360,14 @@ export default new Test({
         `.trim();
     },
     onStateChange: (newState) => {
-        // If the patient can stand independently, the sit test does not need to be executed.
-        const sitTestScoreElements = document.testForm["bbs.assignment_3"];
-        if(newState?.bbs?.assignment_2 === "4") {
-            newState.bbs.assignment_3 = "4";
-
-            const state = observableState.getObject();
-            state.bbs = newState.bbs;
-            sitTestScoreElements[0].closest(".test-item").classList.add("disabled");
-            sitTestScoreElements.forEach(element => element.disabled = true);
-        } else {
-            sitTestScoreElements[0].closest(".test-item").classList.remove("disabled");
-            sitTestScoreElements.forEach(element => element.disabled = false);
-        }
+        applyShowAllAssignmentsCheckbox(newState);
+        applyInterFieldEffects(newState);
 
         // Calculate and show total score
-        if(isEverythingFilledIn()) {
-            const totalScore = calculateTotalScore();
-            document.getElementById("bbs-total-score").innerHTML = `<span class="fs-3 fw-bold">${totalScore}</span>`;
-            document.getElementById("bbs-interpretation").innerHTML = getScoreInterpretation(totalScore);
-
-            document.getElementById("bbs-results-wrapper").classList.remove("d-none");
+        if(isEverythingFilledIn(newState)) {
+            calculateAndDisplayTotalScore(newState);
         } else {
-            document.getElementById("bbs-results-wrapper").classList.add("d-none");
+            hideTotalScore();
         }
     }
 });
