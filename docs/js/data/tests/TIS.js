@@ -16,6 +16,10 @@ function disableTestItem(elements) {
 function applyInterFieldEffects(newState) {
     const state = observableState.getObject();
 
+    if(!newState.hasOwnProperty("tis")) {
+        newState.tis = {};
+    }
+
     // First enable all assignments
     for(let i = 1; i <= 17; i++) {
         enableTestItem(document.testForm[`tis.assignment_${i}`]);
