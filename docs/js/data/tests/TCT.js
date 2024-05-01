@@ -39,14 +39,16 @@ function updateIndividualScoresFromPartialScores(partialScores) {
 }
 
 function disableFields() {
+    document.querySelectorAll(".test-item").forEach(element => element.classList.add("disabled"));
     for(let i = 1; i <= 4; i++) {
-        document.getElementById(`tct.assignment_${i}`).disabled = true;
+        document.testForm[`tct.assignment_${i}`].forEach(element => element.disabled = true);
     }
 }
 
 function enableFields() {
+    document.querySelectorAll(".test-item").forEach(element => element.classList.remove("disabled"));
     for(let i = 1; i <= 4; i++) {
-        document.getElementById(`tct.assignment_${i}`).disabled = false;
+        document.testForm[`tct.assignment_${i}`].forEach(element => element.disabled = false);
     }
 }
 
@@ -114,68 +116,52 @@ export default new Test({
         <h2 class="display-2 fs-4">Opdrachten</h2>
 
         <table class="table table-borderless">
-            <tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">2. Van rugligging naar niet-paretische zij</h3>
                     <div class="mb-1"><strong>Instructie</strong>: <em>Kunt u op de [niet-paretische] zij draaien?</em></div>
-                    <div class="mb-2">De patiënt dient zowel met de schouders als het bekken volledig op de zij gedraaid te zijn.</div>
-                    <div class="form-floating">
-                        <select name="tct.assignment_2" id="tct.assignment_2" class="form-select">
-                            <option disabled value=null>- Kies één optie -</option>
-                            <option value="0">0 - De patiënt kan de beweging niet uitvoeren</option>
-                            <option value="12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</option>
-                            <option value="25">25 - De patiënt kan de bewegingen normaal uitvoeren</option>
-                        </select>
-                        <label for="tct.assignment_2">Score:</label>
-                    </div>
+                    <div class="mb-1">De patiënt dient zowel met de schouders als het bekken volledig op de zij gedraaid te zijn.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-0" value="0" /><label class="form-check-label" for="tct.assignment_1-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-12" value="12" /><label class="form-check-label" for="tct.assignment_1-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-25" value="25" /><label class="form-check-label" for="tct.assignment_1-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
-            <tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">1. Van rugligging naar paretische zij</h3>
                     <div class="mb-1"><strong>Instructie</strong>: <em>Kunt u op de [paretische] zij draaien?</em></div>
-                    <div class="mb-2">De patiënt dient zowel met de schouders als het bekken volledig op de zij gedraaid te zijn.</div>
-                    <div class="form-floating">
-                        <select name="tct.assignment_1" id="tct.assignment_1" class="form-select">
-                            <option disabled value=null>- Kies één optie -</option>
-                            <option value="0">0 - De patiënt kan de beweging niet uitvoeren</option>
-                            <option value="12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</option>
-                            <option value="25">25 - De patiënt kan de bewegingen normaal uitvoeren</option>
-                        </select>
-                        <label for="tct.assignment_1">Score:</label>
-                    </div>
+                    <div class="mb-1">De patiënt dient zowel met de schouders als het bekken volledig op de zij gedraaid te zijn.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-0" value="0" /><label class="form-check-label" for="tct.assignment_2-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-12" value="12" /><label class="form-check-label" for="tct.assignment_2-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-25" value="25" /><label class="form-check-label" for="tct.assignment_2-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
-            <tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">4. Van rugligging naar zitten</h3>
                     <div class="mb-1"><strong>Instructie</strong>: <em>Kunt u zonder dat u zich ergens aan vasthoudt, op de rand van het bed (of de oefenbank) komen zitten?</em></div>
-                    <div class="mb-2">Hoe en over welke zij de patiënt tot zit komt, wordt vrijgelaten.</div>
-                    <div class="form-floating">
-                        <select name="tct.assignment_4" id="tct.assignment_4" class="form-select">
-                            <option disabled value=null>- Kies één optie -</option>
-                            <option value="0">0 - De patiënt kan de beweging niet uitvoeren</option>
-                            <option value="12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</option>
-                            <option value="25">25 - De patiënt kan de bewegingen normaal uitvoeren</option>
-                        </select>
-                        <label for="tct.assignment_4">Score:</label>
-                    </div>
+                    <div class="mb-1">Hoe en over welke zij de patiënt tot zit komt, wordt vrijgelaten.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-0" value="0" /><label class="form-check-label" for="tct.assignment_3-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-12" value="12" /><label class="form-check-label" for="tct.assignment_3-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-25" value="25" /><label class="form-check-label" for="tct.assignment_3-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
-            <tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
                     <h3 class="display-3 fs-5">3. Zitbalans</h3>
                     <div class="mb-1"><strong>Instructie</strong>: <em>Kunt u zonder op de handen te steunen, gedurende 30 seconden op de bedrand blijven zitten?</em></div>
-                    <div class="mb-2">Voor een maximale score is het toegestaan dat de handen op de benen van de patiënt liggen. <strong>De voeten van de patiënt staan op de grond</strong> en er wordt geen steun gegeven middels een (rug)leuning.</div>
-                    <div class="form-floating">
-                        <select name="tct.assignment_3" id="tct.assignment_3" class="form-select">
-                            <option disabled value=null>- Kies één optie -</option>
-                            <option value="0">0 - De patiënt kan de beweging niet uitvoeren</option>
-                            <option value="12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</option>
-                            <option value="25">25 - De patiënt kan de bewegingen normaal uitvoeren</option>
-                        </select>
-                        <label for="tct.assignment_3">Score:</label>
-                    </div>
+                    <div class="mb-1">Voor een maximale score is het toegestaan dat de handen op de benen van de patiënt liggen. <strong>De voeten van de patiënt staan op de grond</strong> en er wordt geen steun gegeven middels een (rug)leuning.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-0" value="0" /><label class="form-check-label" for="tct.assignment_4-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-12" value="12" /><label class="form-check-label" for="tct.assignment_4-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-25" value="25" /><label class="form-check-label" for="tct.assignment_4-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
         </table>

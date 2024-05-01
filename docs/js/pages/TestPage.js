@@ -97,12 +97,44 @@ export default class TestPage extends AbstractPage {
         this.#setDefaultValues();
     }
 
+    #removeAllTestItemFilledClasses() {
+        for(const testItemElement of document.querySelectorAll(".test-form .test-item")) {
+            testItemElement.classList.remove("filled");
+            if(testItemElement.attributes["data-item-type"].value === "radio") {
+                testItemElement.querySelectorAll(".form-check").forEach(element => element.classList.remove("selected"));
+            }
+        }
+    }
+
+    #setOrRemoveTestItemFilledClass(element, value) {
+        const testItemElement = element.closest(".test-item");
+
+        if(!testItemElement) {
+            return;
+        }
+
+        const isFilled = value !== null && value !== "";
+
+        if(isFilled && testItemElement.checkVisibility()) {
+            testItemElement.classList.add("filled");
+        } else {
+            testItemElement.classList.remove("filled");
+        }
+
+        if(element.type === "radio") {
+            const wrapperElement = element.closest(".form-check");
+            wrapperElement.classList.add("selected");
+        }
+    }
+
     #setDefaultValues() {
+        this.#removeAllTestItemFilledClasses();
+
         const state = observableState.getObject();
         const testId = this.#test.id;
         const scopedState = {general: state.general ?? {}, [testId]: state[testId] ?? {}}
         const scopedStateDot = convertObjectToDotNotation(scopedState);
-        for(const element of document.querySelectorAll(`.test-form [name]`)) {
+        for(const element of document.testForm.elements) {
             const key = element.name;
             this.#setDefaultValueForElement(element, scopedStateDot[key] ?? null);
         }
@@ -111,18 +143,25 @@ export default class TestPage extends AbstractPage {
     #setDefaultValueForElement(element, value) {
         if(["text", "number"].includes(element.type)) {
             element.value = value;
+            this.#setOrRemoveTestItemFilledClass(element, value);
+
             return;
         }
 
         if(element.tagName === "SELECT") {
             element.value = value;
+            this.#setOrRemoveTestItemFilledClass(element, value);
+
             return;
         }
 
-        if(element.type === "radio" && element.value === value) {
-            element.checked = true;
-        } else {
-            element.checked = false;
+        if(element.type === "radio") {
+            if(element.value === value) {
+                element.checked = true;
+                this.#setOrRemoveTestItemFilledClass(element, true);
+            } else {
+                element.checked = false;
+            }
         }
     }
 
