@@ -17,3 +17,9 @@ export function setContraIndication(element, value) {
 export function isFilled(elementSelector) {
     return elementSelector !== undefined && elementSelector !== "";
 }
+
+export async function getTemplateContent(filename) {
+    const response = await fetch(`./js/data/tests/form-templates/${filename}`);
+
+    return await response.text();
+}

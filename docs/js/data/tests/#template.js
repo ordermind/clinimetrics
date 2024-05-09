@@ -1,18 +1,20 @@
 import Test from "../../data-types/Test.js";
+import { getTemplateContent } from "./utils.js";
 
-const description = `
-
-`.trim();
+const templateContent = await getTemplateContent("XXX.html");
 
 export default new Test({
     id: "",
     shortName: "",
     longName: "",
-    description,
+    description: `
+
+    `.trim(),
+    templateContent,
     externalSourceUrl: "",
     getformContentHTML: () => {
         return `
-
+<div class="mb-3">${description}</div>
         `.trim();
     },
     onStateChange: (newState) => {

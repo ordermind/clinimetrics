@@ -3,16 +3,18 @@ export default class Test {
     #shortName;
     #longName;
     #description;
+    #templateContent;
     #externalSourceUrl;
 
     #getformContentHTML;
     #onStateChange;
 
-    constructor({id, shortName = "", longName, description = "", externalSourceUrl = "", getformContentHTML, onStateChange = null}) {
+    constructor({id, shortName = "", longName, description = "", templateContent, externalSourceUrl = "", getformContentHTML = null, onStateChange = null}) {
         this.#id = id;
         this.#shortName = shortName;
         this.#longName = longName;
         this.#description = description;
+        this.#templateContent = templateContent;
         this.#externalSourceUrl = externalSourceUrl;
 
         this.#getformContentHTML = getformContentHTML;
@@ -46,12 +48,18 @@ export default class Test {
         return this.#description;
     }
 
+    get templateContent() {
+        return this.#templateContent;
+    }
+
     get externalSourceUrl() {
         return this.#externalSourceUrl;
     }
 
     getContent() {
-        return `<form name="testForm" class="test-form">${this.#getformContentHTML()}</form>`;
+        const formContentHtml = this.#getformContentHTML ? this.#getformContentHTML() : this.templateContent.replace("${description}", this.description ?? "").trim();
+
+        return `<form name="testForm" class="test-form">${formContentHtml}</form>`;
     }
 
     onStateChange(newState) {
