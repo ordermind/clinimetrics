@@ -5,7 +5,7 @@ import { formatNumber } from "./utils.js";
 function applyInterFieldEffects(newState) {
     // Set and disable arm fields if the results are already known
     if(newState?.mi?.pre?.partial_scores?.arm?.length) {
-        const splitScores = newState.mi.pre.partial_scores.arm.split('-');
+        const splitScores = newState.mi.pre.partial_scores.arm.match(/[0-9]+/g);
 
         for(let i = 1; i <= 3; i++) {
             newState.mi[`assignment_${i}`] = (splitScores.hasOwnProperty(i - 1) && splitScores[i-1].length) ? parseInt(splitScores[i-1]).toString() : "0";
@@ -21,7 +21,7 @@ function applyInterFieldEffects(newState) {
 
     // Set and disable leg fields if the results are already known
     if(newState?.mi?.pre?.partial_scores?.leg?.length) {
-        const splitScores = newState.mi.pre.partial_scores.leg.split('-');
+        const splitScores = newState.mi.pre.partial_scores.leg.match(/[0-9]+/g);
 
         for(let i = 4; i <= 6; i++) {
             newState.mi[`assignment_${i}`] = (splitScores.hasOwnProperty(i - 4) && splitScores[i-4].length) ? parseInt(splitScores[i-4]).toString() : "0";

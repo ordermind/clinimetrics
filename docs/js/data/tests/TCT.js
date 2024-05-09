@@ -29,7 +29,7 @@ function createPartialScores() {
 function updateIndividualScoresFromPartialScores(partialScores) {
     const state = observableState.getObject();
     const newState = cloneObject(state);
-    const splitScores = partialScores.split('-');
+    const splitScores = partialScores.match(/[0-9]+/g);
 
     for(let i = 1; i <= 4; i++) {
         newState.tct[`assignment_${i}`] = (splitScores.hasOwnProperty(i - 1) && splitScores[i-1].length) ? parseInt(splitScores[i-1]).toString() : "0";
