@@ -12,11 +12,6 @@ export default new Test({
     `.trim(),
     templateContent,
     externalSourceUrl: "",
-    getformContentHTML: () => {
-        return `
-<div class="mb-3">${description}</div>
-        `.trim();
-    },
     onStateChange: (newState) => {
     }
 });
