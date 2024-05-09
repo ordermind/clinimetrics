@@ -123,9 +123,9 @@ export default new Test({
                     <div class="mb-1">De patiënt dient zowel met de schouders als het bekken volledig op de zij gedraaid te zijn.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-0" value="0" /><label class="form-check-label" for="tct.assignment_1-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-12" value="12" /><label class="form-check-label" for="tct.assignment_1-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-25" value="25" /><label class="form-check-label" for="tct.assignment_1-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-0" value="0" /><label class="form-check-label" for="tct.assignment_2-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-12" value="12" /><label class="form-check-label" for="tct.assignment_2-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-25" value="25" /><label class="form-check-label" for="tct.assignment_2-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
@@ -135,9 +135,9 @@ export default new Test({
                     <div class="mb-1">De patiënt dient zowel met de schouders als het bekken volledig op de zij gedraaid te zijn.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-0" value="0" /><label class="form-check-label" for="tct.assignment_2-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-12" value="12" /><label class="form-check-label" for="tct.assignment_2-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_2" id="tct.assignment_2-25" value="25" /><label class="form-check-label" for="tct.assignment_2-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-0" value="0" /><label class="form-check-label" for="tct.assignment_1-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-12" value="12" /><label class="form-check-label" for="tct.assignment_1-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_1" id="tct.assignment_1-25" value="25" /><label class="form-check-label" for="tct.assignment_1-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
@@ -147,9 +147,9 @@ export default new Test({
                     <div class="mb-1">Hoe en over welke zij de patiënt tot zit komt, wordt vrijgelaten.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-0" value="0" /><label class="form-check-label" for="tct.assignment_3-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-12" value="12" /><label class="form-check-label" for="tct.assignment_3-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-25" value="25" /><label class="form-check-label" for="tct.assignment_3-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-0" value="0" /><label class="form-check-label" for="tct.assignment_4-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-12" value="12" /><label class="form-check-label" for="tct.assignment_4-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-25" value="25" /><label class="form-check-label" for="tct.assignment_4-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
@@ -159,9 +159,9 @@ export default new Test({
                     <div class="mb-1">Voor een maximale score is het toegestaan dat de handen op de benen van de patiënt liggen. <strong>De voeten van de patiënt staan op de grond</strong> en er wordt geen steun gegeven middels een (rug)leuning.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-0" value="0" /><label class="form-check-label" for="tct.assignment_4-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-12" value="12" /><label class="form-check-label" for="tct.assignment_4-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_4" id="tct.assignment_4-25" value="25" /><label class="form-check-label" for="tct.assignment_4-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-0" value="0" /><label class="form-check-label" for="tct.assignment_3-0">0 - De patiënt kan de beweging niet uitvoeren</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-12" value="12" /><label class="form-check-label" for="tct.assignment_3-12">12 - De patiënt kan de beweging uitvoeren, maar moet compensaties gebruiken</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="tct.assignment_3" id="tct.assignment_3-25" value="25" /><label class="form-check-label" for="tct.assignment_3-25">25 - De patiënt kan de bewegingen normaal uitvoeren</label></div>
                 </td>
             </tr>
         </table>
