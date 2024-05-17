@@ -2,7 +2,7 @@ export default class HomeLinkBlock {
     getElement() {
         const html = `
         <div class="form-control-wrapper | block-home-link">
-            <a class="nav-link fs-4" href="/tests" data-navigo>🏠</a>
+            <a class="nav-link fs-4" href="/tests" data-internal-link>🏠</a>
         </div>`.trim();
 
         const template = document.createElement("template");

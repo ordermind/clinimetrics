@@ -17,8 +17,8 @@ export const routes = {
     testPage: new Route(
         {
             paths: ["/tests/:id"],
-            createPage: ({ data }) => {
-                return new TestPage({test: objTests[data.id]});
+            createPage: ({ id }) => {
+                return new TestPage({test: objTests[id]});
             }
         }
     ),

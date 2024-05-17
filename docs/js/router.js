@@ -1,51 +1,51 @@
-import Navigo from "../vendor/navigo/js/navigo.min.js";
-import { addNewTabClickEventListeners, removeNewTabClickEventListeners } from "./new-tab-click.js";
+import router from "../vendor/page.js/js/page.mjs";
+import { addNewTabClickEventListeners } from "./new-tab-click.js";
 import { routes } from "./routes.js";
 
-export const router = new Navigo("/", { hash: true });
+addNewTabClickEventListeners();
 
 let currentPage = null;
 
-router.hooks({
-    after() {
-        addNewTabClickEventListeners();
-    },
-    leave(done) {
-        removeNewTabClickEventListeners();
-        currentPage.unmount();
-        currentPage = null;
+router.getCurrentLocation = function() {
+    const rawPath = window.location.hash.match(/^#!(\/.+)/)?.[1] ?? null;
+    const path = window.location.hash.match(/^#!(\/[^?]+)/)?.[1] ?? null;
+    const queryString = window.location.hash.match(/\?(.+)/)?.[1] ?? null;
 
-        done();
-    },
+    return {
+        rawPath,
+        path,
+        queryString,
+    };
+}
+
+router.start({
+    hashbang: true,
+    dispatch: false,
+});
+
+router.exit(function(ctx, next) {
+    currentPage.unmount();
+    currentPage = null;
+
+    next();
 });
 
 for(const [routeName, route] of Object.entries(routes)) {
     for(const [index, path] of route.paths.entries()) {
-        const multiplePathRouteName = route.paths.length > 1 ? routeName + index : routeName;
-        router.on({
-            [path]: {
-                as: multiplePathRouteName,
-                uses: () => {
-                    currentPage.mount();
-                    currentPage.render();
-                    currentPage.postRender();
-                },
-                hooks: {before: (done, match) => {
-                    currentPage = route.createPage(match);
+        router(
+            path,
+            (ctx, next) => {
+                currentPage = route.createPage(ctx.params);
 
-                    done();
-                }},
+                next();
             },
-        });
+            () => {
+                currentPage.mount();
+                currentPage.render();
+                currentPage.postRender();
+            }
+        );
     }
 }
 
-export function addLinkEventListeners() {
-    router.updatePageLinks();
-    addNewTabClickEventListeners();
-}
-
-export function cleanUpLinkEventListeners() {
-    router.cleanUpEventListeners();
-    removeNewTabClickEventListeners();
-}
+export default router;

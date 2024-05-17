@@ -1,5 +1,4 @@
 import { replaceInternalLinks } from "../renderer.js";
-import { addLinkEventListeners, cleanUpLinkEventListeners } from "../router.js";
 import { debounce, massageStringForFlexibleComparison, removeChildren } from "../utils.js";
 
 export default class SearchBarBlock {
@@ -91,9 +90,6 @@ export default class SearchBarBlock {
         }
 
         searchResultsWrapper.appendChild(tableElement);
-
-        cleanUpLinkEventListeners();
-        addLinkEventListeners();
     }
 
     onSearchKeyDown(e) {

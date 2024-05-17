@@ -1,7 +1,7 @@
 import { renderPage, replaceInternalLinks } from "../renderer.js";
 import { debounce, deepEqual, massageStringForFlexibleComparison, removeChildren } from "../utils.js";
-import { addLinkEventListeners, cleanUpLinkEventListeners, router } from "../router.js";
 import AbstractPage from "./AbstractPage.js";
+import router from "../router.js";
 
 export default class AbstractListPage extends AbstractPage {
     #pageWrapper;
@@ -173,13 +173,9 @@ export default class AbstractListPage extends AbstractPage {
 
         const listWrapper = this.#pageWrapper.querySelector(".list-wrapper");
 
-        cleanUpLinkEventListeners();
-
         removeChildren(listWrapper);
 
         listWrapper.append(...template.content.children);
-
-        addLinkEventListeners();
     }
 
     render() {
