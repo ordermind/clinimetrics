@@ -133,10 +133,16 @@ De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</str
             const performancePercentage = distance / predictedDistance * 100;
             document.getElementById("six_mwt-result").innerText = formatNumber(performancePercentage, 0);
 
-            if(performancePercentage < 70) {
-                document.getElementById("six_mwt-result-copd").innerText = "< 70% => onvoldoende"
+            if(performancePercentage < 80) {
+                document.getElementById("six_mwt-result-interpretation").innerText = "< 80% => onvoldoende";
             } else {
-                document.getElementById("six_mwt-result-copd").innerText = "≥ 70% => voldoende"
+                document.getElementById("six_mwt-result-interpretation").innerText = "≥ 80% => voldoende";
+            }
+
+            if(performancePercentage < 70) {
+                document.getElementById("six_mwt-result-copd").innerText = "< 70% => onvoldoende";
+            } else {
+                document.getElementById("six_mwt-result-copd").innerText = "≥ 70% => voldoende";
             }
 
             document.getElementById("six_mwt-results-wrapper").classList.remove("d-none");
