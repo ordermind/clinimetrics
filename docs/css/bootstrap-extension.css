@@ -10,10 +10,35 @@
     margin-top: -1.5rem !important;
 }
 
+.width-80 {
+    width: 5rem;
+}
+.width-160 {
+    width: 10rem;
+}
+
+.minwidth-160 {
+    min-width: 10rem;
+}
+.minwidth-208 {
+    min-width: 13rem;
+}
 .minwidth-256 {
     min-width: 16rem;
 }
 
+.maxwidth-160 {
+    max-width: 10rem;
+}
+.maxwidth-208 {
+    max-width: 13rem;
+}
+.maxwidth-256 {
+    max-width: 16rem;
+}
+.maxwidth-320 {
+    max-width: 20rem;
+}
 .maxwidth-480 {
     max-width: 30rem;
 }

@@ -23,3 +23,37 @@ export async function getTemplateContent(filename) {
 
     return await response.text();
 }
+
+function showSingleElementById(elementId) {
+    const element = document.getElementById(elementId);
+    if(!element) {
+        return;
+    }
+
+    element.classList.remove("d-none");
+}
+
+function hideSingleElementById(elementId) {
+    const element = document.getElementById(elementId);
+    if(!element) {
+        return;
+    }
+
+    element.classList.add("d-none");
+}
+
+export function showElementsById(elementIds) {
+    if (typeof elementIds === 'string' || elementIds instanceof String) {
+        showSingleElementById(elementIds);
+    } else if(Array.isArray(elementIds)) {
+        elementIds.forEach(showSingleElementById);
+    }
+}
+
+export function hideElementsById(elementIds) {
+    if (typeof elementIds === 'string' || elementIds instanceof String) {
+        hideSingleElementById(elementIds);
+    } else if(Array.isArray(elementIds)) {
+        elementIds.forEach(hideSingleElementById);
+    }
+}

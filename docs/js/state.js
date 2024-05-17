@@ -7,6 +7,9 @@ export const defaultValue = {
     general: {
         date: new String(today.getDate()).padStart(2, '0') + "-" + new String(today.getMonth() + 1).padStart(2, '0') + "-" + today.getFullYear()
     },
+    body_info: {
+        hrmax_formula: "tanaka",
+    },
     six_mwt: {
         parcour: 10,
     },

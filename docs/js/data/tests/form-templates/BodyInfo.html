@@ -1,0 +1,185 @@
+<div class="mb-3 | general">
+    <h2 class="display-2 fs-4">Algemene gegevens</h2>
+    <div class="row align-items-center">
+        <div class="col gx-5 gy-3 align-items-center d-flex flex-grow-0">
+            <label for="general.name" class="col-form-label pe-2">Naam:</label>
+            <input type="text" name="general.name" id="general.name" class="form-control minwidth-208 maxwidth-320" />
+        </div>
+        <div class="col gx-5 gy-3 align-items-center d-flex flex-grow-0">
+            <label for="general.age" class="col-form-label pe-2">Leeftijd:</label>
+            <input type="number" name="general.age" id="general.age" class="form-control width-80" min="0" />
+            <span class="ps-2">jaar</span>
+        </div>
+        <div class="col gx-5 gy-3 align-items-center d-flex flex-grow-0">
+            <label class="col-form-label pe-2">Geslacht:</label>
+
+            <div class="form-check form-check-inline">
+                <input type="radio" name="general.sex" value="M" id="general.sex.m" class="form-check-input" />
+                <label for="general.sex.m" class="form-check-label">Man</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="general.sex" value="F" id="general.sex.f" class="form-check-input" />
+                <label for="general.sex.f" class="form-check-label">Vrouw</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col g-4 d-none">
+        <div class="border border-light-subtle p-3 | body-composition">
+            <h2 class="display-2 fs-4">Lichaamssamenstelling</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="general.height_cm" class="form-label">Lengte:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.height_cm" id="general.height_cm" class="form-control" min="0" />
+                        </div>
+                    </td>
+                    <td class="ps-0">cm</td>
+                </tr>
+                <tr>
+                    <td><label for="general.weight_kg" class="form-label">Gewicht:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.weight_kg" id="general.weight_kg" class="form-control" min="0" />
+                        </div>
+                    </td>
+                    <td class="ps-0">kg</td>
+                </tr>
+                <tr>
+                    <td><label for="general.waist_size" class="form-label">Tailleomtrek:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.waist_size" id="general.waist_size" class="form-control" min="0" />
+                        </div>
+                    </td>
+                    <td class="ps-0">cm</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <details>
+                            <summary>Huidplooimeting</summary>
+                            <table class="table table-borderless maxwidth-480">
+                                <tr>
+                                    <td><label for="body_info.skinfold.biceps" class="form-label">Biceps huidplooi:</label></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <input type="number" name="body_info.skinfold.biceps" id="body_info.skinfold.biceps" class="form-control" min="0" />
+                                        </div>
+                                    </td>
+                                    <td class="ps-0">cm</td>
+                                </tr>
+                                <tr>
+                                    <td><label for="body_info.skinfold.triceps" class="form-label">Triceps huidplooi:</label></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <input type="number" name="body_info.skinfold.triceps" id="body_info.skinfold.triceps" class="form-control" min="0" />
+                                        </div>
+                                    </td>
+                                    <td class="ps-0">cm</td>
+                                </tr>
+                                <tr>
+                                    <td><label for="body_info.skinfold.subscapular" class="form-label">Subscapulaire huidplooi:</label></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <input type="number" name="body_info.skinfold.subscapular" id="body_info.skinfold.subscapular" class="form-control" min="0" />
+                                        </div>
+                                    </td>
+                                    <td class="ps-0">cm</td>
+                                </tr>
+                                <tr>
+                                    <td><label for="body_info.skinfold.suprailiac" class="form-label">Suprailiacale huidplooi:</label></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <input type="number" name="body_info.skinfold.suprailiac" id="body_info.skinfold.suprailiac" class="form-control" min="0" />
+                                        </div>
+                                    </td>
+                                    <td class="ps-0">cm</td>
+                                </tr>
+                            </table>
+                        </details>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col g-4">
+        <div class="border border-light-subtle p-3 | heart-rate">
+            <h2 class="display-2 fs-4">Hartslag</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="general.in_rest.heart_rate" class="form-label">Hartfrequentie in rust:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.heart_rate" id="general.in_rest.heart_rate" class="form-control" min="0" /><span class="ps-2">bpm</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="body_info.hrmax_formula" class="form-label">Formula voor Hf<sub>MAX</sub>&nbsp;:</label></td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="body_info.hrmax_formula" value="fox" id="body_info.hrmax_formula.fox" class="form-check-input" />
+                            <label for="body_info.hrmax_formula.fox" class="form-check-label">Fox (220 - leeftijd)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="body_info.hrmax_formula" value="tanaka" id="body_info.hrmax_formula.tanaka" class="form-check-input" />
+                            <label for="body_info.hrmax_formula.tanaka" class="form-check-label">Tanaka (208 - 0,7 x leeftijd)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="body_info.hrmax_formula" value="gellish" id="body_info.hrmax_formula.gellish" class="form-check-input" />
+                            <label for="body_info.hrmax_formula.gellish" class="form-check-label">Gellish (207 - 0,7 x leeftijd)</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.training.intensity" class="form-label">Gewenste aerobe intensiteit:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.training.intensity" id="general.training.intensity" class="form-control" min="0" /><span class="ps-2">%</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <hr id="hr-results-divider" class="d-none" />
+
+            <table class="table table-borderless w-auto">
+                <tr id="hr-max-wrapper" class="d-none">
+                    <td>
+                        Geschatte Hf<sub>MAX</sub>&nbsp;:
+                    </td>
+                    <td>
+                        <span id="hr-max"></span><span class="ps-2">bpm</span>
+                    </td>
+                </tr>
+                <tr id="hrr-wrapper" class="d-none">
+                    <td>
+                        HRR:
+                    </td>
+                    <td>
+                        <span id="hrr"></span><span class="ps-2">bpm</span>
+                    </td>
+                </tr>
+                <tr id="hrtarget-hfmax-wrapper" class="d-none">
+                    <td>
+                        HR<sub>TARGET</sub> (%Hf<sub>MAX</sub>):
+                    </td>
+                    <td>
+                        <span id="hrtarget-hfmax"></span><span class="ps-2">bpm</span>
+                    </td>
+                </tr>
+                <tr id="hrtarget-karvonen-wrapper" class="d-none">
+                    <td>
+                        HR<sub>TARGET</sub> (Karvonen %HRR):
+                    </td>
+                    <td>
+                        <span id="hrtarget-karvonen"></span><span class="ps-2">bpm</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
