@@ -43,31 +43,23 @@ function calculateKarvonenHrTarget(hrRest, hrMax, intensityFraction) {
     return hrRest + (hrMax - hrRest) * intensityFraction;
 }
 
-function hideAllCalcWrappers() {
-    hideElementsById([
-        "hr-results-divider",
-        "hr-max-wrapper",
-        "hrr-wrapper",
-        "hrtarget-hfmax-wrapper",
-        "hrtarget-karvonen-wrapper",
-    ]);
-}
+function calculateResults(newState) {
+    const rawKnownHrMax = newState?.body_info?.hr_max;
+    const knownHrMax = isFilled(rawKnownHrMax) ? parseInt(rawKnownHrMax) : null;
 
-function updateHeartRateCalculations(newState) {
     const hrMaxFormula = newState?.body_info?.hrmax_formula ?? null;
-    if(!hrMaxFormula) {
-        hideAllCalcWrappers();
-
-        return;
+    if(!knownHrMax && !hrMaxFormula) {
+        return {};
     }
 
     const rawAgeValue = newState?.general?.age;
     const age = isFilled(rawAgeValue) ? parseInt(rawAgeValue) : null;
-    if(!age) {
-        hideAllCalcWrappers();
 
-        return;
+    if(!knownHrMax && !age) {
+        return {};
     }
+
+    const hrMax = knownHrMax ?? estimateHrMax(age, hrMaxFormula);
 
     const rawHeartRateRestValue = newState?.general?.in_rest?.heart_rate;
     const heartRateRest = isFilled(rawHeartRateRestValue) ? parseInt(rawHeartRateRestValue) : null;
@@ -75,32 +67,87 @@ function updateHeartRateCalculations(newState) {
     const rawTrainingIntensityValue = newState?.general?.training?.intensity;
     const trainingIntensityFraction = isFilled(rawTrainingIntensityValue) ? parseInt(rawTrainingIntensityValue) / 100 : null;
 
-    const hrMax = estimateHrMax(age, hrMaxFormula);
+    const results = {};
 
-    document.getElementById("hr-max").innerText = formatNumber(hrMax);
-    showElementsById([
-        "hr-results-divider",
-        "hr-max-wrapper",
-    ]);
+    if(!knownHrMax) {
+        results.estimatedHrMax = hrMax;
+    }
 
     if(heartRateRest) {
-        const heartRateReserve = calculateHeartRateReserve(heartRateRest, hrMax);
-
-        document.getElementById("hrr").innerText = formatNumber(heartRateReserve);
-
-        showElementsById([
-            "hrr-wrapper",
-        ]);
-    } else {
-        hideElementsById([
-            "hrr-wrapper",
-        ]);
+        results.hrr = calculateHeartRateReserve(heartRateRest, hrMax);
     }
 
     if(trainingIntensityFraction) {
-        const hrMaxHrTarget = calculateHrMaxHrTarget(hrMax, trainingIntensityFraction);
+        results.hrMaxHrTarget = calculateHrMaxHrTarget(hrMax, trainingIntensityFraction);
+    }
 
-        document.getElementById("hrtarget-hfmax").innerText = formatNumber(hrMaxHrTarget);
+    if(heartRateRest && trainingIntensityFraction) {
+        results.karvonenHrTarget = calculateKarvonenHrTarget(heartRateRest, hrMax, trainingIntensityFraction);
+    }
+
+    return results;
+}
+
+function applyInterFieldEffects(newState) {
+    if(isFilled(newState?.body_info?.hr_max)) {
+        hideElementsById([
+            "hrmax-formula-input-wrapper",
+        ]);
+    } else {
+        showElementsById([
+            "hrmax-formula-input-wrapper",
+        ]);
+    }
+}
+
+function hideAllCalcWrappers() {
+    hideElementsById([
+        "hr-results-divider",
+        "estimated-hr-max-wrapper",
+        "hrr-wrapper",
+        "hrtarget-hfmax-wrapper",
+        "hrtarget-karvonen-wrapper",
+    ]);
+}
+
+function updateHeartRateCalculations(newState) {
+    const results = calculateResults(newState);
+
+    if(!Object.keys(results).length) {
+        hideAllCalcWrappers();
+
+        return;
+    }
+
+    showElementsById([
+        "hr-results-divider",
+    ]);
+
+    if(results.hasOwnProperty("estimatedHrMax")) {
+        document.getElementById("estimated-hr-max").innerText = formatNumber(results.estimatedHrMax, 0);
+        showElementsById([
+            "estimated-hr-max-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "estimated-hr-max-wrapper",
+        ]);
+    }
+
+    if(results.hasOwnProperty("hrr")) {
+        document.getElementById("hrr").innerText = formatNumber(results.hrr, 0);
+
+        showElementsById([
+            "hrr-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "hrr-wrapper",
+        ]);
+    }
+
+    if(results.hasOwnProperty("hrMaxHrTarget")) {
+        document.getElementById("hrtarget-hfmax").innerText = formatNumber(results.hrMaxHrTarget, 0);
 
         showElementsById([
             "hrtarget-hfmax-wrapper",
@@ -111,10 +158,8 @@ function updateHeartRateCalculations(newState) {
         ]);
     }
 
-    if(heartRateRest && trainingIntensityFraction) {
-        const karvonenHrTarget = calculateKarvonenHrTarget(heartRateRest, hrMax, trainingIntensityFraction);
-
-        document.getElementById("hrtarget-karvonen").innerText = formatNumber(karvonenHrTarget);
+    if(results.hasOwnProperty("karvonenHrTarget")) {
+        document.getElementById("hrtarget-karvonen").innerText = formatNumber(results.karvonenHrTarget, 0);
 
         showElementsById([
             "hrtarget-karvonen-wrapper",
@@ -136,6 +181,7 @@ Algemene informatie over het lichaam zoals lichaamssamenstelling, hartfrequentie
     `.trim(),
     templateContent,
     onStateChange: (newState) => {
+        applyInterFieldEffects(newState);
         updateHeartRateCalculations(newState);
     }
 });
