@@ -175,9 +175,9 @@ const templateContent = await getTemplateContent("BodyInfo.html");
 
 export default new Test({
     id: "body_info",
-    longName: "Lichaamsgegevens",
+    longName: "Basisgegevens",
     description: `
-Algemene informatie over het lichaam zoals lichaamssamenstelling, hartfrequentie etc.
+Algemene informatie zoals lichaamssamenstelling, hartfrequentie etc.
     `.trim(),
     templateContent,
     onStateChange: (newState) => {
