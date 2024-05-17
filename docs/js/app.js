@@ -1,7 +1,8 @@
-import { router } from "./router.js";
+import router from "./router.js";
 
-if(["", "clinimetrics"].includes(router.getCurrentLocation().url)) {
-    router.navigate("/tests");
+const currentLocation = router.getCurrentLocation();
+if([null, "clinimetrics"].includes(router.getCurrentLocation().path)) {
+    router.redirect("/tests");
 } else {
-    router.resolve();
+    router.redirect(currentLocation.rawPath);
 }

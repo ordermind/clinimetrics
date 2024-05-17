@@ -25,7 +25,7 @@ export function replaceInternalLinks(html) {
         const path = createPathFromInternalLink(internalLink);
 
         if(path !== null) {
-            return `<a href="${path}" data-navigo>${internalLink.label}</a>`;
+            return `<a href="${path}" data-internal-link>${internalLink.label}</a>`;
         }
 
         return `<em>${internalLink.label}</em>`;

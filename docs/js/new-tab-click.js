@@ -1,18 +1,28 @@
-const linkSelector = "[data-navigo]";
+const linkSelector = "data-internal-link";
 
 function openTab(path) {
-    const newPath = "#" + path;
+    const newPath = "#!" + path;
+
+    console.log(newPath)
 
     window.open(newPath, '_blank');
 }
 
 function onAuxClick(e) {
+    if(!e.target.hasAttribute(linkSelector)) {
+        return;
+    }
+
     openTab(e.target.getAttribute('href'));
 
     e.preventDefault();
 }
 
 function onClick(e) {
+    if(!e.target.hasAttribute(linkSelector)) {
+        return;
+    }
+
     if(e.ctrlKey) {
         openTab(e.target.getAttribute('href'));
 
@@ -21,15 +31,6 @@ function onClick(e) {
 }
 
 export function addNewTabClickEventListeners() {
-    for(const element of document.querySelectorAll(linkSelector)) {
-        element.addEventListener("click", onClick);
-        element.addEventListener("auxclick", onAuxClick);
-    }
-}
-
-export function removeNewTabClickEventListeners() {
-    for(const element of document.querySelectorAll(linkSelector)) {
-        element.removeEventListener("click", onClick);
-        element.removeEventListener("auxclick", onAuxClick);
-    }
+    document.addEventListener("click", onClick, false);
+    document.addEventListener("auxclick", onAuxClick, false);
 }
