@@ -18,6 +18,7 @@ export default class TestPage extends AbstractPage {
         this.#homeLinkBlock = new HomeLinkBlock();
         this.#searchBarBlock = new SearchBarBlock({items: arrTests.filter(item => item.id !== test.id)});
 
+        this.onFormElementChange = this.onFormElementChange.bind(this);
         this.onClickClearForm = this.onClickClearForm.bind(this);
         this.onClickClearAll = this.onClickClearAll.bind(this);
         this.onStateChange = this.onStateChange.bind(this);
@@ -33,36 +34,8 @@ export default class TestPage extends AbstractPage {
         return title;
     }
 
-    #onFormElementChange(e) {
-        const element = e.target;
-        const isCheckBox = element.type === "checkbox";
-
-        const elementValue = isCheckBox ? element.checked : element.value;
-
-        if(!element.name) {
-            return;
-        }
-
-        const setStateValueRecursive = (state, keys) => {
-            if(keys.length === 1) {
-                state[keys[0]] = elementValue;
-                return state;
-            }
-
-            const key = keys.shift();
-            if(!state.hasOwnProperty(key)) {
-                state[key] = {};
-            }
-
-            setStateValueRecursive(state[key], keys);
-            return state;
-        };
-
-        const state = observableState.getObject();
-        const keys = element.name.split(".");
-        const firstKey = keys[0];
-        const newState = setStateValueRecursive(cloneObject(state), keys);
-        state[firstKey] = newState[firstKey]; //Trigger reactivity
+    onFormElementChange(e) {
+        this.#updateStateOnFormChange(e);
     }
 
     onClickClearForm() {
@@ -97,6 +70,38 @@ export default class TestPage extends AbstractPage {
 
     onStateChange() {
         this.#setDefaultValues();
+    }
+
+    #updateStateOnFormChange(e) {
+        const element = e.target;
+        const isCheckBox = element.type === "checkbox";
+
+        const elementValue = isCheckBox ? element.checked : element.value;
+
+        if(!element.name) {
+            return;
+        }
+
+        const setStateValueRecursive = (state, keys) => {
+            if(keys.length === 1) {
+                state[keys[0]] = elementValue;
+                return state;
+            }
+
+            const key = keys.shift();
+            if(!state.hasOwnProperty(key)) {
+                state[key] = {};
+            }
+
+            setStateValueRecursive(state[key], keys);
+            return state;
+        };
+
+        const state = observableState.getObject();
+        const keys = element.name.split(".");
+        const firstKey = keys[0];
+        const newState = setStateValueRecursive(cloneObject(state), keys);
+        state[firstKey] = newState[firstKey]; //Trigger reactivity
     }
 
     #removeAllTestItemFilledClasses() {
@@ -210,21 +215,23 @@ export default class TestPage extends AbstractPage {
     postRender() {
         this.#setDefaultValues();
 
-        document.querySelector(".test-form").addEventListener("change", this.#onFormElementChange);
+        document.querySelector(".test-form").addEventListener("change", this.onFormElementChange);
+        document.querySelector(".test-form").addEventListener("change", this.#test.onFormElementChange);
         document.querySelector(".btn-clear-form")?.addEventListener("click", this.onClickClearForm);
         document.querySelector(".btn-clear-all")?.addEventListener("click", this.onClickClearAll);
 
-        observableState.addSubscriber("set-form-values", this.onStateChange);
+        observableState.addSubscriber("abstract-page", this.onStateChange);
         observableState.addSubscriber(this.#test.id, this.#test.onStateChange);
         this.#test.onStateChange(cloneObject(observableState.getObject()));
     }
 
     unmount() {
-        document.querySelector(".test-form").removeEventListener("change", this.#onFormElementChange);
+        document.querySelector(".test-form").removeEventListener("change", this.onFormElementChange);
+        document.querySelector(".test-form").removeEventListener("change", this.#test.onFormElementChange);
         document.querySelector(".btn-clear-form")?.removeEventListener("click", this.onClickClearForm);
         document.querySelector(".btn-clear-all")?.removeEventListener("click", this.onClickClearAll);
 
-        observableState.removeSubscriber("set-form-values");
+        observableState.removeSubscriber("abstract-page");
         observableState.removeSubscriber(this.#test.id);
         this.#homeLinkBlock.cleanUp();
         this.#searchBarBlock.cleanUp();

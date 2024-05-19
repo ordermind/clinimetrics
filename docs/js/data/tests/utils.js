@@ -57,3 +57,49 @@ export function hideElementsById(elementIds) {
         elementIds.forEach(hideSingleElementById);
     }
 }
+
+export function scrollToNextQuestionOnFormElementChange(e, testId, state) {
+    function findNextUnfilledVisibleRowRecursive(rowElement) {
+        const nextSibling = rowElement.nextElementSibling;
+        if(!nextSibling) {
+            return rowElement;
+        }
+
+        if(nextSibling.classList.contains("filled")) {
+            return rowElement;
+        }
+
+        if(!nextSibling.checkVisibility()) {
+            return rowElement;
+        }
+
+        return findNextUnfilledVisibleRowRecursive(nextSibling);
+    }
+
+    const element = e.target;
+    if(!element.name) {
+        return;
+    }
+
+    const assignmentsWrapper = element.closest("#assignments-wrapper");
+    if(!assignmentsWrapper) {
+        return;
+    }
+
+    if(state?.[testId]?.show_all_assignments) {
+        return;
+    }
+
+    const parentRowElement = element.closest("tr");
+    const lastFilledRow = [...parentRowElement.parentElement.querySelectorAll(":scope > tr.filled:not(.disabled)")].pop();
+    if(parentRowElement !== lastFilledRow) {
+        return;
+    }
+
+    const lastUnfilledRow = findNextUnfilledVisibleRowRecursive(parentRowElement);
+    if(parentRowElement !== lastUnfilledRow) {
+        lastUnfilledRow.scrollIntoView();
+    } else {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+}

@@ -1,6 +1,6 @@
 import Test from "../../data-types/Test.js";
 import observableState from "../../state.js";
-import { getTemplateContent } from "./utils.js";
+import { getTemplateContent, scrollToNextQuestionOnFormElementChange } from "./utils.js";
 
 function enableTestItem(elements) {
     elements[0].closest(".test-item").classList.remove("disabled");
@@ -117,5 +117,10 @@ De Trunk Impairment Scale test evalueert het <strong>statisch en dynamisch evenw
         } else {
             hideTotalScore();
         }
-    }
+    },
+    onFormElementChange: (e) => {
+        const state = observableState.getObject();
+
+        scrollToNextQuestionOnFormElementChange(e, "tis", state);
+    },
 });

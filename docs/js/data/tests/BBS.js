@@ -1,6 +1,6 @@
 import Test from "../../data-types/Test.js";
 import observableState from "../../state.js";
-import { getTemplateContent } from "./utils.js";
+import { getTemplateContent, scrollToNextQuestionOnFormElementChange } from "./utils.js";
 
 function applyShowAllAssignmentsCheckbox(newState) {
     const assignmentsWrapper = document.getElementById("assignments-wrapper");
@@ -96,5 +96,10 @@ De Berg Balance Scale meet het <strong>evenwicht</strong> tijdens sta- en transf
         } else {
             hideTotalScore();
         }
-    }
+    },
+    onFormElementChange: (e) => {
+        const state = observableState.getObject();
+
+        scrollToNextQuestionOnFormElementChange(e, "bbs", state);
+    },
 });

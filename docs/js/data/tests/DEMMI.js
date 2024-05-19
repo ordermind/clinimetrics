@@ -1,5 +1,6 @@
 import Test from "../../data-types/Test.js";
-import { getTemplateContent } from "./utils.js";
+import observableState from "../../state.js";
+import { getTemplateContent, scrollToNextQuestionOnFormElementChange } from "./utils.js";
 
 function applyShowAllAssignmentsCheckbox(newState) {
     const assignmentsWrapper = document.getElementById("assignments-wrapper");
@@ -30,5 +31,10 @@ De DEMMI is een observatielijst waarmee problemen met mobiliteit, bewegen en dag
         // } else {
         //     hideTotalScore();
         // }
-    }
+    },
+    onFormElementChange: (e) => {
+        const state = observableState.getObject();
+
+        scrollToNextQuestionOnFormElementChange(e, "demmi", state);
+    },
 });
