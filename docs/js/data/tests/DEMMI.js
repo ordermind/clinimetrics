@@ -115,6 +115,13 @@ function calculateAndDisplayTotalScore(newState) {
         return parseInt(newState?.demmi?.[`assignment_${assignmentNumber}`] ?? 0);
     });
 
+    const partialScores = {
+        bedTransfers: [1,2,3].reduce((previousValue, assignmentNumber) => previousValue += rawScores[assignmentNumber - 1], 0),
+        chairTransfers: [4,5,6].reduce((previousValue, assignmentNumber) => previousValue += rawScores[assignmentNumber - 1], 0),
+        staticBalance: [7,8,9,10].reduce((previousValue, assignmentNumber) => previousValue += rawScores[assignmentNumber - 1], 0),
+        walking: [11,12].reduce((previousValue, assignmentNumber) => previousValue += rawScores[assignmentNumber - 1], 0),
+        dynamicBalance: [13,14,15].reduce((previousValue, assignmentNumber) => previousValue += rawScores[assignmentNumber - 1], 0),
+    }
     const rawTotalScore = rawScores.reduce((previousValue, currentValue) => previousValue += currentValue, 0);
     const demmiScore = rawToDemmiScoreTranslation[rawTotalScore];
 
@@ -131,6 +138,11 @@ function calculateAndDisplayTotalScore(newState) {
 
     interpretation += `<li>${getInterpretationForTotalGenderValues(demmiScore)}</li>`;
 
+    document.getElementById("demmi-score-bed-transfers").innerHTML = `${partialScores.bedTransfers}&nbsp;/&nbsp;4`;
+    document.getElementById("demmi-score-chair-transfers").innerHTML = `${partialScores.chairTransfers}&nbsp;/&nbsp;4`;
+    document.getElementById("demmi-score-static-balance").innerHTML = `${partialScores.staticBalance}&nbsp;/&nbsp;4`;
+    document.getElementById("demmi-score-walking").innerHTML = `${partialScores.walking}&nbsp;/&nbsp;4`;
+    document.getElementById("demmi-score-dynamic-balance").innerHTML = `${partialScores.dynamicBalance}&nbsp;/&nbsp;3`;
     document.getElementById("demmi-raw-score").innerHTML = `${rawTotalScore}&nbsp;/&nbsp;19`;
     document.getElementById("demmi-final-score").innerHTML = `<span class="fs-3 fw-bold">${demmiScore}</span>&nbsp;/&nbsp;100`;
     document.getElementById("demmi-interpretation").innerHTML = interpretation;
