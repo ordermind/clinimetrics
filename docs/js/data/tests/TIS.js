@@ -76,11 +76,11 @@ function isEverythingFilledIn(newState) {
 }
 
 function calculateAndDisplayTotalScore(newState) {
-    const staticSitScore = [1,2,3].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis[`assignment_${assignmentNumber}`]), 0);
+    const staticSitScore = [1,2,3].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis?.[`assignment_${assignmentNumber}`] ?? 0), 0);
 
-    const dynamicSitScore = [4,5,6,7,8,9,10,11,12,13].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis[`assignment_${assignmentNumber}`]), 0);
+    const dynamicSitScore = [4,5,6,7,8,9,10,11,12,13].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis?.[`assignment_${assignmentNumber}`] ?? 0), 0);
 
-    const coordinationScore = [14,15,16,17].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis[`assignment_${assignmentNumber}`]), 0);
+    const coordinationScore = [14,15,16,17].reduce((previousValue, assignmentNumber) => previousValue += parseInt(newState?.tis?.[`assignment_${assignmentNumber}`] ?? 0), 0);
 
     const totalScore = staticSitScore + dynamicSitScore + coordinationScore;
 

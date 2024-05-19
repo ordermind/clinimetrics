@@ -24,6 +24,27 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td><label for="general.age" class="form-label">Leeftijd:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.age" id="general.age" class="form-control" min="0" /><span class="ps-2">jaar</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Geslacht:</label></td>
+                    <td>
+                        <div class="form-check form-check-inline ">
+                            <input type="radio" name="general.sex" value="M" id="general.sex.m" class="form-check-input" />
+                            <label for="general.sex.m" class="form-check-label">Man</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="general.sex" value="F" id="general.sex.f" class="form-check-input" />
+                            <label for="general.sex.f" class="form-check-label">Vrouw</label>
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
 
@@ -334,5 +355,25 @@
                 </td>
             </tr>
         </table>
+
+        <div id="results-wrapper" class="d-none">
+            <h2 class="display-2 fs-4">Uitslag</h2>
+            <table class="table table-borderless">
+                <tr>
+                    <td>Ruwe totaalscore:</td>
+                    <td><span id="demmi-raw-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>DEMMI score:</td>
+                    <td><span id="demmi-final-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Interpretatie:</td>
+                    <td>
+                        <ul id="demmi-interpretation"></ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
