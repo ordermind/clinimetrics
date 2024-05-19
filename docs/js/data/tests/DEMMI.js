@@ -56,7 +56,7 @@ function calculateAndDisplayTotalScore(newState) {
     function getInterpretationForTotalGenderValues(demmiScore) {
         const relativeScore = demmiScore / averageScores[sexKey].total;
 
-        return `Score is ${formatNumber(relativeScore * 100, 0)}% van de gemiddelde score (${formatNumber(averageScores[sexKey].total)}) voor onafhankelijke ${sexPlural} ongeacht leeftijd`;
+        return `Score is ${formatNumber(relativeScore * 100, 0)}% van de gemiddelde score (${formatNumber(averageScores[sexKey].total)}) bij onafhankelijke ${sexPlural} ongeacht leeftijd`;
     }
 
     function getInterpretationForAgeSpecificGenderValues(demmiScore) {
@@ -89,7 +89,7 @@ function calculateAndDisplayTotalScore(newState) {
 
         const relativeScore = demmiScore / expectedScore;
 
-        return `Score is ${formatNumber(relativeScore * 100, 0)}% van de gemiddelde score (${formatNumber(averageScores[sexKey][ageKey])}) voor onafhankelijke ${sexPlural} van de leeftijd ${ageKey}`;
+        return `Score is ${formatNumber(relativeScore * 100, 0)}% van de gemiddelde score (${formatNumber(averageScores[sexKey][ageKey])}) bij onafhankelijke ${sexPlural} van de leeftijd ${ageKey}`;
     }
 
     const rawScores = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(assignmentNumber => {
