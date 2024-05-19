@@ -119,15 +119,17 @@ function calculateAndDisplayTotalScore(newState) {
     const demmiScore = rawToDemmiScoreTranslation[rawTotalScore];
 
     let interpretation = `
-<li>${getInterpretationForTotalGenderValues(demmiScore)}</li>
+<li>Een hogere score wijst op een grotere mate van onafhankelijke mobiliteit.</li>
     `.trim();
 
     const ageSpecificInterpretation = getInterpretationForAgeSpecificGenderValues(demmiScore);
     if(ageSpecificInterpretation) {
-        interpretation = `
+        interpretation += `
 <li>${ageSpecificInterpretation}</li>
-        `.trim() + interpretation;
+        `.trim();
     }
+
+    interpretation += `<li>${getInterpretationForTotalGenderValues(demmiScore)}</li>`;
 
     document.getElementById("demmi-raw-score").innerHTML = `${rawTotalScore}&nbsp;/&nbsp;19`;
     document.getElementById("demmi-final-score").innerHTML = `<span class="fs-3 fw-bold">${demmiScore}</span>&nbsp;/&nbsp;100`;

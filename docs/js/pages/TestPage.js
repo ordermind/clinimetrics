@@ -114,6 +114,10 @@ export default class TestPage extends AbstractPage {
     }
 
     #setOrRemoveTestItemFilledClass(element, value) {
+        if(element.classList.contains("non-assignment")) {
+            return;
+        }
+
         const testItemElement = element.closest(".test-item");
 
         if(!testItemElement) {
