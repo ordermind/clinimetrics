@@ -24,6 +24,27 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td><label for="general.age" class="form-label">Leeftijd:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.age" id="general.age" class="form-control" min="0" /><span class="ps-2">jaar</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Geslacht:</label></td>
+                    <td>
+                        <div class="form-check form-check-inline ">
+                            <input type="radio" name="general.sex" value="M" id="general.sex.m" class="form-check-input" />
+                            <label for="general.sex.m" class="form-check-label">Man</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="general.sex" value="F" id="general.sex.f" class="form-check-input" />
+                            <label for="general.sex.f" class="form-check-label">Vrouw</label>
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
 
@@ -52,13 +73,13 @@
             <label class="form-check-label" for="demmi.show_all_assignments">Alle opdrachten tonen</label>
         </div>
 
-        <table id="assignments-wrapper" class="table table-borderless">
+        <table id="assignments-wrapper" class="table table-borderless mt-3">
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
-                    <h3 class="display-3 fs-5">Bedtransfers</h3>
-                    <p>Betrokkene mag geen hulpmiddelen zoals bijvoorbeeld papegaai, bedhek, bedrand of bedstang gebruiken. Voor degenen die niet plat op de rug kunnen liggen, mogen extra kussens worden gebruikt.</p>
+                    <h3 class="display-3 fs-5 bg-success-subtle p-2">Bedtransfers</h3>
+                    <p>Betrokkene mag <strong>geen hulpmiddelen</strong> zoals bijvoorbeeld papegaai, bedhek, bedrand of bedstang gebruiken. Voor degenen die niet plat op de rug kunnen liggen, mogen extra kussens worden gebruikt.</p>
 
-                    <h4 class="display-4 fs-6">1. Bruggetje maken</h4>
+                    <h4 class="display-3 fs-5">1. Bruggetje maken</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Betrokkene ligt op de rug, wordt gevraagd de knieën te buigen en het zitvlak van het bed op te tillen.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
@@ -74,7 +95,7 @@
             </tr>
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
-                    <h4 class="display-4 fs-6">2. Op de zij rollen</h4>
+                    <h4 class="display-3 fs-5">2. Op de zij rollen</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Betrokkene ligt op de rug en wordt gevraagd zich zonder hulp op één zij te rollen.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
@@ -90,7 +111,7 @@
             </tr>
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
-                    <h4 class="display-4 fs-6">3. Van lig tot zit komen</h4>
+                    <h4 class="display-3 fs-5">3. Van lig tot zit komen</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Betrokkene ligt op de rug en wordt gevraagd op de rand van het bed te gaan zitten.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
@@ -111,9 +132,9 @@
 
             <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
-                    <h3 class="display-3 fs-5">Stoeltransfers</h3>
+                    <h3 class="display-3 fs-5 bg-success-subtle p-2">Stoeltransfers</h3>
 
-                    <h4 class="display-4 fs-6">4. zonder steun in stoel zitten</h4>
+                    <h4 class="display-3 fs-5">4. Zonder steun in stoel zitten</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd 10 seconden lang zittend op de stoel de balans te bewaren, zonder steun van rugleuning, zonder de armleuningen vast te houden, zonder in te zakken of te bewegen. Knieën en voeten naast elkaar houden, voeten mogen op de grond rusten.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
@@ -129,7 +150,7 @@
             </tr>
              <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
-                    <h4 class="display-4 fs-6">5. Uit stoel opstaan met gebruik van armen</h4>
+                    <h4 class="display-3 fs-5">5. Uit stoel opstaan met gebruik van armen</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd uit zit op te staan met behulp van de armleuningen.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
@@ -149,7 +170,7 @@
             </tr>
              <tr data-item-type="radio" class="test-item display-if-previous-filled">
                 <td class="pb-4">
-                    <h4 class="display-4 fs-6">6. Uit stoel opstaan zonder gebruik van armen</h4>
+                    <h4 class="display-3 fs-5">6. Uit stoel opstaan zonder gebruik van armen</h4>
                     <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd op te staan met de armen gekruist over de borst.</div>
 
                     <div class="mb-2"><strong>Score:</strong></div>
@@ -163,6 +184,196 @@
                     </div>
                 </td>
             </tr>
+
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h3 class="display-3 fs-5 bg-success-subtle p-2">Statische balans</h3>
+                    <p>Betrokkene mag bij deze tests <strong>geen loophulpmiddelen</strong> gebruiken. Indien mogelijk mogen ook <strong>geen schoenen</strong> gedragen worden. De betrokkene staat tussen een hoog ingesteld bed aan de ene zijde en de testafnemer aan de andere zijde. Indien betrokkene tijdens het testen wankelt of aanzienlijk heen en weer beweegt, moet het testen van dat item beëindigd worden.</p>
+
+                    <h4 class="display-3 fs-5">7. Zonder steun staan</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd 10 seconden zonder steun of hulp te staan.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_7" id="demmi.assignment_7-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_7-0">0 - Patiënt kan minder dan 10 seconden zelfstandig staan.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_7" id="demmi.assignment_7-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_7-1">1 - Patiënt kan minstens 10 seconden zelfstandig staan.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h4 class="display-3 fs-5">8. Met de voeten naast elkaar staan</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd 10 seconden met de voeten direct naast elkaar te staan.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_8" id="demmi.assignment_8-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_8-0">0 - Patiënt kan minder dan 10 seconden met de voeten naast elkaar staan.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_8" id="demmi.assignment_8-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_8-1">1 - Patiënt kan minstens 10 seconden met de voeten naast elkaar staan.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h4 class="display-3 fs-5">9. Op de tenen staan</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd 10 seconden op de tenen te staan.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_9" id="demmi.assignment_9-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_9-0">0 - Patiënt kan minder dan 10 seconden op de tenen staan.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_9" id="demmi.assignment_9-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_9-1">1 - Patiënt kan minstens 10 seconden op de tenen staan.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h4 class="display-3 fs-5">10. Staan met de ene voet voor de andere en de ogen dicht</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd de hiel van de ene voet direct vóór de andere voet te plaatsen en 10 seconden met de ogen dicht te staan.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_10" id="demmi.assignment_10-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_10-0">0 - Patiënt kan minder dan 10 seconden met de ene voet voor de andere staan.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_10" id="demmi.assignment_10-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_10-1">1 - Patiënt kan minstens 10 seconden met de ene voet voor de andere staan.</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr data-item-type="text" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h3 class="display-3 fs-5 bg-success-subtle p-2">Lopen</h3>
+                    <p>Betrokkene mag bij deze tests <strong>wel loophulpmiddelen</strong> gebruiken.</p>
+
+                    <h4 class="display-3 fs-5">11. Loopafstand</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd <strong>zonder te rusten</strong> zo ver mogelijk te lopen. De test eindigt als betrokkene stilstaat om te rusten. Betrokkene gebruikt het loophulpmiddel dat op dit moment het meest geschikt voor hem/haar is. Komen twee loophulpmiddelen daarvoor in aanmerking, dan wordt het hulpmiddel toegepast dat betrokkene de grootste zelfstandigheid geeft. De test eindigt als betrokkene 50 meter heeft gelopen</div>
+
+                    <div class="d-flex align-items-center">
+                        <label for="demmi.assignment_11" class="form-label">Afgelegde afstand:</label>&nbsp;
+                        <input type="number" name="demmi.assignment_11" id="demmi.assignment_11" class="form-control w-auto" min="0" size="5" /><span class="ps-2">m</span>
+                    </div>
+                </td>
+            </tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h4 class="display-3 fs-5">12. Zelfstandig lopen</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: De zelfstandigheid van het lopen wordt beoordeeld over de afgelegde loopafstand, tot een maximum van 50 meter (zie item 11).</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_12" id="demmi.assignment_12-0a" value="0a" data-score="0" />
+                        <label class="form-check-label" for="demmi.assignment_12-0a">0a - Patiënt kan helemaal niet lopen.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_12" id="demmi.assignment_12-0b" value="0b" data-score="0" />
+                        <label class="form-check-label" for="demmi.assignment_12-0b">0b - Patiënt kan lopen met minimale hulp / onder toezicht.<note>
+                            <p><strong>Minimale hulp</strong> = minimale aanraking, vooral om de beweging te begeleiden.</p>
+                            <p class="mb-0"><strong>Toezicht</strong> = iemand anders begeleidt de activiteit zonder de betrokkenen daadwerkelijk aan te raken. Kan bestaan uit mondeling geheugensteuntje om de taak veilig uit te kunnen voeren.</p>
+                        </note>
+                        </label>
+                    </div>
+                    <div class="form-check d-flex">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_12" id="demmi.assignment_12-1" value="1" data-score="1" />
+                        <label class="form-check-label" for="demmi.assignment_12-1">1 - Patiënt kan zelfstandig lopen met een hulpmiddel.</label>
+                        <select class="form-select w-auto | non-assignment" name="demmi.walking_aid" id="demmi.walking_aid">
+                            <option value=null selected>- Hulpmiddel -</option>
+                            <option value="walker">Looprek</option>
+                            <option value="rollator">Rollator</option>
+                            <option value="cane">Stok</option>
+                            <option value="other">Overig</option>
+                        </select>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_12" id="demmi.assignment_12-2" value="2" data-score="2" />
+                        <label class="form-check-label" for="demmi.assignment_12-2">2 - Patiënt kan zelfstandig lopen zonder hulpmiddel.</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h3 class="display-3 fs-5 bg-success-subtle p-2">Dynamische balans</h3>
+                    <p>Betrokkene mag bij deze tests <strong>geen loophulpmiddelen</strong> gebruiken.</p>
+
+                    <h4 class="display-3 fs-5">13. Pen van grond oprapen</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Een pen wordt 5 cm vóór de voeten van betrokkene gelegd terwijl deze staat. Betrokkene wordt gevraagd de pen van de grond op te rapen.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_13" id="demmi.assignment_13-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_13-0">0 - Patiënt kan de pen niet oprapen.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_13" id="demmi.assignment_13-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_13-1">1 - Patiënt kan de pen wel oprapen.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h4 class="display-3 fs-5">14. Vier passen achteruit lopen</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd 4 passen achteruit te lopen zonder uit balans te raken.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_14" id="demmi.assignment_14-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_14-0">0 - Patiënt kan de vier passen niet lopen.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_14" id="demmi.assignment_14-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_14-1">1 - Patiënt kan de vier passen wel lopen.</label>
+                    </div>
+                </td>
+            </tr>
+            <tr data-item-type="radio" class="test-item display-if-previous-filled">
+                <td class="pb-4">
+                    <h4 class="display-3 fs-5">15. Springen</h4>
+                    <div class="mb-1"><strong>Instructie</strong>: Betrokkene wordt gevraagd te springen zonder uit balans te raken. Beide voeten komen van de grond.</div>
+
+                    <div class="mb-2"><strong>Score:</strong></div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_15" id="demmi.assignment_15-0" value="0" />
+                        <label class="form-check-label" for="demmi.assignment_15-0">0 - Patiënt kan niet springen.</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="demmi.assignment_15" id="demmi.assignment_15-1" value="1" />
+                        <label class="form-check-label" for="demmi.assignment_15-1">1 - Patiënt kan wel springen.</label>
+                    </div>
+                </td>
+            </tr>
         </table>
+
+        <div id="results-wrapper" class="d-none">
+            <h2 class="display-2 fs-4">Uitslag</h2>
+            <table class="table table-borderless">
+                <tr>
+                    <td>Ruwe totaalscore:</td>
+                    <td><span id="demmi-raw-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>DEMMI score:</td>
+                    <td><span id="demmi-final-score" class="d-flex align-items-center"></span></td>
+                </tr>
+                <tr>
+                    <td>Interpretatie:</td>
+                    <td>
+                        <ul id="demmi-interpretation"></ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

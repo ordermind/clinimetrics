@@ -34,6 +34,12 @@ export function renderHtmlList(list, {fallbackToSingleString = false, classes = 
     return output;
 }
 
+export function replaceNotes(html) {
+    return html.replaceAll("\n", "").replaceAll(/<note>(.+)<\/note>/g, (_, content) => {
+        return renderNotesTooltip([content]);
+    });
+}
+
 export function renderNotesTooltip(notes) {
     if(!notes.length) {
         return "";

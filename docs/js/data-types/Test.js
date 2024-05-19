@@ -1,3 +1,5 @@
+import { replaceNotes } from "../utils.js";
+
 export default class Test {
     #id;
     #shortName;
@@ -8,8 +10,9 @@ export default class Test {
 
     #getformContentHTML;
     #onStateChange;
+    #onFormElementChange;
 
-    constructor({id, shortName = "", longName, description = "", templateContent, externalSourceUrl = "", getformContentHTML = null, onStateChange = null}) {
+    constructor({id, shortName = "", longName, description = "", templateContent, externalSourceUrl = "", getformContentHTML = null, onStateChange = null, onFormElementChange = null}) {
         this.#id = id;
         this.#shortName = shortName;
         this.#longName = longName;
@@ -19,9 +22,11 @@ export default class Test {
 
         this.#getformContentHTML = getformContentHTML;
         this.#onStateChange = onStateChange;
+        this.#onFormElementChange = onFormElementChange;
 
         this.getContent = this.getContent.bind(this);
         this.onStateChange = this.onStateChange.bind(this);
+        this.onFormElementChange = this.onFormElementChange.bind(this);
     }
 
     get id() {
@@ -59,7 +64,9 @@ export default class Test {
     getContent() {
         const formContentHtml = this.#getformContentHTML ? this.#getformContentHTML() : this.templateContent.replace("${description}", this.description ?? "").trim();
 
-        return `<form name="testForm" class="test-form">${formContentHtml}</form>`;
+        const htmlWithNotes = replaceNotes(formContentHtml);
+
+        return `<form name="testForm" class="test-form">${htmlWithNotes}</form>`;
     }
 
     onStateChange(newState) {
@@ -68,5 +75,13 @@ export default class Test {
         }
 
         this.#onStateChange(newState);
+    }
+
+    onFormElementChange(e) {
+        if(!this.#onFormElementChange) {
+            return;
+        }
+
+        this.#onFormElementChange(e);
     }
 }
