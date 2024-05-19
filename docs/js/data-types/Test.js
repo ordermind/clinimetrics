@@ -1,3 +1,5 @@
+import { replaceNotes } from "../utils.js";
+
 export default class Test {
     #id;
     #shortName;
@@ -62,7 +64,9 @@ export default class Test {
     getContent() {
         const formContentHtml = this.#getformContentHTML ? this.#getformContentHTML() : this.templateContent.replace("${description}", this.description ?? "").trim();
 
-        return `<form name="testForm" class="test-form">${formContentHtml}</form>`;
+        const htmlWithNotes = replaceNotes(formContentHtml);
+
+        return `<form name="testForm" class="test-form">${htmlWithNotes}</form>`;
     }
 
     onStateChange(newState) {
