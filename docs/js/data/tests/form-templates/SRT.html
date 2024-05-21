@@ -1,0 +1,227 @@
+<div class="mb-3">${description}</div>
+<div class="row">
+    <div class="col">
+        <div class="description">
+            <h2 class="display-2 fs-4">Benodigdheden</h2>
+            <p>Een geijkte fietsergometer</p>
+        </div>
+
+        <div class="personal-info">
+            <h2 class="display-2 fs-4">Persoonlijke gegevens</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="general.name" class="form-label">Naam:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="text" name="general.name" id="general.name" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.age" class="form-label required">Leeftijd:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.age" id="general.age" class="form-control" min="0" /><span class="ps-2">jaar</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="form-label required">Geslacht:</label></td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="general.sex" value="M" id="general.sex.m" class="form-check-input" />
+                            <label for="general.sex.m" class="form-check-label">Man</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="general.sex" value="F" id="general.sex.f" class="form-check-input" />
+                            <label for="general.sex.f" class="form-check-label">Vrouw</label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="pre-measurements">
+            <h2 class="display-2 fs-4">Voormetingen</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="general.date" class="form-label">Datum:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="text" name="general.date" id="general.date" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.height_cm" class="form-label required">Lengte:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.height_cm" id="general.height_cm" class="form-control" min="0" /><span class="ps-2">cm</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.weight_kg" class="form-label required">Gewicht:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.weight_kg" id="general.weight_kg" class="form-control" min="0" /><span class="ps-2">kg</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.in_rest.heart_rate" class="form-label">Hartfrequentie:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.heart_rate" id="general.in_rest.heart_rate" class="form-control" min="0" /><span class="ps-2">bpm</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.in_rest.oxygen_saturation" class="form-label">Zuurstofsaturatie:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.oxygen_saturation" id="general.in_rest.oxygen_saturation" class="form-control" min="0" max="100" /><span class="ps-2">%</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.in_rest.blood_pressure_systolic" class="form-label">Bloeddruk:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.blood_pressure_systolic" id="general.in_rest.blood_pressure_systolic" class="form-control" min="0" /><span class="ps-2 pe-2">/</span><input type="number" name="general.in_rest.blood_pressure_diastolic" id="general.in_rest.blood_pressure_diastolic" class="form-control" min="0" /><span class="ps-2">mmHg</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.in_rest.borg_dyspnoea" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg kortademigheid:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.borg_dyspnoea" id="general.in_rest.borg_dyspnoea" class="form-control" min="0" max="10" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.in_rest.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg vermoeidheid:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.borg_fatigue" id="general.in_rest.borg_fatigue" class="form-control" min="0" max="10" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="general.in_rest.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-RPE-meetinstr-KNGF-2018.pdf">Borg RPE:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.borg_rpe" id="general.in_rest.borg_rpe" class="form-control" min="6" max="20" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="col | description">
+        <h2 class="display-2 fs-4">Relatieve contra-indicaties</h2>
+        <ul>
+            <li>Maximale hartslag < 120 bpm</li>
+            <li>Hartfrequentieherstel < 12 bpm (1 min na maximale inspanning) in combinatie met Hf<sub>MAX</sub> < 85% van [Link type="Test" targetId="body_info" label="geschatte Hf<sub>MAX</sub>"] (chronotrope incompetentie)</li>
+        </ul>
+        <p>Als een van de bovenstaande contra-indicaties aanwezig is, overleg dan eerst met een specialist (sportarts/cardioloog).</p>
+
+        <h2 class="display-2 fs-4">Testprotocol</h2>
+        <ol>
+            <li>Voorbereiden: laat de deelnemer plaatsnemen op de fiets.</li>
+            <li>Geef instructie: na de warming-up gaat de deelnemer fietsen met een snelheid tussen de 70-80 omwentelingen per minuut. Dit geeft een meter op de fiets aan.</li>
+            <li>Start met de warming-up: 3 minuten onbelast fietsen.</li>
+            <li>Na 3 minuten: verhoog het wattage van 0 naar 25 Watt.</li>
+            <li>Na 10 seconden: verhoog het wattage met 25 naar 50 Watt.</li>
+            <li>Na 20 seconden: verhoog het wattage met 25 naar 75 Watt.</li>
+            <li>Na 30 seconden: verhoog het wattage met 25 naar 100 Watt.</li>
+            <li>Na 40 seconden: verhoog het wattage met 25 naar 125 Watt.</li>
+            <li>en zo door….</li>
+            <li>Stop als het aantal omwentelingen van de deelnemer lager is dan 60 per minuut.</li>
+        </ol>
+    </div>
+
+    <div class="col">
+        <div class="post-measurements">
+            <h2 class="display-2 fs-4">Nametingen</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="srt.msec" class="form-label required">Behaalde wattage (MSEC):</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.msec" id="srt.msec" class="form-control" min="0" /><span class="ps-2">W</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="srt.heart_rate" class="form-label">Hartfrequentie:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.heart_rate" id="srt.heart_rate" class="form-control" min="0" /><span class="ps-2">bpm</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="srt.oxygen_saturation" class="form-label">Zuurstofsaturatie:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.oxygen_saturation" id="srt.oxygen_saturation" class="form-control" min="0" max="100" /><span class="ps-2">%</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="srt.borg_dyspnoea" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg kortademigheid:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.borg_dyspnoea" id="srt.borg_dyspnoea" class="form-control" min="0" max="10" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="srt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg vermoeidheid:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.borg_fatigue" id="srt.borg_fatigue" class="form-control" min="0" max="10" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="srt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-RPE-meetinstr-KNGF-2018.pdf">Borg RPE:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.borg_rpe" id="srt.borg_rpe" class="form-control" min="6" max="20" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="results-wrapper" class="d-none">
+            <h2 class="display-2 fs-4">Uitslag</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td>Maximale trainingsintensiteit (W<sub>MAX</sub>):</td>
+                    <td><span id="srt-wmax"></span><span class="ps-2">W</span></td>
+                </tr>
+                <tr>
+                    <td>Voorspelde VO<sub>2MAX</sub> :</td>
+                    <td><span id="srt-vo2max-pred"></span><span class="ps-2">ml/min/kg</span></td>
+                </tr>
+                <tr>
+                    <td>Geschatte VO<sub>2MAX</sub> :</td>
+                    <td><span id="srt-vo2max"></span><span class="ps-2">ml/min/kg => </span><span id="srt-vo2max-percentage-pred"></span>% van voorspeld</td>
+                </tr>
+                <tr>
+                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a> o.b.v. W<sub>MAX</sub> :</td>
+                    <td><span id="srt-metwmax"></span></td>
+                </tr>
+                <tr>
+                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a> o.b.v. de geschatte VO<sub>2MAX</sub> :</td>
+                    <td><span id="srt-metvo2max"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
