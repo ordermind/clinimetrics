@@ -130,7 +130,7 @@ export default new Test({
     shortName: "SWT",
     longName: "Shuttle Walk Test",
     description: `
-De Shuttle Walk Test is een maximale inspanningstest die gebruikt kan worden om de <strong>functionele capaciteit</strong> of inspanningstolerantie van personen te bepalen. De test kan worden gebruikt om een indruk te krijgen van VO2<sub>MAX</sub>. Doelgroep: patiënten met cardiale problematiek of COPD.
+De Shuttle Walk Test is een maximale inspanningstest die gebruikt kan worden om de <strong>functionele capaciteit</strong> of inspanningstolerantie van personen te bepalen. De test kan worden gebruikt om een indruk te krijgen van VO<sub>2MAX</sub>. Doelgroep: patiënten met cardiale problematiek of COPD.
     `.trim(),
     templateContent,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/shuttle-walk-test/",
