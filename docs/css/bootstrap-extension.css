@@ -45,3 +45,8 @@
 .maxwidth-800 {
     max-width: 50rem;
 }
+
+.form-label.required:after {
+    content: "\00A0*";
+    color: red;
+}

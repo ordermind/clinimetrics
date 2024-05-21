@@ -3,15 +3,7 @@
     <div class="col">
         <div class="description">
             <h2 class="display-2 fs-4">Benodigdheden</h2>
-            <ul>
-                <li>2 stoelen</li>
-                <li>2 pionnen</li>
-                <li>(weegschaal)</li>
-                <li>meetlint</li>
-                <li>zuurstofsaturatiemeter</li>
-                <li>bloeddrukmeter</li>
-                <li><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg schaal kortademigheid / vermoeidheid</a></li>
-            </ul>
+            <p>Een geijkte fietsergometer</p>
         </div>
 
         <div class="personal-info">
@@ -36,7 +28,7 @@
                 <tr>
                     <td><label class="form-label required">Geslacht:</label></td>
                     <td>
-                        <div class="form-check form-check-inline ">
+                        <div class="form-check form-check-inline">
                             <input type="radio" name="general.sex" value="M" id="general.sex.m" class="form-check-input" />
                             <label for="general.sex.m" class="form-check-label">Man</label>
                         </div>
@@ -48,6 +40,7 @@
                 </tr>
             </table>
         </div>
+
         <div class="pre-measurements">
             <h2 class="display-2 fs-4">Voormetingen</h2>
             <table class="table table-borderless maxwidth-480">
@@ -115,61 +108,39 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td><label for="general.in_rest.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-RPE-meetinstr-KNGF-2018.pdf">Borg RPE:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="general.in_rest.borg_rpe" id="general.in_rest.borg_rpe" class="form-control" min="6" max="20" />
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
 
     <div class="col | description">
-        <h2 class="display-2 fs-4">Contra-indicaties</h2>
-
-        <h3 class="display-3 fs-5">Absolute contra-indicaties</h3>
+        <h2 class="display-2 fs-4">Relatieve contra-indicaties</h2>
         <ul>
-            <li>onstabiele angina pectoris (afgelopen maand)</li>
-            <li>myocard infarct (afgelopen maand)</li>
-            <li>zuurstofsaturatie in rust < 90%</li>
+            <li>Maximale hartslag < 120 bpm</li>
+            <li>Hartfrequentieherstel < 12 bpm (1 min na maximale inspanning) in combinatie met Hf<sub>MAX</sub> < 85% van [Link type="Test" targetId="body_info" label="geschatte Hf<sub>MAX</sub>"] (chronotrope incompetentie)</li>
         </ul>
+        <p>Als een van de bovenstaande contra-indicaties aanwezig is, overleg dan eerst met een specialist (sportarts/cardioloog).</p>
 
-        <h3 class="display-3 fs-5">Relatieve contra-indicaties</h3>
-        <ul>
-            <li>rusthartslag > 120 bpm</li>
-            <li>systolische bloeddruk > 180 mmHg</li>
-            <li>diastolische bloeddruk > 100 mmHg</li>
-        </ul>
-
-        <h3 class="display-3 fs-5">Reden om 6MWT onmiddellijk te stoppen</h3>
-        <ul>
-            <li>pijn op de borst</li>
-            <li>ondragelijke benauwdheid</li>
-            <li>beenkrampen</li>
-            <li>duizelingen</li>
-            <li>extreem zweten</li>
-            <li>bleke of grijze gezichtskleur</li>
-            <li>zuurstofsaturatie < 85%</li>
-        </ul>
-
-        <h2 class="display-2 fs-4">Voorbereidingen</h2>
-        <p>Meet een parcour af van 10, 30 of 50 meter. Gebruik de pionnen om de afstand zichtbaar te maken. Zet de stoelen achter de pionnen zodat je snel een stoel erbij kan halen als de patiënt de test voortijdig moet beëindigen en zitten te rusten.</p>
-        <p>Meet lengte en gewicht af. Laat de patient vervolgens minimaal 10 minuten in een stoel zitten en neem de overige voormetingen af. Hierbij kun je ook de test uitleggen.</p>
-
-        <h2 class="display-2 fs-4">Uitleg aan de patiënt</h2>
-        <p><em>Bij deze test moet u proberen een zo groot mogelijke afstand af te leggen in zes minuten. U moet daarbij heen en weer tussen de pionnen lopen. U mag alleen wandelen, niet joggen of rennen. Ik zal achter u meelopen, en af en toe zal ik naast u komen om de saturatiemeter te bekijken. Zes minuten is een lange tijd om te lopen, dat vraagt dus een inspanning. Misschien raakt u buiten adem of raakt u uitgeput. U mag langzamer gaan lopen of stoppen en rusten indien dit nodig is. U mag ook even tegen de muur leunen, maar U moet weer gaan lopen zo snel als dit weer mogelijk is. Als U een pauze neemt blijft de timer aan.</em></p>
-        <p><em>Ik ga het nu laten zien. Kijk goed hoe ik om de pion heen loop.</em></p>
-
-        <h2 class="display-2 fs-4">Acties tijdens de test</h2>
-        <p>Loop achter de patiënt. Elke minuut bepaal je de zuurstofsaturatie.</p>
-        <p>Als de patiënt stopt met lopen en pauze nodig heeft: <em>"Je mag tegen de muur leunen als je wilt, start weer met lopen zodra je dat kan; de timer blijft doorgaan."</em>. Als een patiënt stopt met lopen voordat de zes minuten voorbij zijn en niet verder wilt lopen laat je de patiënt zitten op een stoel en beschrijf de gelopen afstand, tijd en reden van stoppen.</p>
-
-        <ul>
-            <li>Na 1 minuut: <em>Je gaat goed. Nog vijf minuten te gaan.</em></li>
-            <li>Na 2 minuten: <em>Blijf zo door gaan. Nog vier minuten te gaan.</em></li>
-            <li>Na 3 minuten: <em>Je gaat goed. Je bent al halverwege de test.</em></li>
-            <li>Na 4 minuten: <em>Blijf zo doorgaan. Nog maar twee minuten te gaan.</em></li>
-            <li>Na 5 minuten: <em>Je gaat goed. Nog één minuut te gaan.</em></li>
-            <li>Na 5:45 minuten: <em>Over enkele seconden zeg ik dat je mag stoppen. Wanneer ik dat roep, stop je waar
-je op dat moment bent en ik kom naar je toe.</em></li>
-            <li>Na 6 minuten: Roep <em>'Stop'</em> (loop naar de patiënt toe en markeer het punt waar hij is gestopt en meet dit
-op)</li>
-        </ul>
+        <h2 class="display-2 fs-4">Testprotocol</h2>
+        <ol>
+            <li>Voorbereiden: laat de deelnemer plaatsnemen op de fiets.</li>
+            <li>Geef instructie: na de warming-up gaat de deelnemer fietsen met een snelheid tussen de 70-80 omwentelingen per minuut. Dit geeft een meter op de fiets aan.</li>
+            <li>Start met de warming-up: 3 minuten onbelast fietsen.</li>
+            <li>Na 3 minuten: verhoog het wattage van 0 naar 25 Watt.</li>
+            <li>Na 10 seconden: verhoog het wattage met 25 naar 50 Watt.</li>
+            <li>Na 20 seconden: verhoog het wattage met 25 naar 75 Watt.</li>
+            <li>Na 30 seconden: verhoog het wattage met 25 naar 100 Watt.</li>
+            <li>Na 40 seconden: verhoog het wattage met 25 naar 125 Watt.</li>
+            <li>en zo door….</li>
+            <li>Stop als het aantal omwentelingen van de deelnemer lager is dan 60 per minuut.</li>
+        </ol>
     </div>
 
     <div class="col">
@@ -177,95 +148,78 @@ op)</li>
             <h2 class="display-2 fs-4">Nametingen</h2>
             <table class="table table-borderless maxwidth-480">
                 <tr>
-                    <td><label for="six_mwt.parcour" class="form-label required">Parcoursafstand:</label></td>
+                    <td><label for="srt.msec" class="form-label required">Behaalde wattage (MSEC):</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <select name="six_mwt.parcour" id="six_mwt.parcour" class="form-select">
-                                <option value="10">10 m</option>
-                                <option value="30">30 m</option>
-                                <option value="50">50 m</option>
-                            </select>
+                            <input type="number" name="srt.msec" id="srt.msec" class="form-control" min="0" /><span class="ps-2">W</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="six_mwt.distance" class="form-label required">Gelopen afstand:</label></td>
+                    <td><label for="srt.heart_rate" class="form-label">Hartfrequentie:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="six_mwt.distance" id="six_mwt.distance" class="form-control" min="0" /><span class="ps-2">m</span>
+                            <input type="number" name="srt.heart_rate" id="srt.heart_rate" class="form-control" min="0" /><span class="ps-2">bpm</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="six_mwt.borg_dyspnoea" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg kortademigheid:</label></td>
+                    <td><label for="srt.oxygen_saturation" class="form-label">Zuurstofsaturatie:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="six_mwt.borg_dyspnoea" id="six_mwt.borg_dyspnoea" class="form-control" min="0" max="10" />
+                            <input type="number" name="srt.oxygen_saturation" id="srt.oxygen_saturation" class="form-control" min="0" max="100" /><span class="ps-2">%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="six_mwt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg vermoeidheid:</label></td>
+                    <td><label for="srt.borg_dyspnoea" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg kortademigheid:</a></label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="six_mwt.borg_fatigue" id="six_mwt.borg_fatigue" class="form-control" min="0" max="10" />
+                            <input type="number" name="srt.borg_dyspnoea" id="srt.borg_dyspnoea" class="form-control" min="0" max="10" />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label>Voornamelijke belemmering:</label></td>
+                    <td><label for="srt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg vermoeidheid:</a></label></td>
                     <td>
-                        <div class="form-check form-check-inline ">
-                            <input type="radio" name="six_mwt.bottleneck" value="dyspnoea" id="six_mwt.bottleneck.dyspnoea" class="form-check-input" />
-                            <label for="six_mwt.bottleneck.dyspnoea" class="form-check-label">Kortademigheid</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" name="six_mwt.bottleneck" value="fatigue" id="six_mwt.bottleneck.fatigue" class="form-check-input" />
-                            <label for="six_mwt.bottleneck.fatigue" class="form-check-label">Vermoeidheid</label>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="srt.borg_fatigue" id="srt.borg_fatigue" class="form-control" min="0" max="10" />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="six_mwt.oxygen_saturation" class="form-label">Zuurstofsaturatie:</label></td>
+                    <td><label for="srt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-RPE-meetinstr-KNGF-2018.pdf">Borg RPE:</a></label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="six_mwt.oxygen_saturation" id="six_mwt.oxygen_saturation" class="form-control" min="0" max="100" /><span class="ps-2">%</span>
+                            <input type="number" name="srt.borg_rpe" id="srt.borg_rpe" class="form-control" min="6" max="20" />
                         </div>
                     </td>
                 </tr>
             </table>
         </div>
 
-        <div id="six_mwt-results-wrapper" class="d-none">
+        <div id="results-wrapper" class="d-none">
             <h2 class="display-2 fs-4">Uitslag</h2>
             <table class="table table-borderless maxwidth-480">
                 <tr>
-                    <td>Gemiddelde loopsnelheid:</td>
-                    <td><span id="six_mwt-average-speed-ms"></span><span class="ps-2">m/s&nbsp;=&nbsp;</span><span id="six_mwt-average-speed-kmh"></span><span class="ps-2">km/h</span></td>
+                    <td>Maximale trainingsintensiteit (W<sub>MAX</sub>):</td>
+                    <td><span id="srt-wmax"></span><span class="ps-2">W</span></td>
                 </tr>
                 <tr>
-                    <td>Voorspelde afstand:</td>
-                    <td><span id="six_mwt-predicted"></span><span class="ps-2">m</span></td>
+                    <td>Voorspelde VO<sub>2MAX</sub> :</td>
+                    <td><span id="srt-vo2max-pred"></span><span class="ps-2">ml/min/kg</span></td>
                 </tr>
                 <tr>
-                    <td>Uitslag t.o.v. voorspelde afstand:</td>
-                    <td><span id="six_mwt-result"></span><span class="ps-2">%</span></td>
+                    <td>Geschatte VO<sub>2MAX</sub> :</td>
+                    <td><span id="srt-vo2max"></span><span class="ps-2">ml/min/kg => </span><span id="srt-vo2max-percentage-pred"></span>% van voorspeld</td>
                 </tr>
                 <tr>
-                    <td>Interpretatie:</td>
-                    <td><span id="six_mwt-result-interpretation"></span></td>
+                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a> o.b.v. W<sub>MAX</sub> :</td>
+                    <td><span id="srt-metwmax"></span></td>
                 </tr>
                 <tr>
-                    <td>Interpretatie bij COPD:</td>
-                    <td><span id="six_mwt-result-copd"></span></td>
-                </tr>
-                <tr>
-                    <td>Interpretatie bij artrose:</td>
-                    <td>Hoe meer meters zijn afgelegd hoe beter het functioneren.</td>
-                </tr>
-                <tr>
-                    <td>Interpretatie bij reumatoïde artritis:</td>
-                    <td>Hoe meer meters zijn afgelegd hoe beter het functioneren.</td>
+                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a> o.b.v. de geschatte VO<sub>2MAX</sub> :</td>
+                    <td><span id="srt-metvo2max"></span></td>
                 </tr>
             </table>
         </div>
