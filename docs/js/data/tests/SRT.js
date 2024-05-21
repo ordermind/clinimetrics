@@ -149,7 +149,7 @@ export default new Test({
     shortName: "SRT",
     longName: "Steep Ramp Test",
     description: `
-De Steep Ramp Test (SRT) is een korte <strong>maximale inspanningstest</strong> op een geijkte fietsergometer om de <strong>aerobe capaciteit</strong> te meten. Vanuit het testresultaat kan een schatting worden verkregen van de VO<sub>2MAX</sub> en het maximaal inspanningsvermogen (wMax). Doelgroep: gezonde kinderen en adolescenten (8 tot 18 jaar oud), kankerpatiënten, chronische long- en hartpatiënten, diabetes mellitus patiënten (DM II).
+De Steep Ramp Test (SRT) is een korte <strong>maximale inspanningstest</strong> op een geijkte fietsergometer om de <strong>aerobe capaciteit</strong> te meten. Vanuit het testresultaat kan een schatting worden verkregen van de VO<sub>2MAX</sub> en het maximaal inspanningsvermogen (W<sub>MAX</sub>). Doelgroep: gezonde kinderen en adolescenten (8 tot 18 jaar oud), kankerpatiënten, chronische long- en hartpatiënten, diabetes mellitus patiënten (DM II).
     `.trim(),
     templateContent,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/steep-ramp-test/",
