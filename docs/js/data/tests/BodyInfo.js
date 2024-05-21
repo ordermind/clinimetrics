@@ -1,8 +1,23 @@
 import Test from "../../data-types/Test.js";
 import { formatNumber, getTemplateContent, hideElementsById, isFilled, showElementsById } from "./utils.js";
 
-export function calculateBMI(height_cm, weight_kg) {
-    return weight_kg / (height_cm / 100) ** 2;
+export function calculateBMI({height_cm, weight_kg}) {
+    return parseInt(weight_kg) / (parseInt(height_cm) / 100) ** 2;
+}
+
+/**
+ * Returns predicted vo2max in the unit ml/min/kg.
+ */
+export function calculatePredictedVo2Max({age, sex, height_cm, weight_kg}) {
+    function calculateInLperMinute() {
+        if(sex === "M") {
+            return (0.023 * parseInt(height_cm)) + (0.0117 * parseInt(weight_kg)) - (0.031 * parseInt(age)) - 0.332;
+        }
+
+        return (0.0158 * parseInt(height_cm)) + (0.00899 * parseInt(weight_kg)) - (0.027 * parseInt(age)) +  0.207;
+    }
+
+    return calculateInLperMinute() * 1000 / parseInt(weight_kg);
 }
 
 function estimateHrMaxFox(age) {

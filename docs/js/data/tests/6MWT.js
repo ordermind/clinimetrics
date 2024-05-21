@@ -12,7 +12,7 @@ function calculatePredictedDistance({sex, age, height_cm, weight_kg, parcour, di
         distance: parseInt(distance),
     };
 
-    const BMI = calculateBMI(values.height_cm, values.weight_kg);
+    const BMI = calculateBMI(values);
 
     if(values.parcour === 10 && sex === "M") {
         return 1266 - (7.80 * values.age) - (5.92 * BMI);

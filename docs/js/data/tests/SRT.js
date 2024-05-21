@@ -1,4 +1,5 @@
 import Test from "../../data-types/Test.js";
+import { calculatePredictedVo2Max } from "./BodyInfo.js";
 import { formatNumber, getTemplateContent, isFilled, setContraIndication } from "./utils.js";
 
 function alertContraIndications(newState) {
@@ -41,14 +42,6 @@ function alertContraIndications(newState) {
     } else {
         setContraIndication(document.getElementById("srt.oxygen_saturation"));
     }
-}
-
-function calculatePredictedVo2Max(newState) {
-    if(newState.general.sex === "M") {
-        return (0.023 * newState.general.height_cm) + (0.0117 * newState.general.weight_kg) - (0.031 * newState.general.age) - 0.332;
-    }
-
-    return (0.0158 * newState.general.height_cm) + (0.00899 * newState.general.weight_kg) - (0.027 * newState.general.age) +  0.207;
 }
 
 function calculatewMaxMet(wMax) {
@@ -124,7 +117,7 @@ function displayResults(newState) {
         && isFilled(newState?.srt?.msec)
     ) {
         const wMax = 0.65 * parseInt(newState.srt.msec) - 3.88;
-        const vo2maxPred = calculatePredictedVo2Max(newState) * 1000 / newState.general.weight_kg; // ml/min/kg
+        const vo2maxPred = calculatePredictedVo2Max(newState.general); // ml/min/kg
         const vo2max = (0.0067 * wMax + 0.358) * 1000 / newState.general.weight_kg; // ml/min/kg
         const metwMax = calculatewMaxMet(wMax);
         const metVo2Max = vo2max / 3.5;
@@ -134,7 +127,7 @@ function displayResults(newState) {
         document.getElementById("srt-vo2max").innerText = formatNumber(vo2max, 0);
         document.getElementById("srt-vo2max-percentage-pred").innerText = formatNumber(vo2max / vo2maxPred * 100, 0);
         document.getElementById("srt-metwmax").innerText = metwMax;
-        document.getElementById("srt-metvo2max").innerText = formatNumber(metVo2Max, 0);
+        document.getElementById("srt-metvo2max").innerText = formatNumber(metVo2Max, 1);
 
         document.getElementById("results-wrapper").classList.remove("d-none");
     } else {
@@ -156,7 +149,7 @@ export default new Test({
     shortName: "SRT",
     longName: "Steep Ramp Test",
     description: `
-De Steep Ramp Test (SRT) is een korte <strong>maximale inspanningstest</strong> op een geijkte fietsergometer om de <strong>aerobe capaciteit</strong> te meten. Vanuit het testresultaat kan een schatting worden verkregen van de VO2max en het maximaal inspanningsvermogen (wMax). Doelgroep: gezonde kinderen en adolescenten (8 tot 18 jaar oud), kankerpatiënten, chronische long- en hartpatiënten, diabetes mellitus patiënten (DM II).
+De Steep Ramp Test (SRT) is een korte <strong>maximale inspanningstest</strong> op een geijkte fietsergometer om de <strong>aerobe capaciteit</strong> te meten. Vanuit het testresultaat kan een schatting worden verkregen van de VO<sub>2MAX</sub> en het maximaal inspanningsvermogen (wMax). Doelgroep: gezonde kinderen en adolescenten (8 tot 18 jaar oud), kankerpatiënten, chronische long- en hartpatiënten, diabetes mellitus patiënten (DM II).
     `.trim(),
     templateContent,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/steep-ramp-test/",

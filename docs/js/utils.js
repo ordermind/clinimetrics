@@ -159,7 +159,12 @@ export function deepEqual(obj1, obj2) {
 }
 
 export function massageStringForFlexibleComparison(string) {
-    return string
+    // strip HTML tags
+    const div = document.createElement("div");
+    div.innerHTML = string;
+    const cleanString = div.textContent || div.innerText || "";
+
+    return cleanString
         .toLowerCase()
         .replaceAll(/(^(m(\.|_)|mm(\.|_)|art(\.|_)|artt(\.|_)))|\s|&nbsp;|\.|,|_+/g, "");
 }

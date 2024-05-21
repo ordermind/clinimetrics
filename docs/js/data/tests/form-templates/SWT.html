@@ -3,7 +3,12 @@
     <div class="col">
         <div class="description">
             <h2 class="display-2 fs-4">Benodigdheden</h2>
-            <p>Een geijkte fietsergometer</p>
+            <ul>
+                <li>2 pionnen</li>
+                <li>stopwatch</li>
+                <li>opspeler voor het geluid</li>
+                <li>meetlint</li>
+            </ul>
         </div>
 
         <div class="personal-info">
@@ -116,31 +121,30 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td><label for="swt.protocol" class="form-label required">Testprotocol:</label></td>
+                    <td>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="swt.protocol" value="singh" id="swt.protocol.singh" class="form-check-input" />
+                            <label for="swt.protocol.singh" class="form-check-label">Coronairlijden / COPD (Singh et al. = Incremental Shuttle Walk Test ISWT)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="swt.protocol" value="hollywood" id="swt.protocol.hollywood" class="form-check-input" />
+                            <label for="swt.protocol.hollywood" class="form-check-label">Chronisch hartfalen (Hollywood)</label>
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
 
     <div class="col | description">
-        <h2 class="display-2 fs-4">Relatieve contra-indicaties</h2>
-        <ul>
-            <li>Maximale hartslag < 120 bpm</li>
-            <li>Hartfrequentieherstel < 12 bpm (1 min na maximale inspanning) in combinatie met Hf<sub>MAX</sub> < 85% van [Link type="Test" targetId="body_info" label="geschatte Hf<sub>MAX</sub>"] (chronotrope incompetentie)</li>
-        </ul>
-        <p>Als een van de bovenstaande contra-indicaties aanwezig is, overleg dan eerst met een specialist (sportarts/cardioloog).</p>
-
-        <h2 class="display-2 fs-4">Testprotocol</h2>
-        <ol>
-            <li>Voorbereiden: laat de deelnemer plaatsnemen op de fiets.</li>
-            <li>Geef instructie: na de warming-up gaat de deelnemer fietsen met een snelheid tussen de 70-80 omwentelingen per minuut. Dit geeft een meter op de fiets aan.</li>
-            <li>Start met de warming-up: 3 minuten onbelast fietsen.</li>
-            <li>Na 3 minuten: verhoog het wattage van 0 naar 25 Watt.</li>
-            <li>Na 10 seconden: verhoog het wattage met 25 naar 50 Watt.</li>
-            <li>Na 20 seconden: verhoog het wattage met 25 naar 75 Watt.</li>
-            <li>Na 30 seconden: verhoog het wattage met 25 naar 100 Watt.</li>
-            <li>Na 40 seconden: verhoog het wattage met 25 naar 125 Watt.</li>
-            <li>en zo door….</li>
-            <li>Stop als het aantal omwentelingen van de deelnemer lager is dan 60 per minuut.</li>
-        </ol>
+        <h2 class="display-2 fs-4">Instructies</h2>
+        <p>Zet twee pionnen op <strong>10 m</strong> afstand van elkaar om een parcour te creëren. De hartpatiënt wandelt tussen de twee pionnen in een tempo dat wordt aangegeven door een geluidssignaal.</p>
+        <p>De hartpatiënt wandelt tussen twee pionnen in een tempo dat wordt aangegeven door een geluidssignaal.</p>
+        <p>De proefpersoon vertrekt bij de eerste pion als een geluidssignaal klinkt en wandelt vervolgens naar de tweede pion waar hij op het volgende signaal moet zijn gearriveerd. De proefpersoon mag niet voor het signaal uit wandelen.</p>
+        <p>De wandelsnelheid wordt na een aantal shuttles opgevoerd door de tijd tussen de geluidssignalen te verkorten. Dit gebeurt wanneer de proefpersoon een 'stap' of 'level' hoger gaat. De proefpersoon probeert zoveel mogelijk trajecten af te leggen.</p>
+        <p>Er zijn twee verschillende protocollen: de oorspronkelijke (Singh et al.) en een aangepaste versie voor patiënten met chronisch hartfalen (Hollywood). Bij patiënten met chronisch hartfalen die de aanvangssnelheid van Hollywood niet halen, kan ook het protocol van Singh et al. worden gehanteerd.</p>
     </div>
 
     <div class="col">
@@ -148,58 +152,66 @@
             <h2 class="display-2 fs-4">Nametingen</h2>
             <table class="table table-borderless maxwidth-480">
                 <tr>
-                    <td><label for="srt.stop_reason" class="form-label">Stopreden:</label></td>
+                    <td><label for="swt.stop_reason" class="form-label">Stopreden:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="text" name="srt.stop_reason" id="srt.stop_reason" class="form-control" />
+                            <input type="text" name="swt.stop_reason" id="swt.stop_reason" class="form-control" />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="srt.msec" class="form-label required">Behaalde wattage (MSEC):</label></td>
+                    <td><label for="swt.time" class="form-label required">Totale tijd:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="srt.msec" id="srt.msec" class="form-control" min="0" /><span class="ps-2">W</span>
+                            <input type="text" name="swt.time" id="swt.time" class="form-control" placeholder="00:00" />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="srt.heart_rate" class="form-label">Hartfrequentie:</label></td>
+                    <td><label for="swt.distance" class="form-label required">Afgelegde afstand:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="srt.heart_rate" id="srt.heart_rate" class="form-control" min="0" /><span class="ps-2">bpm</span>
+                            <input type="number" name="swt.distance" id="swt.distance" class="form-control" min="0" /><span class="ps-2">m</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="srt.oxygen_saturation" class="form-label">Zuurstofsaturatie:</label></td>
+                    <td><label for="swt.heart_rate" class="form-label">Hartfrequentie:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="srt.oxygen_saturation" id="srt.oxygen_saturation" class="form-control" min="0" max="100" /><span class="ps-2">%</span>
+                            <input type="number" name="swt.heart_rate" id="swt.heart_rate" class="form-control" min="0" /><span class="ps-2">bpm</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="srt.borg_dyspnoea" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg kortademigheid:</a></label></td>
+                    <td><label for="swt.oxygen_saturation" class="form-label">Zuurstofsaturatie:</label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="srt.borg_dyspnoea" id="srt.borg_dyspnoea" class="form-control" min="0" max="10" />
+                            <input type="number" name="swt.oxygen_saturation" id="swt.oxygen_saturation" class="form-control" min="0" max="100" /><span class="ps-2">%</span>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="srt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg vermoeidheid:</a></label></td>
+                    <td><label for="swt.borg_dyspnoea" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg kortademigheid:</a></label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="srt.borg_fatigue" id="srt.borg_fatigue" class="form-control" min="0" max="10" />
+                            <input type="number" name="swt.borg_dyspnoea" id="swt.borg_dyspnoea" class="form-control" min="0" max="10" />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="srt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-RPE-meetinstr-KNGF-2018.pdf">Borg RPE:</a></label></td>
+                    <td><label for="swt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-0-10-meetinstr.pdf">Borg vermoeidheid:</a></label></td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <input type="number" name="srt.borg_rpe" id="srt.borg_rpe" class="form-control" min="6" max="20" />
+                            <input type="number" name="swt.borg_fatigue" id="swt.borg_fatigue" class="form-control" min="0" max="10" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="swt.borg_fatigue" class="form-label"><a href="https://meetinstrumentenzorg.nl/wp-content/uploads/instrumenten/Borg-RPE-meetinstr-KNGF-2018.pdf">Borg RPE:</a></label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="swt.borg_rpe" id="swt.borg_rpe" class="form-control" min="6" max="20" />
                         </div>
                     </td>
                 </tr>
@@ -209,25 +221,33 @@
         <div id="results-wrapper" class="d-none">
             <h2 class="display-2 fs-4">Uitslag</h2>
             <table class="table table-borderless maxwidth-480">
+                <tr id="swt-predicted-distance-singh-wrapper" class="d-none">
+                    <td>Voorspelde afstand:</td>
+                    <td><span id="swt-predicted-distance-singh"></span><span class="ps-2">m</span></td>
+                </tr>
+                <tr id="swt-distance-percentage-singh-wrapper" class="d-none">
+                    <td>Afstand % van voorspeld:</td>
+                    <td><span id="swt-distance-percentage-singh"></span><span class="ps-2">%</span></td>
+                </tr>
                 <tr>
-                    <td>Maximale trainingsintensiteit (W<sub>MAX</sub>):</td>
-                    <td><span id="srt-wmax"></span><span class="ps-2">W</span></td>
+                    <td>Gemiddelde loopsnelheid:</td>
+                    <td><span id="swt-average-speed"></span><span class="ps-2">km/h</span></td>
+                </tr>
+                <tr>
+                    <td><span id="swt-score-label"></span>:</td>
+                    <td><span id="swt-score"></span></td>
                 </tr>
                 <tr>
                     <td>Voorspelde VO<sub>2MAX</sub> :</td>
-                    <td><span id="srt-vo2max-pred"></span><span class="ps-2">ml/min/kg</span></td>
+                    <td><span id="swt-vo2max-pred"></span><span class="ps-2">ml/min/kg</span></td>
                 </tr>
                 <tr>
                     <td>Geschatte VO<sub>2MAX</sub> :</td>
-                    <td><span id="srt-vo2max"></span><span class="ps-2">ml/min/kg => </span><span id="srt-vo2max-percentage-pred"></span>% van voorspeld</td>
+                    <td><span id="swt-vo2max"></span><span class="ps-2">ml/min/kg => </span><span id="swt-vo2max-percentage-pred"></span>% van voorspeld</td>
                 </tr>
                 <tr>
-                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a> o.b.v. W<sub>MAX</sub> :</td>
-                    <td><span id="srt-metwmax"></span></td>
-                </tr>
-                <tr>
-                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a> o.b.v. de geschatte VO<sub>2MAX</sub> :</td>
-                    <td><span id="srt-metvo2max"></span></td>
+                    <td>Maximale <a href="./files/MET-lijst_KNGF-richtlijn_bijlage_4_Hartrevalidatie.pdf">METs</a>:</td>
+                    <td><span id="swt-met"></span></td>
                 </tr>
             </table>
         </div>

@@ -13,6 +13,9 @@ export const defaultValue = {
     six_mwt: {
         parcour: 10,
     },
+    swt: {
+        protocol: "singh",
+    },
 }
 
 const observableState = new LocalStoragePersistedObservableObject({localStorageId: "clinimetrics-state", defaultValue: cloneObject(defaultValue)});
