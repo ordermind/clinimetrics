@@ -6,7 +6,7 @@
             <ul>
                 <li>2 pionnen</li>
                 <li>stopwatch</li>
-                <li>opspeler voor het geluid</li>
+                <li>speler voor het geluid</li>
                 <li>meetlint</li>
             </ul>
         </div>
@@ -125,12 +125,12 @@
                     <td><label for="swt.protocol" class="form-label required">Testprotocol:</label></td>
                     <td>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="swt.protocol" value="singh" id="swt.protocol.singh" class="form-check-input" />
-                            <label for="swt.protocol.singh" class="form-check-label">Coronairlijden / COPD (Singh et al. = Incremental Shuttle Walk Test ISWT)</label>
+                            <input type="radio" name="swt.protocol" value="iwst_singh" id="swt.protocol.iwst_singh" class="form-check-input" />
+                            <label for="swt.protocol.iwst_singh" class="form-check-label">IWST Coronairlijden / COPD (Singh et al.)</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" name="swt.protocol" value="hollywood" id="swt.protocol.hollywood" class="form-check-input" />
-                            <label for="swt.protocol.hollywood" class="form-check-label">Chronisch hartfalen (Hollywood)</label>
+                            <input type="radio" name="swt.protocol" value="iwst_hollywood" id="swt.protocol.iwst_hollywood" class="form-check-input" />
+                            <label for="swt.protocol.iwst_hollywood" class="form-check-label">IWST Chronisch hartfalen (Hollywood)</label>
                         </div>
                     </td>
                 </tr>
@@ -140,11 +140,12 @@
 
     <div class="col | description">
         <h2 class="display-2 fs-4">Instructies</h2>
-        <p>Zet twee pionnen op <strong>9 m</strong> afstand van elkaar om een parcour van 10m te creëren. De hartpatiënt wandelt tussen de twee pionnen in een tempo dat wordt aangegeven door een geluidssignaal.</p>
+        <p>Zet twee pionnen op <strong>9 m</strong> afstand van elkaar om zo een parcour van 10m te creëren. De hartpatiënt wandelt tussen de twee pionnen in een tempo dat wordt aangegeven door een geluidssignaal.</p>
         <p>De hartpatiënt wandelt tussen twee pionnen in een tempo dat wordt aangegeven door een geluidssignaal.</p>
         <p>De proefpersoon vertrekt bij de eerste pion als een geluidssignaal klinkt en wandelt vervolgens naar de tweede pion waar hij op het volgende signaal moet zijn gearriveerd. De proefpersoon mag niet voor het signaal uit wandelen.</p>
         <p>De wandelsnelheid wordt na een aantal shuttles opgevoerd door de tijd tussen de geluidssignalen te verkorten. Dit gebeurt wanneer de proefpersoon een 'stap' of 'level' hoger gaat. De proefpersoon probeert zoveel mogelijk trajecten af te leggen.</p>
-        <p>Er zijn twee verschillende protocollen: de oorspronkelijke (Singh et al.) en een aangepaste versie voor patiënten met chronisch hartfalen (Hollywood). Bij patiënten met chronisch hartfalen die de aanvangssnelheid van Hollywood niet halen, kan ook het protocol van Singh et al. worden gehanteerd.</p>
+        <p>Deze test wordt verder onderverdeeld in de <strong>Incremental Shuttle Walk Test (ISWT)</strong> en de <strong>Endurance Shuttle Walk Test (ESWT)</strong>.</p>
+        <p>Bij de IWST zijn er twee verschillende protocollen: de oorspronkelijke versie (Singh et al.) en een aangepaste versie voor patiënten met chronisch hartfalen (Hollywood). Bij patiënten met chronisch hartfalen die de aanvangssnelheid van Hollywood niet halen, kan ook het protocol van Singh et al. worden gehanteerd.</p>
     </div>
 
     <div class="col">
@@ -221,13 +222,13 @@
         <div id="results-wrapper" class="d-none">
             <h2 class="display-2 fs-4">Uitslag</h2>
             <table class="table table-borderless maxwidth-480">
-                <tr id="swt-predicted-distance-singh-wrapper" class="d-none">
+                <tr id="swt-predicted-distance-iwst-singh-wrapper" class="d-none">
                     <td>Voorspelde afstand:</td>
-                    <td><span id="swt-predicted-distance-singh"></span><span class="ps-2">m</span></td>
+                    <td><span id="swt-predicted-distance-iwst-singh"></span><span class="ps-2">m</span></td>
                 </tr>
-                <tr id="swt-distance-percentage-singh-wrapper" class="d-none">
+                <tr id="swt-distance-percentage-iwst-singh-wrapper" class="d-none">
                     <td>Afstand % van voorspeld:</td>
-                    <td><span id="swt-distance-percentage-singh"></span><span class="ps-2">%</span></td>
+                    <td><span id="swt-distance-percentage-iwst-singh"></span><span class="ps-2">%</span></td>
                 </tr>
                 <tr>
                     <td>Gemiddelde loopsnelheid:</td>

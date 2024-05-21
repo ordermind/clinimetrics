@@ -1,25 +1,25 @@
 export function calculateSWTScore(rawTime, protocol) {
-    if(protocol === "singh") {
-        return calculateScoreSingh(rawTime);
+    if(protocol === "iwst_singh") {
+        return calculateScoreIwstSingh(rawTime);
     }
 
-    return calculateScoreHollywood(rawTime);
+    return calculateScoreIwstHollywood(rawTime);
 }
 
 export function calculateSWTVo2Max({time, distance, protocol}) {
-    if(protocol === "singh") {
-        return calculateVo2MaxSingh(distance);
+    if(protocol === "iwst_singh") {
+        return calculateVo2MaxIwstSingh(distance);
     }
 
-    return calculateVo2MaxHollywood(time);
+    return calculateVo2MaxIwstHollywood(time);
 }
 
 export function calculateSWTMets({time, distance, protocol}) {
-    if(protocol === "singh") {
-        return calculateMetsSingh(distance);
+    if(protocol === "iwst_singh") {
+        return calculateMetsIwstSingh(distance);
     }
 
-    return calculateMetsHollywood(time);
+    return calculateMetsIwstHollywood(time);
 }
 
 function formatTimeMMSS(rawTime) {
@@ -28,7 +28,7 @@ function formatTimeMMSS(rawTime) {
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-function calculateScoreHollywood(rawTime) {
+function calculateScoreIwstHollywood(rawTime) {
     const formattedTime = formatTimeMMSS(rawTime);
 
     if(formattedTime < "00:12") {
@@ -491,23 +491,23 @@ function calculateTimeInMinutes(rawTime) {
     return minutes;
 }
 
-function calculateScoreSingh(rawTime) {
+function calculateScoreIwstSingh(rawTime) {
     return calculateTimeInMinutes(rawTime) + 1;
 }
 
-function calculateVo2MaxSingh(distance) {
+function calculateVo2MaxIwstSingh(distance) {
     return 0.0438 * parseInt(distance) + 0.8569;
 }
 
-function calculateVo2MaxHollywood(rawTime) {
-    return calculateMetsHollywood(rawTime) * 3.5;
+function calculateVo2MaxIwstHollywood(rawTime) {
+    return calculateMetsIwstHollywood(rawTime) * 3.5;
 }
 
-function calculateMetsSingh(distance) {
-    return calculateVo2MaxSingh(distance) / 3.5;
+function calculateMetsIwstSingh(distance) {
+    return calculateVo2MaxIwstSingh(distance) / 3.5;
 }
 
-function calculateMetsHollywood(rawTime) {
+function calculateMetsIwstHollywood(rawTime) {
     const formattedTime = formatTimeMMSS(rawTime);
 
     if(formattedTime < "02:10") {

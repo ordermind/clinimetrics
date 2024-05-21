@@ -14,7 +14,7 @@ export const defaultValue = {
         parcour: 10,
     },
     swt: {
-        protocol: "singh",
+        protocol: "iwst_singh",
     },
 }
 

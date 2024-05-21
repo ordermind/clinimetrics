@@ -54,11 +54,11 @@ function calculateTimeInSeconds(rawTime) {
 /**
  * Returns predicted vo2max in the unit ml/min/kg.
  */
-function calculatePredictedDistanceSingh(newState) {
+function calculatePredictedDistanceIwstSingh(newState) {
     if(newState.general.sex === "M") {
         return 1449.701 - (11.735 * newState.general.age) + 241.897 - (5.686 * calculateBMI(newState.general));
     }
-    
+
     return 1449.701 - (11.735 * newState.general.age) - (5.686 * calculateBMI(newState.general));
 }
 
@@ -73,7 +73,7 @@ function displayResults(newState) {
         && isFilled(newState?.swt?.distance)
     ) {
         const averageSpeed = parseInt(newState.swt.distance) / calculateTimeInSeconds(newState.swt.time) * 3.6; // km/h
-        const scoreLabel = newState.swt.protocol === "singh" ? "Level" : "Score";
+        const scoreLabel = newState.swt.protocol === "iwst_singh" ? "Level" : "Score";
         const score = calculateSWTScore(newState.swt.time, newState.swt.protocol);
         const vo2maxPred = calculatePredictedVo2Max(newState.general); // ml/min/kg
         const vo2max = calculateSWTVo2Max(newState.swt); // ml/min/kg
@@ -86,33 +86,33 @@ function displayResults(newState) {
         document.getElementById("swt-vo2max").innerText = formatNumber(vo2max, 0);
         document.getElementById("swt-vo2max-percentage-pred").innerText = formatNumber(vo2max / vo2maxPred * 100, 0);
         document.getElementById("swt-met").innerText = formatNumber(mets, 1);
-        
-        if(newState.swt.protocol === "singh") {
-            const predictedDistance = calculatePredictedDistanceSingh(newState);
 
-            document.getElementById("swt-predicted-distance-singh").innerText = formatNumber(predictedDistance, 0);
-            document.getElementById("swt-distance-percentage-singh").innerText = formatNumber(parseInt(newState.swt.distance) / predictedDistance * 100, 0);
+        if(newState.swt.protocol === "iwst_singh") {
+            const predictedDistance = calculatePredictedDistanceIwstSingh(newState);
 
-            document.getElementById("swt-predicted-distance-singh-wrapper").classList.remove("d-none");
-            document.getElementById("swt-distance-percentage-singh-wrapper").classList.remove("d-none");
+            document.getElementById("swt-predicted-distance-iwst-singh").innerText = formatNumber(predictedDistance, 0);
+            document.getElementById("swt-distance-percentage-iwst-singh").innerText = formatNumber(parseInt(newState.swt.distance) / predictedDistance * 100, 0);
+
+            document.getElementById("swt-predicted-distance-iwst-singh-wrapper").classList.remove("d-none");
+            document.getElementById("swt-distance-percentage-iwst-singh-wrapper").classList.remove("d-none");
 
 
         } else {
-            document.getElementById("swt-predicted-distance-singh-wrapper").classList.add("d-none");
-            document.getElementById("swt-distance-percentage-singh-wrapper").classList.add("d-none");
+            document.getElementById("swt-predicted-distance-iwst-singh-wrapper").classList.add("d-none");
+            document.getElementById("swt-distance-percentage-iwst-singh-wrapper").classList.add("d-none");
 
-            document.getElementById("swt-predicted-distance-singh").innerText = "";
-            document.getElementById("swt-distance-percentage-singh").innerText = "";
+            document.getElementById("swt-predicted-distance-iwst-singh").innerText = "";
+            document.getElementById("swt-distance-percentage-iwst-singh").innerText = "";
         }
 
         document.getElementById("results-wrapper").classList.remove("d-none");
     } else {
         document.getElementById("results-wrapper").classList.add("d-none");
-        document.getElementById("swt-predicted-distance-singh-wrapper").classList.add("d-none");
-        document.getElementById("swt-distance-percentage-singh-wrapper").classList.add("d-none");
+        document.getElementById("swt-predicted-distance-iwst-singh-wrapper").classList.add("d-none");
+        document.getElementById("swt-distance-percentage-iwst-singh-wrapper").classList.add("d-none");
 
-        document.getElementById("swt-predicted-distance-singh").innerText = "";
-        document.getElementById("swt-distance-percentage-singh").innerText = "";
+        document.getElementById("swt-predicted-distance-iwst-singh").innerText = "";
+        document.getElementById("swt-distance-percentage-iwst-singh").innerText = "";
         document.getElementById("swt-average-speed").innerText = "";
         document.getElementById("swt-score-label").innerText = "";
         document.getElementById("swt-score").innerText = "";
