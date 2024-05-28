@@ -2,6 +2,39 @@ import Test from "../../data-types/Test.js";
 import observableState from "../../state.js";
 import { getTemplateContent, scrollToNextQuestionOnFormElementChange } from "./utils.js";
 
+function hasKnownScores(newState) {
+    return newState?.bbs?.pre?.scores?.length;
+}
+
+function updateIndividualScoresFromKnownScores(newState) {
+    const splitScores = Array.from(newState.bbs.pre.scores.matchAll(/([0-9]+)/g)).map(item => item[0]);
+
+    for(const [index, score] of splitScores.entries()) {
+        newState.bbs[`assignment_${index + 1}`] = score;
+    }
+
+    const state = observableState.getObject();
+    state.bbs = newState.bbs;
+}
+
+function disableAllAssignments() {
+    document.querySelectorAll(".test-item").forEach(testItem => {
+        testItem.classList.add("disabled");
+        testItem.querySelectorAll(`input[type="radio"]`).forEach(radioElement => {
+            radioElement.disabled = true;
+        })
+    });
+}
+
+function enableAllAssignments() {
+    document.querySelectorAll(".test-item").forEach(testItem => {
+        testItem.classList.remove("disabled");
+        testItem.querySelectorAll(`input[type="radio"]`).forEach(radioElement => {
+            radioElement.disabled = false;
+        })
+    });
+}
+
 function applyShowAllAssignmentsCheckbox(newState) {
     const assignmentsWrapper = document.getElementById("assignments-wrapper");
     if(newState?.bbs?.show_all_assignments) {
@@ -12,6 +45,15 @@ function applyShowAllAssignmentsCheckbox(newState) {
 }
 
 function applyInterFieldEffects(newState) {
+    if(hasKnownScores(newState)) {
+        disableAllAssignments();
+        updateIndividualScoresFromKnownScores(newState);
+
+        return;
+    } else {
+        enableAllAssignments();
+    }
+
     // If the patient can stand independently, the sit test does not need to be executed.
     const sitTestScoreElements = document.testForm["bbs.assignment_3"];
     if(newState?.bbs?.assignment_2 === "4") {
