@@ -165,7 +165,7 @@ const templateContent = await getTemplateContent("BI.html");
 export default new Test({
     id: "bi",
     shortName: "BI",
-    longName: "Barthel Index",
+    longName: "Barthel Index - 10 items",
     description: `
 Met de Barthel Index kan de mate van (lichamelijke of verbale) hulp die een persoon nodig heeft om algemene dagelijkse (ADL) handelingen uit te voeren worden vastgesteld, ongeacht de onderliggende pathologie.
     `.trim(),
