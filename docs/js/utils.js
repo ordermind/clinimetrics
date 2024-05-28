@@ -41,8 +41,12 @@ export function replaceNotes(html) {
 }
 
 export function renderNotesTooltip(notes) {
-    if(!notes.length) {
+    if(!notes || !notes.length) {
         return "";
+    }
+
+    if(!Array.isArray(notes)) {
+        notes = [notes];
     }
 
     let notesTooltip = "";

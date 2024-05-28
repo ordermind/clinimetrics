@@ -1,0 +1,34 @@
+<div class="mb-3">${description}</div>
+<div class="description">
+    <p>Gewoonlijk zijn de prestaties van de laatste 24 - 48 uur belangrijk, maar af en toe zijn langere perioden relevant. Bewusteloze patiënten scoren op alle items een '0', ook al is er nog geen incontinentie.</p>
+</div>
+<div class="personal-info">
+    <h2 class="display-2 fs-4">Persoonlijke gegevens</h2>
+    <table class="table table-borderless maxwidth-480">
+        <tr>
+            <td><label for="general.name" class="form-label">Naam:</label></td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <input type="text" name="general.name" id="general.name" class="form-control" />
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="mb-3 maxwidth-480 | pre-measurements">
+    <h2 class="display-2 fs-4">Vooraf bekende scores</h2>
+    <input type="text" name="bi.pre.scores" id="bi.pre.scores" placeholder="X+X+X+...+X" class="form-control" />
+</div>
+
+<div id="results-wrapper" class="d-none mb-4">
+    <h2 class="display-2 fs-4">Uitslag</h2>
+    <div class="table-responsive">
+        <table id="bi-interpretation-questions" class="table table-borderless">
+        </table>
+    </div>
+    <h3 class="display-3 fs-5">Totale score</h3>
+    <span id="bi-total-score" class="d-flex align-items-center"></span>
+    <h3 class="display-3 fs-5">Interpretatie</h3>
+    <div id="bi-interpretation"></div>
+</div>

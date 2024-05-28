@@ -1,6 +1,7 @@
 export const arrTests = await Promise.all([
     "6MWT.js",
     "BBS.js",
+    "BI.js",
     "BodyInfo.js",
     "DEMMI.js",
     "MI.js",
