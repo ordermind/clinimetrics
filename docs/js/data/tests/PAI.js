@@ -60,10 +60,6 @@ function onFormElementChange(e) {
     }
 }
 
-function onClickClearForm() {
-    hideResults();
-}
-
 function onDisplayCriteriaResultsClick(e) {
     const state = observableState.getObject();
     displayResults(state);
@@ -89,8 +85,8 @@ extremiteiten passief te bewegen. Doelgroep: patiënten met dementie.
     `.trim(),
     templateContent,
     onFormElementChange,
-    onClickClearForm,
-    onClickClearAll: onClickClearForm,
+    onClickClearForm: hideResults,
+    onClickClearAll: hideResults,
     postRender,
     cleanup,
 });
