@@ -11,8 +11,12 @@ export default class Test {
     #getformContentHTML;
     #onStateChange;
     #onFormElementChange;
+    #onClickClearForm;
+    #onClickClearAll;
+    #postRender;
+    #cleanup;
 
-    constructor({id, shortName = "", longName, description = "", templateContent, externalSourceUrl = "", getformContentHTML = null, onStateChange = null, onFormElementChange = null}) {
+    constructor({id, shortName = "", longName, description = "", templateContent, externalSourceUrl = "", getformContentHTML = null, onStateChange = null, onFormElementChange = null, onClickClearForm = null, onClickClearAll = null, postRender = null, cleanup = null}) {
         this.#id = id;
         this.#shortName = shortName;
         this.#longName = longName;
@@ -23,10 +27,18 @@ export default class Test {
         this.#getformContentHTML = getformContentHTML;
         this.#onStateChange = onStateChange;
         this.#onFormElementChange = onFormElementChange;
+        this.#onClickClearForm = onClickClearForm;
+        this.#onClickClearAll = onClickClearAll;
+        this.#postRender = postRender;
+        this.#cleanup = cleanup;
 
         this.getContent = this.getContent.bind(this);
         this.onStateChange = this.onStateChange.bind(this);
         this.onFormElementChange = this.onFormElementChange.bind(this);
+        this.onClickClearForm = this.onClickClearForm.bind(this);
+        this.onClickClearAll = this.onClickClearAll.bind(this);
+        this.postRender = this.postRender.bind(this);
+        this.cleanup = this.cleanup.bind(this);
     }
 
     get id() {
@@ -83,5 +95,37 @@ export default class Test {
         }
 
         this.#onFormElementChange(e);
+    }
+
+    onClickClearForm() {
+        if(!this.#onClickClearForm) {
+            return;
+        }
+
+        this.#onClickClearForm();
+    }
+
+    onClickClearAll() {
+        if(!this.#onClickClearAll) {
+            return;
+        }
+
+        this.#onClickClearAll();
+    }
+
+    postRender() {
+        if(!this.#postRender) {
+            return;
+        }
+
+        this.#postRender();
+    }
+
+    cleanup() {
+        if(!this.#cleanup) {
+            return;
+        }
+
+        this.#cleanup();
     }
 }

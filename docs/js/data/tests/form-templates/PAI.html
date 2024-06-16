@@ -1,0 +1,84 @@
+<div class="mb-3">${description}</div>
+<div class="row row-cols-1 row-cols-lg-2 justify-content-between">
+    <div class="col maxwidth-800">
+        <div class="description">
+            <h2 class="display-2 fs-4">Benodigdheden</h2>
+            <p>Stoel (bij voorkeur zonder armleuningen) of bed (bedhekken omlaag)</p>
+        </div>
+
+        <div class="personal-info">
+            <h2 class="display-2 fs-4">Persoonlijke gegevens</h2>
+            <table class="table table-borderless maxwidth-480">
+                <tr>
+                    <td><label for="general.name" class="form-label">Naam:</label></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <input type="text" name="general.name" id="general.name" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="description">
+            <h2 class="display-2 fs-4 mb-3">Instructies</h2>
+
+            <h3 class="display-3 fs-5">Voor het meten</h3>
+            <ul>
+                <li>Maak kennis met de cliënt. Geef aan wat je gaat doen, maak hierbij duidelijk dat de cliënt zich tijdens de bewegingen moet ontspannen en de bewegingen moet laten gebeuren.</li>
+                <li>Cliënt zit in een stoel of ligt op zijn rug in bed.</li>
+            </ul>
+
+            <h3 class="display-3 fs-5">Tijdens het meten</h3>
+            <p>Beweeg één voor één alle ledematen in grote bewegingstrajecten. <strong>Maak de totale beweging steeds 2 maal, eerst langzaam en dan snel. Doe dit zowel links als rechts.</strong></p>
+            <ul>
+                <li>Anteflexie / retroflexie van de schouder</li>
+                <li>Flexie / extensie van de elleboog</li>
+                <li>Anteflexie / retroflexie van de heup</li>
+            </ul>
+
+            <img src="./images/pai.png" />
+        </div>
+    </div>
+    <div class="col">
+        <h2 class="display-2 fs-4">Bevindingen</h2>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="pai.criteria.variable_resistance" id="pai.criteria.variable_resistance">
+            <label class="form-check-label" for="pai.criteria.variable_resistance">Er is een onvrijwillige <strong>variabele weerstand</strong> tegen passief bewegen</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="pai.criteria.speed_dependent" id="pai.criteria.speed_dependent">
+            <label class="form-check-label" for="pai.criteria.speed_dependent">De mate van weerstand is <strong>afhankelijk van de snelheid</strong> van bewegen: langzaam bewegen geeft weinig weerstand, snel bewegen geeft veel weerstand</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="pai.criteria.direction_independent" id="pai.criteria.direction_independent">
+            <label class="form-check-label" for="pai.criteria.direction_independent">De weerstand tegen passief bewegen kan in <strong>elke bewegingsrichting</strong> voelbaar zijn</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="pai.criteria.no_clasp_knife" id="pai.criteria.no_clasp_knife">
+            <label class="form-check-label" for="pai.criteria.no_clasp_knife">Er is <strong>geen knipmesfenomeen</strong></label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="pai.criteria.distribution" id="pai.criteria.distribution">
+            <label class="form-check-label" for="pai.criteria.distribution">De weerstand is voelbaar in <strong>2 richtingen in 1 lidmaat</strong> OF in <strong>2 verschillende lidmaten</strong></label>
+        </div>
+
+        <button type="button" class="btn btn-primary mt-2 mb-2" id="pai-display-criteria-results">Uitslag tonen</button>
+
+        <div id="pai-criteria-results-wrapper" class="d-none mt-2">
+            <h2 class="display-2 fs-4">Uitslag</h2>
+            <p id="pai-criteria-results"></p>
+        </div>
+
+        <div id="pai-mas-wrapper" class="d-none">
+            <h2 class="display-2 fs-4">Ernst van de paratonie</h2>
+                <div class="form-check"><input class="form-check-input" type="radio" name="pai.mas" id="pai.mas-0" value="0" /><label class="form-check-label" for="pai.mas-0">0 - Normale tonus, passief bewegen normaal mogelijk</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="pai.mas" id="pai.mas-1" value="1" /><label class="form-check-label" for="pai.mas-1">1 - Normale tonus bij aanvang, plots optredende weerstand die weer weg gaat tijdens het bewegen</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="pai.mas" id="pai.mas-1+" value="1+" /><label class="form-check-label" for="pai.mas-1+">1+ - Licht verhoogde tonus met geringe weerstand tijdens passief bewegen, treedt vaak plots op tot einde</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="pai.mas" id="pai.mas-2" value="2" /><label class="form-check-label" for="pai.mas-2">2 - Matig verhoogde tonus met matige weerstand tijdens passief bewegen, bewegen blijft vlot mogelijk</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="pai.mas" id="pai.mas-3" value="3" /><label class="form-check-label" for="pai.mas-3">3 - Ernstig verhoogde tonus met zware weerstand tijdens passief bewegen</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="pai.mas" id="pai.mas-4" value="4" /><label class="form-check-label" for="pai.mas-4">4 - Zeer ernstig verhoogde tonus passief bewegen is vrijwel niet mogelijk in geen enkele richting</label></div>
+        </div>
+    </div>
+</div>

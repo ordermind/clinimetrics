@@ -222,22 +222,28 @@ export default class TestPage extends AbstractPage {
         document.querySelector(".test-form").addEventListener("change", this.onFormElementChange);
         document.querySelector(".test-form").addEventListener("change", this.#test.onFormElementChange);
         document.querySelector(".btn-clear-form")?.addEventListener("click", this.onClickClearForm);
+        document.querySelector(".btn-clear-form")?.addEventListener("click", this.#test.onClickClearForm);
         document.querySelector(".btn-clear-all")?.addEventListener("click", this.onClickClearAll);
+        document.querySelector(".btn-clear-all")?.addEventListener("click", this.#test.onClickClearAll);
 
         observableState.addSubscriber("abstract-page", this.onStateChange);
         observableState.addSubscriber(this.#test.id, this.#test.onStateChange);
         this.#test.onStateChange(cloneObject(observableState.getObject()));
+        this.#test.postRender();
     }
 
     unmount() {
         document.querySelector(".test-form").removeEventListener("change", this.onFormElementChange);
         document.querySelector(".test-form").removeEventListener("change", this.#test.onFormElementChange);
         document.querySelector(".btn-clear-form")?.removeEventListener("click", this.onClickClearForm);
+        document.querySelector(".btn-clear-form")?.removeEventListener("click", this.#test.onClickClearForm);
         document.querySelector(".btn-clear-all")?.removeEventListener("click", this.onClickClearAll);
+        document.querySelector(".btn-clear-all")?.removeEventListener("click", this.#test.onClickClearAll);
 
         observableState.removeSubscriber("abstract-page");
         observableState.removeSubscriber(this.#test.id);
         this.#homeLinkBlock.cleanUp();
         this.#searchBarBlock.cleanUp();
+        this.#test.cleanup();
     }
 }
