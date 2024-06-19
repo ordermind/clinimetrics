@@ -1,5 +1,6 @@
 import Test from "../../data-types/Test.js";
-import { calculatePredictedVo2Max, calculateBMI } from "./BodyInfo.js";
+import { calculateBMI } from "./calculations/BodyInfo-Fat.js";
+import { calculatePredictedVo2Max } from "./calculations/BodyInfo-HR.js";
 import { calculateSWTMets, calculateSWTScore, calculateSWTVo2Max } from "./calculations/SWT.js";
 import { formatNumber, getTemplateContent, isFilled, setContraIndication } from "./utils.js";
 
