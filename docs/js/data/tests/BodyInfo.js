@@ -1,4 +1,5 @@
 import Test from "../../data-types/Test.js";
+import { calculateFatResults, getBMICutoffsForPerson } from "./calculations/BodyInfo-Fat.js";
 import { calculateHrResults } from "./calculations/BodyInfo-HR.js";
 import { formatNumber, getTemplateContent, hideElementsById, isFilled, showElementsById } from "./utils.js";
 
@@ -89,6 +90,59 @@ function updateHeartRateCalculations(newState) {
     }
 }
 
+function hideAllFatCalcWrappers() {
+    hideElementsById([
+        "fat-results-divider",
+        "bmi-wrapper",
+        "whtr-wrapper",
+        "wht2r-wrapper",
+        "wht05r-wrapper",
+        "fat-percentage-wrapper",
+    ]);
+}
+
+function getBMIInterpretation({bmi, age, sex}) {
+    const cutoffs = getBMICutoffsForPerson({age, sex});
+
+    for(const cutoff of cutoffs.reverse()) {
+        if(bmi >= cutoff.minValue) {
+            return cutoff.label;
+        }
+    }
+
+    return "";
+}
+
+function updateFatCalculations(newState) {
+    const results = calculateFatResults(newState);
+
+    if(!Object.keys(results).length) {
+        hideAllFatCalcWrappers();
+
+        return;
+    }
+
+    showElementsById([
+        "fat-results-divider",
+    ]);
+
+    if(results.hasOwnProperty("bmi")) {
+        let text = formatNumber(results.bmi, 0);
+        if(isFilled(newState?.general?.age) && isFilled(newState?.general?.sex)) {
+            text += " => " + getBMIInterpretation({bmi: results.bmi, age: parseInt(newState?.general?.age), sex: newState?.general?.sex});
+        }
+        document.getElementById("bmi").innerText = text;
+
+        showElementsById([
+            "bmi-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "bmi-wrapper",
+        ]);
+    }
+}
+
 const templateContent = await getTemplateContent("BodyInfo.html");
 
 export default new Test({
@@ -100,6 +154,7 @@ Algemene informatie zoals lichaamssamenstelling, hartfrequentie etc.
     templateContent,
     onStateChange: (newState) => {
         applyInterFieldEffects(newState);
+        updateFatCalculations(newState);
         updateHeartRateCalculations(newState);
     }
 });
