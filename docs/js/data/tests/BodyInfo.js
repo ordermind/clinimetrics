@@ -1,6 +1,7 @@
 import Test from "../../data-types/Test.js";
 import { calculateFatResults } from "./calculations/BodyInfo-Fat.js";
 import { getBMICutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-BMI.js";
+import { getWHtRCutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-WHtR.js";
 import { calculateHrResults } from "./calculations/BodyInfo-HR.js";
 import { formatNumber, getTemplateContent, hideElementsById, isFilled, showElementsById } from "./utils.js";
 
@@ -114,6 +115,18 @@ function getBMIInterpretation({bmi, age, sex}) {
     return "";
 }
 
+function getWHtRInterpretation({whtr, age, sex}) {
+    const cutoffs = getWHtRCutoffsForPerson({age, sex});
+
+    for(const cutoff of cutoffs.reverse()) {
+        if(whtr >= cutoff.minValue) {
+            return cutoff.label;
+        }
+    }
+
+    return "";
+}
+
 function updateFatCalculations(newState) {
     const results = calculateFatResults(newState);
 
@@ -140,6 +153,22 @@ function updateFatCalculations(newState) {
     } else {
         hideElementsById([
             "bmi-wrapper",
+        ]);
+    }
+
+    if(results.hasOwnProperty("whtr")) {
+        let text = formatNumber(results.whtr, 2);
+        if(isFilled(newState?.general?.age) && isFilled(newState?.general?.sex)) {
+            text += " => " + getWHtRInterpretation({whtr: results.whtr, age: parseInt(newState?.general?.age), sex: newState?.general?.sex});
+        }
+        document.getElementById("whtr").innerText = text;
+
+        showElementsById([
+            "whtr-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "whtr-wrapper",
         ]);
     }
 }
