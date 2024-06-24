@@ -1,5 +1,6 @@
 import Test from "../../data-types/Test.js";
-import { calculateFatResults, getBMICutoffsForPerson } from "./calculations/BodyInfo-Fat.js";
+import { calculateFatResults } from "./calculations/BodyInfo-Fat.js";
+import { getBMICutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-BMI.js";
 import { calculateHrResults } from "./calculations/BodyInfo-HR.js";
 import { formatNumber, getTemplateContent, hideElementsById, isFilled, showElementsById } from "./utils.js";
 
