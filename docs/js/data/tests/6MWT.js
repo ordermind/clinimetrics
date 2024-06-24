@@ -1,6 +1,6 @@
 import Test from "../../data-types/Test.js";
 import { renderNotesTooltip } from "../../utils.js";
-import { calculateBMI } from "./BodyInfo.js";
+import { calculateBMI } from "./calculations/BodyInfo-Fat.js";
 import { formatNumber, getTemplateContent, isFilled, setContraIndication } from "./utils.js";
 
 function calculatePredictedDistance({sex, age, height_cm, weight_kg, parcour, distance}) {

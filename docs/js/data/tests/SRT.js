@@ -1,5 +1,5 @@
 import Test from "../../data-types/Test.js";
-import { calculatePredictedVo2Max } from "./BodyInfo.js";
+import { calculatePredictedVo2Max } from "./calculations/BodyInfo-HR.js";
 import { formatNumber, getTemplateContent, isFilled, setContraIndication } from "./utils.js";
 
 function alertContraIndications(newState) {
