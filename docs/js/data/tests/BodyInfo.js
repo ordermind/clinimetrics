@@ -1,6 +1,7 @@
 import Test from "../../data-types/Test.js";
 import { calculateFatResults } from "./calculations/BodyInfo-Fat.js";
 import { getBMICutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-BMI.js";
+import { getWHt05RCutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-WHt05R.js";
 import { getWHtRCutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-WHtR.js";
 import { calculateHrResults } from "./calculations/BodyInfo-HR.js";
 import { formatNumber, getTemplateContent, hideElementsById, isFilled, showElementsById } from "./utils.js";
@@ -127,6 +128,18 @@ function getWHtRInterpretation({whtr, age, sex}) {
     return "";
 }
 
+function getWHt05RInterpretation({wht05r, age, sex}) {
+    const cutoffs = getWHt05RCutoffsForPerson({age, sex});
+
+    for(const cutoff of cutoffs.reverse()) {
+        if(wht05r >= cutoff.minValue) {
+            return cutoff.label;
+        }
+    }
+
+    return "";
+}
+
 function updateFatCalculations(newState) {
     const results = calculateFatResults(newState);
 
@@ -169,6 +182,35 @@ function updateFatCalculations(newState) {
     } else {
         hideElementsById([
             "whtr-wrapper",
+        ]);
+    }
+
+    if(results.hasOwnProperty("wht05r")) {
+        let text = formatNumber(results.wht05r, 4);
+        if(isFilled(newState?.general?.age) && isFilled(newState?.general?.sex)) {
+            text += " => " + getWHt05RInterpretation({wht05r: results.wht05r, age: parseInt(newState?.general?.age), sex: newState?.general?.sex});
+        }
+        document.getElementById("wht05r").innerText = text;
+
+        showElementsById([
+            "wht05r-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "wht05r-wrapper",
+        ]);
+    }
+
+    if(results.hasOwnProperty("wht2r")) {
+        let text = formatNumber(results.wht2r, 4);
+        document.getElementById("wht2r").innerText = text;
+
+        showElementsById([
+            "wht2r-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "wht2r-wrapper",
         ]);
     }
 }

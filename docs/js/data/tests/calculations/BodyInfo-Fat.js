@@ -4,6 +4,14 @@ function calculateWhtr({waist_size_cm, height_cm}) {
     return waist_size_cm / height_cm;
 }
 
+function calculateWht05r({waist_size_cm, height_cm}) {
+    return waist_size_cm / height_cm ** 0.5;
+}
+
+function calculateWht2r({waist_size_cm, height_cm}) {
+    return waist_size_cm / height_cm ** 2;
+}
+
 export function calculateBMI({height_cm, weight_kg}) {
     return parseInt(weight_kg) / (parseInt(height_cm) / 100) ** 2;
 }
@@ -26,6 +34,8 @@ export function calculateFatResults(newState) {
 
     if(height_cm && waist_size_cm) {
         results.whtr = calculateWhtr({waist_size_cm, height_cm});
+        results.wht05r = calculateWht05r({waist_size_cm, height_cm});
+        results.wht2r = calculateWht2r({waist_size_cm, height_cm});
     }
 
     return results;
