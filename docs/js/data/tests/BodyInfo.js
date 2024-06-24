@@ -1,6 +1,7 @@
 import Test from "../../data-types/Test.js";
 import { calculateFatResults } from "./calculations/BodyInfo-Fat.js";
 import { getBMICutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-BMI.js";
+import { getFatPercentageCutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-Percentage.js";
 import { getWHt05RCutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-WHt05R.js";
 import { getWHtRCutoffsForPerson } from "./calculations/BodyInfo-Fat/BodyInfo-Fat-WHtR.js";
 import { calculateHrResults } from "./calculations/BodyInfo-HR.js";
@@ -140,6 +141,18 @@ function getWHt05RInterpretation({wht05r, age, sex}) {
     return "";
 }
 
+function getFatPercentageInterpretation({fatPercentage, age, sex}) {
+    const cutoffs = getFatPercentageCutoffsForPerson({age, sex});
+
+    for(const cutoff of cutoffs.reverse()) {
+        if(fatPercentage >= cutoff.minValue) {
+            return cutoff.label;
+        }
+    }
+
+    return "";
+}
+
 function updateFatCalculations(newState) {
     const results = calculateFatResults(newState);
 
@@ -211,6 +224,25 @@ function updateFatCalculations(newState) {
     } else {
         hideElementsById([
             "wht2r-wrapper",
+        ]);
+    }
+
+    if(results.hasOwnProperty("fat_percentage")) {
+        let text = formatNumber(results.fat_percentage, 0) + "%";
+        if(isFilled(newState?.general?.age) && isFilled(newState?.general?.sex)) {
+            const interpretation = getFatPercentageInterpretation({fatPercentage: results.fat_percentage, age: parseInt(newState?.general?.age), sex: newState?.general?.sex});
+            if(interpretation) {
+                text += " => " + interpretation
+            }
+        }
+        document.getElementById("fat-percentage").innerText = text;
+
+        showElementsById([
+            "fat-percentage-wrapper",
+        ]);
+    } else {
+        hideElementsById([
+            "fat-percentage-wrapper",
         ]);
     }
 }
