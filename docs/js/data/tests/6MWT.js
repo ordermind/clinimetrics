@@ -153,7 +153,7 @@ export default new Test({
     shortName: "6MWT",
     longName: "6 minuten wandeltest",
     description: `
-De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</strong>${renderNotesTooltip([functionalCapacityDescription])} te meten. Doelgroep: volwassen en kinderen in het algemeen maar specifiek onderzocht bij respiratoire aandoeningen, cardiovasculaire aandoeningen, geriatrische patiënten, neurologische aandoeningen, totale heup en knie prothese (THP / TKP) en fibromyalgie.
+De 6 minuten wandeltest wordt gebruikt om de <strong>functionele capaciteit</strong>${renderNotesTooltip([functionalCapacityDescription], {direction: "s"})} te meten. Doelgroep: volwassen en kinderen in het algemeen maar specifiek onderzocht bij respiratoire aandoeningen, cardiovasculaire aandoeningen, geriatrische patiënten, neurologische aandoeningen, totale heup en knie prothese (THP / TKP) en fibromyalgie.
     `.trim(),
     templateContent,
     externalSourceUrl: "https://meetinstrumentenzorg.nl/instrumenten/6-minute-walk-test-zes-minuten-wandeltest/",

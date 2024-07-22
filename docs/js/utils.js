@@ -40,7 +40,7 @@ export function replaceNotes(html) {
     });
 }
 
-export function renderNotesTooltip(notes) {
+export function renderNotesTooltip(notes, options = {direction: "n"}) {
     if(!notes || !notes.length) {
         return "";
     }
@@ -54,7 +54,7 @@ export function renderNotesTooltip(notes) {
     const hasMultipleNotes = notes.length > 1;
     const notesTag = hasMultipleNotes ? "ul" : "span";
     notesTooltip = `
-<div class="tooltip-wrapper">
+<div class="tooltip-wrapper" data-direction="${options.direction}">
     <i class="tooltip-trigger">ⓘ</i>
     <div class="tooltip-content">
         <div class="tooltip-content-bg"></div>

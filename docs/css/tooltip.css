@@ -11,12 +11,10 @@
 }
 
 .tooltip-content {
+    display: none;
     position: absolute;
-    left: -10rem;
-    bottom: calc(100% + 0.5rem);
     width: 20rem;
     padding: 1rem;
-    display: none;
     background-color: #ccc;
     border-radius: 0.5rem;
     font-size: 0.75rem;
@@ -26,15 +24,78 @@
 .tooltip-content::after {
     content: '';
     position: absolute;
-    left: 50%;
-    top: 100%;
 
     width: 0px;
     height: 0px;
     border-style: solid;
-    border-width: 0 0.4rem 0.6rem 0.4rem;
     border-color: transparent transparent #ccc transparent;
+}
+
+.tooltip-wrapper[data-direction="n"] .tooltip-content {
+    bottom: calc(100% + 0.5rem);
+    left: -10rem;
+}
+.tooltip-wrapper[data-direction="n"] .tooltip-content::after {
+    left: calc(50% + 2px);
+    top: 100%;
+    border-width: 0 0.4rem 0.6rem 0.4rem;
     transform: rotate(180deg);
+}
+
+.tooltip-wrapper[data-direction="ne"] .tooltip-content {
+    bottom: calc(100% + 0.5rem);
+    left: 0.5rem;
+    border-bottom-left-radius: 0;
+}
+.tooltip-wrapper[data-direction="ne"] .tooltip-content::after {
+    left: 0;
+    top: 100%;
+    transform: rotate(180deg);
+    border-width: 0 0 0.6rem 0.8rem;
+}
+
+.tooltip-wrapper[data-direction="se"] .tooltip-content {
+    top: calc(100% + 0.5rem);
+    left: 0.5rem;
+    border-top-left-radius: 0;
+}
+.tooltip-wrapper[data-direction="se"] .tooltip-content::after {
+    left: 0;
+    bottom: 100%;
+    border-width: 0 0.8rem 0.6rem 0;
+}
+
+.tooltip-wrapper[data-direction="s"] .tooltip-content {
+    top: calc(100% + 0.5rem);
+    left: -10rem;
+}
+.tooltip-wrapper[data-direction="s"] .tooltip-content::after {
+    left: calc(50% + 2px);
+    bottom: 100%;
+    border-width: 0 0.4rem 0.6rem 0.4rem;
+}
+
+.tooltip-wrapper[data-direction="sw"] .tooltip-content {
+    top: calc(100% + 0.5rem);
+    right: 0.5rem;
+    border-top-right-radius: 0;
+}
+.tooltip-wrapper[data-direction="sw"] .tooltip-content::after {
+    right: 0;
+    bottom: 100%;
+    border-width: 0 0 0.6rem 0.8rem;
+}
+
+.tooltip-wrapper[data-direction="nw"] .tooltip-content {
+    bottom: calc(100% + 0.5rem);
+    right: 0.5rem;
+    border-bottom-right-radius: 0;
+}
+.tooltip-wrapper[data-direction="nw"] .tooltip-content::after {
+    right: 0;
+    top: 100%;
+    transform: rotate(180deg);
+    border-width: 0 0.8rem 0.6rem 0;
 }
 
 .tooltip-wrapper:hover .tooltip-content {
