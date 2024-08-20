@@ -3,8 +3,6 @@ const linkSelector = "data-internal-link";
 function openTab(path) {
     const newPath = "#!" + path;
 
-    console.log(newPath)
-
     window.open(newPath, '_blank');
 }
 
